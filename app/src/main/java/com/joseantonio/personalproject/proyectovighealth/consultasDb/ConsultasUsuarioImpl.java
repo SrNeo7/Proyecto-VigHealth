@@ -76,4 +76,29 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         return usuario;
 
     }
+
+    @Override
+    public boolean modificarDatosUsuario(int idUsuario, String nombre, String apellidos, int edad,
+                                         String genero, double peso, double altura) {
+        boolean correcto = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try{
+            db.execSQL("UPDATE " + TABLE_USER + " SET nombre = '" + nombre + "'," +
+                    "apellidos = '" + apellidos + "', edad = '" + edad + "'," +
+                    "genero = '" + genero + "', peso = '" + peso + "', altura = '" + altura +"'" +
+                    "WHERE idUsuario = '" + idUsuario +"' ");
+            correcto = true;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            correcto = false;
+        }finally {
+            db.close();
+        }
+
+
+        return correcto;
+    }
 }
