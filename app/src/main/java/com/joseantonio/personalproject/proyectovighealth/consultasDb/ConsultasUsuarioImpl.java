@@ -70,7 +70,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
 
             }while(cursorUsuario.moveToNext());
         }
-        
+
         cursorUsuario.close();
 
         return usuario;
