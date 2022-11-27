@@ -11,10 +11,10 @@ public interface ConsultasMedicamento {
 
     public ArrayList<Medicamento> mostrarMedicamentos();
 
-    public boolean editarMedicamento(int id, String nombreMedicamento, int dosis,
+    public boolean editarMedicamento(int idMedicamento, String nombreMedicamento, int dosis,
                                   String medidaDosis, int periodicidad, String comentarios);
 
-    public boolean eliminarMedicamento(int id);
+    public boolean eliminarMedicamento(int idMedicamento);
 
 
 }

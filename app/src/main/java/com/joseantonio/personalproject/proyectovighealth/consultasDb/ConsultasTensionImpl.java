@@ -59,7 +59,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         Cursor cursorRegistrosTension = null;
 
         cursorRegistrosTension = db.rawQuery("SELECT sistolica, diastolica, fechaTension, valoracion FROM " +
-                TABLE_TENSION + " ORDER BY fecha DESC", null);
+                TABLE_TENSION + " ORDER BY fechaTension DESC", null);
 
         if(cursorRegistrosTension.moveToFirst()){
             do{
@@ -87,7 +87,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         Cursor cursorHistorico = null;
 
         cursorHistorico = db.rawQuery("SELECT sistolica, diastolica, fechaTension, valoracion FROM " +
-                        TABLE_TENSION + " WHERE fecha BETWEEN '" + fechaInicialTension + "' AND '" + fechaFinalTension +"'",
+                        TABLE_TENSION + " WHERE fechaTension BETWEEN '" + fechaInicialTension + "' AND '" + fechaFinalTension +"'",
                 null);
 
         if (cursorHistorico.moveToFirst()){

@@ -4,7 +4,7 @@ import com.joseantonio.personalproject.proyectovighealth.objetos.Peso;
 
 import java.util.ArrayList;
 
-public interface consultasPeso {
+public interface ConsultasPeso {
 
     public long nuevoPeso(int idUsuario, double peso, String fechaPeso, double imc,
                           double diferenciaPeso);

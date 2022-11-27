@@ -59,7 +59,7 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
 
         cursorMedicamentos = db.rawQuery("SELECT nombreMedicamento, dosis, medidaDosis, " +
                 "periodicidad, comentarios FROM " +
-                TABLE_MEDICINE + " ORDER BY fecha DESC", null);
+                TABLE_MEDICINE + " ORDER BY idMedicamento ASC", null);
 
         if(cursorMedicamentos.moveToFirst()){
             do{
@@ -78,7 +78,7 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
     }
 
     @Override
-    public boolean editarMedicamento(int id, String nombreMedicamento, int dosis,
+    public boolean editarMedicamento(int idMedicamento, String nombreMedicamento, int dosis,
                                      String medidaDosis, int periodicidad, String comentarios) {
         boolean correcto = false;
 
@@ -88,8 +88,8 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         try{
             db.execSQL("UPDATE " + TABLE_MEDICINE + " SET nombreMedicamento = '" + nombreMedicamento + "'," +
                     "dosis = '" + dosis + "',medidaDosis = '" + medidaDosis + "'," +
-                    "periodicidad = '" + periodicidad + "',comentarios = '" + comentarios + "'," +
-                    "WHERE id= '" + id +"' ");
+                    "periodicidad = '" + periodicidad + "',comentarios = '" + comentarios + "'" +
+                    "WHERE idMedicamento = '" + idMedicamento +"' ");
             correcto = true;
         }catch (Exception ex){
             ex.printStackTrace();
@@ -103,7 +103,7 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
     }
 
     @Override
-    public boolean eliminarMedicamento(int id) {
+    public boolean eliminarMedicamento(int idMedicamento) {
 
         boolean correcto = false;
 
@@ -111,7 +111,7 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try{
-            db.execSQL("DELETRE FROM " + TABLE_MEDICINE + " WHERE id= '" + id +"' LIMIT 1");
+            db.execSQL("DELETE FROM " + TABLE_MEDICINE + " WHERE idMedicamento= '" + idMedicamento +"' LIMIT 1");
             correcto = true;
         }catch (Exception ex){
             ex.printStackTrace();

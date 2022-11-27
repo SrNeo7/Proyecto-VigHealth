@@ -4,7 +4,7 @@ import com.joseantonio.personalproject.proyectovighealth.objetos.Alergia;
 
 import java.util.ArrayList;
 
-public interface consultasAlergias {
+public interface ConsultasAlergias {
 
     public long nuevoRegistroAlergia(int idUsuario,String nombreAlergia);
 

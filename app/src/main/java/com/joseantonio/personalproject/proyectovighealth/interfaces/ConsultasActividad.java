@@ -4,7 +4,7 @@ import com.joseantonio.personalproject.proyectovighealth.objetos.Actividad;
 
 import java.util.ArrayList;
 
-public interface consultasActividad {
+public interface ConsultasActividad {
 
     public long nuevaActividad(int idUsuario, String tipo, String duracion, double distancia,
                                String ritmo, String fechaActividad);
