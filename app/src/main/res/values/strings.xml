@@ -1,3 +1,53 @@
 <resources>
     <string name="app_name">Proyecto VigHealth</string>
+    <string name="tv_nuevo_usuario">Nuevo usuario</string>
+    <string name="et_nombre_usuario">Nombre</string>
+    <string name="et_apellidos_usuario">Apellidos</string>
+    <string name="et_edad_usuario">Edad</string>
+    <string name="et_peso_usuario">Peso(kg)</string>
+    <string name="et_altura_usuario">Altura</string>
+    <string name="sp_genero">Género</string>
+    <string name="btn_guardar_datos">Guardar datos</string>
+    <string name="et_sistolica_alta">Sistólica(Alta)</string>
+    <string name="et_diastolica_baja">Diastólica(baja)</string>
+    <string name="tv_nueva_registro">Nuevo registro</string>
+    <string name="tv_ultimos_registros">Últimos registros</string>
+    <string name="tv_historial_tension">Historial:Tensión</string>
+    <string name="btn_fecha_tension_desde">Desde…</string>
+    <string name="et_fecha_inicial_tension">Fecha inicial del historial</string>
+    <string name="btn_fecha_tension_hasta">Hasta…</string>
+    <string name="et_fecha_final_tension">Fecha final del historial</string>
+    <string name="btn_consultar_H_Tension">Consultar</string>
+    <string name="tv_grafrica_tension">Gráfrica:Tensión</string>
+    <string name="et_fecha_final_grafico">Fecha final gráfico</string>
+    <string name="et_fecha_inicial_grafico">Fecha inicial gráfico</string>
+    <string name="tv_nuevo_medicamento">Nuevo medicamento</string>
+    <string name="et_nombre_del_medicamento">Nombre del medicamento</string>
+    <string name="et_dosis">Dosis</string>
+    <string name="sp_medida">Medida</string>
+    <string name="et_periodicidad">¿Cada cuantas horas?(número)</string>
+    <string name="et_comentarios">Comentacios...</string>
+    <string name="btn_med_aceptar">Aceptar</string>
+    <string name="btn_med_cancelar">Cancelar</string>
+    <string name="tv_lista_medicamentos">Mis Medicamentos</string>
+    <string-array name="genero">
+        <item>Género</item>
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>No binario</item>
+        <item>Sin genero</item>
+        <item>Otro</item>
+    </string-array>
+    <string-array name="medida">
+        <item>Medida</item>
+        <item>Pastilla</item>
+        <item>Sobre</item>
+        <item>gr</item>
+        <item>mg</item>
+        <item>ml</item>
+        <item>Cucharada</item>
+        <item>Inyeccion</item>
+        <item>Gotas</item>
+        <item>Untura(pomada)</item>
+    </string-array>
 </resources>
