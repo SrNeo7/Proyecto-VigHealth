@@ -30,6 +30,13 @@
     <string name="btn_med_aceptar">Aceptar</string>
     <string name="btn_med_cancelar">Cancelar</string>
     <string name="tv_lista_medicamentos">Mis Medicamentos</string>
+    <string name="tv_mod_medicamento">Modificar Medicamento</string>
+    <string name="btn_ed_modificar">Modificar</string>
+    <string name="tv_peso_seguimiento">Peso: Seguimiento</string>
+    <string name="et_peso">Peso(kg)</string>
+    <string name="btn_nuevo_peso">Añadir registro</string>
+    <string name="tv_registros_peso">Últimos registros</string>
+    <string name="tv_grafica_peso">Gráfica:Peso</string>
     <string-array name="genero">
         <item>Género</item>
         <item>Hombre</item>

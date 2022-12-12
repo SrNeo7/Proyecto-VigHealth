@@ -13,6 +13,20 @@
         android:theme="@style/Theme.ProyectoVigHealth"
         tools:targetApi="31">
         <activity
+            android:name=".GraficaPesoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PesoSeguimientoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".EditarMedicamentoActivity"
             android:exported="false">
             <meta-data
