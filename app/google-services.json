@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "213501995914",
+    "project_id": "vighealth-e9feb",
+    "storage_bucket": "vighealth-e9feb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213501995914:android:161f9ca88de51d42923673",
+        "android_client_info": {
+          "package_name": "com.joseantonio.personalproject.proyectovighealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213501995914-cdt4ucnfd6kvt5n7o030mvemvbn4l0nk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joseantonio.personalproject.proyectovighealth",
+            "certificate_hash": "5d27f0a01572d55d1f2e0f60d7a996ce1184af01"
+          }
+        },
+        {
+          "client_id": "213501995914-tui1gtibd7sk8092cshsdia5nia2oi7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhZAZTu9nzNjfhjeWD7vLITBLNZo13GVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213501995914-tui1gtibd7sk8092cshsdia5nia2oi7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
