@@ -37,6 +37,7 @@
     <string name="btn_nuevo_peso">Añadir registro</string>
     <string name="tv_registros_peso">Últimos registros</string>
     <string name="tv_grafica_peso">Gráfica:Peso</string>
+    <string name="tv_lista_actividad">Actividad</string>
     <string-array name="genero">
         <item>Género</item>
         <item>Hombre</item>
