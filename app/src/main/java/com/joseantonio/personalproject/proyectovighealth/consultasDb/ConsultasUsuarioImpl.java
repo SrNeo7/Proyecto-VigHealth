@@ -34,7 +34,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
 
             ContentValues values = new ContentValues();
             values.put("nombre",nombre);
-            values.put("apellido", apellidos);
+            values.put("apellidos", apellidos);
             values.put("edad", edad);
             values.put("genero", genero);
             values.put("peso", peso);
@@ -100,5 +100,25 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
 
 
         return correcto;
+    }
+
+    public boolean comprobarUsuario(){
+
+        boolean usuario = false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursorUsuario = null;
+
+
+        cursorUsuario = db.rawQuery("SELECT idUsuario FROM " +
+                TABLE_USER , null);
+
+        int id = cursorUsuario.getCount();
+
+        if(id!=0){
+            usuario = true;
+        }
+
+        return usuario;
     }
 }

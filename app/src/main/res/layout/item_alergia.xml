@@ -9,10 +9,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevations="4dp"
         android:layout_margin="8dp"
         app:cardCornerRadius="15sp"
-        app:cardBackgroundColor="@color/material_dynamic_primary80"
+        app:cardBackgroundColor="@color/yellowPollen"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

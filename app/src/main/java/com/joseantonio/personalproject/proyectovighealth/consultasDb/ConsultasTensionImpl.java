@@ -24,7 +24,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
     }
 
     @Override
-    public long nuevoRegistroTension(int idUsuario, String fechaTension, double sistolica,
+    public long nuevoRegistroTension(String fechaTension, double sistolica,
                                      double diastolica, String valoracion){
 
         long id = 0;
@@ -34,7 +34,6 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put("idUsuario",idUsuario);
             values.put("sistolica", sistolica);
             values.put("diastolica", diastolica);
             values.put("fechaTension", fechaTension);

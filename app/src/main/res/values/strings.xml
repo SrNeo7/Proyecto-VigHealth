@@ -58,4 +58,32 @@
         <item>Gotas</item>
         <item>Untura(pomada)</item>
     </string-array>
+    <string-array name="frecuencia">
+        <item>1 hora</item>
+        <item>2 hora</item>
+        <item>3 hora</item>
+        <item>4 hora</item>
+    </string-array>
+    <string-array name="alergenos">
+        <item>Aliso</item>
+        <item>Amarantáceas</item>
+        <item>Abedul</item>
+        <item>Casuarina</item>
+        <item>Avellano</item>
+        <item>Ciprés</item>
+        <item>Fresno</item>
+        <item>Olivo</item>
+        <item>Pino</item>
+        <item>Llantén</item>
+        <item>Plátano de sombra</item>
+        <item>Gramíneas</item>
+        <item>Roble</item>
+        <item>Encina</item>
+        <item>Alcornoque</item>
+        <item>Ortiga</item>
+        <item>Parietaria</item>
+    </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name ="menu_drawer_open">Drawer Open</string>
+    <string name="menu_drawer_close">Drawer Close</string>
 </resources>

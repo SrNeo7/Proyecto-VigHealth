@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_tension"
+            android:icon="@drawable/heart_pulse"
+            android:title="Tensión"/>
+
+        <item
+            android:id="@+id/nav_peso"
+            android:icon="@drawable/scale_bathroom"
+            android:title="Peso"/>
+
+        <item android:id="@+id/nav_actividad"
+            android:icon="@drawable/run"
+            android:title="Actividad"/>
+
+        <item android:id="@+id/nav_alergia"
+            android:icon="@drawable/flower_pollen_outline"
+            android:title="Control de alergias"/>
+
+        <item android:id="@+id/nav_medicamentos"
+            android:icon="@drawable/pill"
+            android:title="Medicamentos"/>
+
+        <item android:id="@+id/nav_hidratacion"
+            android:icon="@drawable/cup_water"
+            android:title="Hidratación"/>
+
+
+    </group>
+
+    <item android:title="Configuración">
+        <menu>
+    <item android:id="@+id/nav_ajustes"
+        android:icon="@drawable/cog_outline"
+        android:title="Ajustes y configuración"/>
+        </menu>
+    </item>
+
+</menu>

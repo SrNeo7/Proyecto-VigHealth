@@ -40,7 +40,8 @@
             android:id="@+id/et_fechaTensionDesde"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/et_fecha_inicial_tension" />
+            android:hint="@string/et_fecha_inicial_tension"
+            android:minHeight="48dp" />
 
     </LinearLayout>
 
@@ -66,7 +67,8 @@
             android:id="@+id/et_fechaTensionHasta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/et_fecha_final_tension" />
+            android:hint="@string/et_fecha_final_tension"
+            android:minHeight="48dp" />
 
     </LinearLayout>
 
