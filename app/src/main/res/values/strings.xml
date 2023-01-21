@@ -5,18 +5,18 @@
     <string name="et_apellidos_usuario">Apellidos</string>
     <string name="et_edad_usuario">Edad</string>
     <string name="et_peso_usuario">Peso(kg)</string>
-    <string name="et_altura_usuario">Altura</string>
+    <string name="et_altura_usuario">Altura(m)</string>
     <string name="sp_genero">Género</string>
     <string name="btn_guardar_datos">Guardar datos</string>
     <string name="et_sistolica_alta">Sistólica(Alta)</string>
     <string name="et_diastolica_baja">Diastólica(baja)</string>
-    <string name="tv_nueva_registro">Nuevo registro</string>
+    <string name="at_nuevo_registro_tension">Nuevo registro de tensión</string>
     <string name="tv_ultimos_registros">Últimos registros</string>
-    <string name="tv_historial_tension">Historial:Tensión</string>
+    <string name="at_historial_tension">Historial de tensión</string>
     <string name="btn_fecha_tension_desde">Desde…</string>
-    <string name="et_fecha_inicial_tension">Fecha inicial del historial</string>
+    <string name="et_fecha_inicial_tension">Fecha inicial de consulta</string>
     <string name="btn_fecha_tension_hasta">Hasta…</string>
-    <string name="et_fecha_final_tension">Fecha final del historial</string>
+    <string name="et_fecha_final_tension">Fecha final de consulta</string>
     <string name="btn_consultar_H_Tension">Consultar</string>
     <string name="tv_grafrica_tension">Gráfrica:Tensión</string>
     <string name="et_fecha_final_grafico">Fecha final gráfico</string>
@@ -26,17 +26,20 @@
     <string name="et_dosis">Dosis</string>
     <string name="sp_medida">Medida</string>
     <string name="et_periodicidad">¿Cada cuantas horas?(número)</string>
-    <string name="et_comentarios">Comentacios...</string>
+    <string name="et_comentarios">Comentarios…</string>
     <string name="btn_med_aceptar">Aceptar</string>
     <string name="btn_med_cancelar">Cancelar</string>
     <string name="tv_lista_medicamentos">Mis Medicamentos</string>
     <string name="tv_mod_medicamento">Modificar Medicamento</string>
     <string name="btn_ed_modificar">Modificar</string>
-    <string name="tv_peso_seguimiento">Peso: Seguimiento</string>
+    <string name="at_peso_seguimiento">Nuevo registro de peso</string>
+    <string name="at_peso_historial">Historial de peso</string>
+    <string name="at_peso_grafico">Gráfico de evolución del peso</string>
     <string name="et_peso">Peso(kg)</string>
-    <string name="btn_nuevo_peso">Añadir registro</string>
+    <string name="btn_nuevo_peso">Guardar nuevo registro</string>
     <string name="tv_registros_peso">Últimos registros</string>
     <string name="tv_grafica_peso">Gráfica:Peso</string>
+    <string name="tv_lista_actividad">Actividad</string>
     <string-array name="genero">
         <item>Género</item>
         <item>Hombre</item>
@@ -57,4 +60,36 @@
         <item>Gotas</item>
         <item>Untura(pomada)</item>
     </string-array>
+    <string-array name="frecuencia">
+        <item>1 hora</item>
+        <item>2 hora</item>
+        <item>3 hora</item>
+        <item>4 hora</item>
+    </string-array>
+    <string-array name="alergenos">
+        <item>Aliso</item>
+        <item>Amarantáceas</item>
+        <item>Abedul</item>
+        <item>Casuarina</item>
+        <item>Avellano</item>
+        <item>Ciprés</item>
+        <item>Fresno</item>
+        <item>Olivo</item>
+        <item>Pino</item>
+        <item>Llantén</item>
+        <item>Plátano de sombra</item>
+        <item>Gramíneas</item>
+        <item>Roble</item>
+        <item>Encina</item>
+        <item>Alcornoque</item>
+        <item>Ortiga</item>
+        <item>Parietaria</item>
+    </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="menu_drawer_open">Drawer Open</string>
+    <string name="menu_drawer_close">Drawer Close</string>
+    <string name="btn_generar_G_Tension">Generar grárfico</string>
+    <string name="btn_nueva_tension">Guardar nuevo registro</string>
+    <string name="tv_IMC_indicador">IMC:</string>
+    <string name="btn_generar_G_Peso">Generar gráfico</string>
 </resources>

@@ -11,72 +11,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="120sp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/et_sistolica"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30sp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
             android:hint="@string/et_sistolica_alta"
             android:inputType="numberDecimal"
-            android:textSize="18sp" />
+            android:textColorHint="#78909C"
+            android:textSize="50sp" />
 
         <EditText
             android:id="@+id/et_diastolica"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="50sp"
+            android:layout_marginEnd="10sp"
             android:hint="@string/et_diastolica_baja"
             android:inputType="numberDecimal"
-            android:textSize="18sp" />
+            android:textColorHint="#78909C"
+            android:textSize="50sp" />
 
         <Button
             android:id="@+id/btn_añadirTension"
-            android:layout_width="48dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20sp"
-            android:text="+" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="100sp"
+            android:layout_marginEnd="10sp"
+            android:backgroundTint="@color/bluePrime"
+            android:text="@string/btn_nueva_tension"
+            android:textColor="#616161"
+            android:textSize="30sp" />
 
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_nuevoRegistroTension"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/tv_nueva_registro"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ultimosRegistrosTension"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="@string/tv_ultimos_registros"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rvRegistrosTension"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.159" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRegistrosTension"
-        android:layout_width="406dp"
-        android:layout_height="393dp"
-        android:layout_marginTop="156dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

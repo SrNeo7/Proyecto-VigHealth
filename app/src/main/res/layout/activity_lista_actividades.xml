@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListaActividadesActivity">
+
+
+    <TextView
+        android:id="@+id/tvListaActividades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/tv_lista_actividad"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListaMeds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvListaActividades"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabtnNuevaActividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/plus"
+        android:focusable="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabtnAndar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24sp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/fabtnNuevaActividad"
+        app:layout_constraintEnd_toEndOf="@id/fabtnNuevaActividad"
+        app:layout_constraintStart_toStartOf="@id/fabtnNuevaActividad"
+        app:srcCompat="@drawable/walk"/>
+
+    <TextView
+        android:id="@+id/tvAndarFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8sp"
+        android:text="Andar"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fabtnAndar"
+        app:layout_constraintEnd_toStartOf="@+id/fabtnAndar"
+        app:layout_constraintTop_toTopOf="@id/fabtnAndar"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabtnCorrer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24sp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/fabtnAndar"
+        app:layout_constraintEnd_toEndOf="@id/fabtnAndar"
+        app:layout_constraintStart_toStartOf="@id/fabtnAndar"
+        app:srcCompat="@drawable/run"/>
+
+    <TextView
+        android:id="@+id/tvCorrerFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8sp"
+        android:text="Correr"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fabtnCorrer"
+        app:layout_constraintEnd_toStartOf="@+id/fabtnCorrer"
+        app:layout_constraintTop_toTopOf="@id/fabtnCorrer"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabtnCiclismo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24sp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/fabtnCorrer"
+        app:layout_constraintEnd_toEndOf="@id/fabtnCorrer"
+        app:layout_constraintStart_toStartOf="@id/fabtnCorrer"
+        app:srcCompat="@drawable/bike"/>
+
+    <TextView
+        android:id="@+id/tvCiclismorFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8sp"
+        android:text="Ciclismo"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fabtnCiclismo"
+        app:layout_constraintEnd_toStartOf="@+id/fabtnCiclismo"
+        app:layout_constraintTop_toTopOf="@id/fabtnCiclismo"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

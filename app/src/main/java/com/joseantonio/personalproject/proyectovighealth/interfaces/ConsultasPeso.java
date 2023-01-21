@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface ConsultasPeso {
 
-    public long nuevoPeso(int idUsuario, double peso, String fechaPeso, double imc,
+    public long nuevoPeso(int idUsuario,double peso, String fechaPeso, double imc,
                           double diferenciaPeso);
 
     public ArrayList<Peso> mostrarRegistrosPeso();

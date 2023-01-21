@@ -6,48 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".GraficaPesoActivity">
 
-    <TextView
-        android:id="@+id/tv_graficaPeso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/tv_grafica_peso"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linLayGraPeFechaDesde"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
+        android:padding="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btn_fechaGraPeTensionDesde"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_fechaGraPeDesde"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/bluePrime"
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
+            android:textSize="15sp"
             android:text="@string/btn_fecha_tension_desde" />
 
         <EditText
-            android:id="@+id/et_fechaGraPeTensionDesde"
-            android:layout_width="wrap_content"
+            android:id="@+id/et_fechaGraPeDesde"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:inputType="date"
+            android:textSize="25sp"
+            android:minHeight="48sp"
+            android:textAlignment="center"
             android:hint="@string/et_fecha_inicial_grafico" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linLayGraPeFechaHasta"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10sp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,27 +54,39 @@
         app:layout_constraintTop_toBottomOf="@id/linLayGraPeFechaDesde">
 
         <Button
-            android:id="@+id/btn_fechaGraPeTensionHasta"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_fechaGraPeHasta"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5sp"
+            android:layout_weight="1"
+            android:layout_marginStart="10sp"
+            android:textSize="15sp"
             android:layout_marginEnd="10sp"
+            android:minHeight="48sp"
+            android:backgroundTint="@color/bluePrime"
             android:text="@string/btn_fecha_tension_hasta" />
 
         <EditText
-            android:id="@+id/et_fechaGraPeTensionHasta"
-            android:layout_width="wrap_content"
+            android:id="@+id/et_fechaGraPeHasta"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:inputType="date"
+            android:textSize="25sp"
+            android:textAlignment="center"
             android:hint="@string/et_fecha_final_grafico" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_GPConsultar"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_GPGenerar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="20sp"
         android:layout_marginTop="260dp"
-        android:text="@string/btn_consultar_H_Tension"
+        android:backgroundTint="@color/bluePrime"
+        android:textSize="30sp"
+        android:text="@string/btn_generar_G_Peso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,19 +97,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="10sp"
         android:text=""
-        android:textSize="15sp"
+        android:textAlignment="center"
+        android:textSize="25sp"
         android:textStyle="bold"
         tools:text="Gráfica"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_GPConsultar" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_GPGenerar" />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/graficaLineas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/graficaPeso"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

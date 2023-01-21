@@ -9,10 +9,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevations="4dp"
         android:layout_margin="8dp"
         app:cardCornerRadius="15sp"
-        app:cardBackgroundColor="@color/teal_200"
+        app:cardBackgroundColor="@color/bluePrime"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +26,7 @@
                 android:id="@+id/tv_fechaPeso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="10sp"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 tools:text="12/12/2022"/>
@@ -42,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
                     android:layout_weight="0.5"
+                    android:padding="10sp"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     tools:text="83'3 Kg"/>
@@ -62,10 +63,11 @@
                     android:textAlignment="center"
                     android:layout_weight="1"
                     android:textSize="26sp"
+                    android:text="@string/tv_IMC_indicador"
                     tools:text="IMC:"/>
 
                 <TextView
-                    android:id="@+id/tv_periodicidadMedicamento"
+                    android:id="@+id/tv_imc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="viewStart"

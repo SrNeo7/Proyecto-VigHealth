@@ -21,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -116,9 +117,23 @@ public class LoginActivity extends AppCompatActivity{
 
     private void irHome() {
 
+        ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(LoginActivity.this);
+        boolean usuarioActivo = consultasUsuario.comprobarUsuario();
+
+
+        if(!usuarioActivo){
+
         Intent intent = new Intent(LoginActivity.this,NuevoUsuarioActivity.class);
         startActivity(intent);
         finish();
+
+        }else if (usuarioActivo){
+
+            Intent intent = new Intent(LoginActivity.this,PrincipalActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
     }
 
 

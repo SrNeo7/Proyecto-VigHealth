@@ -6,23 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".HistoricoTensionActivity">
 
-    <TextView
-        android:id="@+id/tv_historicoTension"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/tv_historial_tension"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/linLayFechaDesde"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="50sp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,23 +18,32 @@
 
         <Button
             android:id="@+id/btn_fechaTensionDesde"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
-            android:text="@string/btn_fecha_tension_desde" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/bluePrime"
+            android:text="@string/btn_fecha_tension_desde"
+            android:textColor="#5D4037"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/et_fechaTensionDesde"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/et_fecha_inicial_tension" />
+            android:layout_marginEnd="5sp"
+            android:layout_weight="0.5"
+            android:hint="@string/et_fecha_inicial_tension"
+            android:minHeight="48dp"
+            android:textColorHint="#78909C"
+            android:textSize="23sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linLayFechaHasta"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
@@ -56,26 +53,40 @@
 
         <Button
             android:id="@+id/btn_fechaTensionHasta"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5sp"
+            android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
-            android:text="@string/btn_fecha_tension_hasta" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/bluePrime"
+            android:text="@string/btn_fecha_tension_hasta"
+            android:textColor="#5D4037"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/et_fechaTensionHasta"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/et_fecha_final_tension" />
+            android:layout_marginEnd="5sp"
+            android:layout_weight="0.5"
+            android:hint="@string/et_fecha_final_tension"
+            android:minHeight="48dp"
+            android:textColorHint="#78909C"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_HTConsultar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="260sp"
+        android:layout_marginEnd="10sp"
+        android:backgroundTint="@color/bluePrime"
         android:text="@string/btn_consultar_H_Tension"
+        android:textColor="#616161"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,18 +98,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text=""
-        android:textSize="15sp"
+        android:textSize="25sp"
         android:textStyle="bold"
+        android:textAlignment="center"
         tools:text="Registos recuperados"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_HTConsultar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHistoricoTension"
-        android:layout_width="413dp"
-        android:layout_height="335dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -27,17 +27,16 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //Sentencia para crear la tabla de la base de datos
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_USER + "(" +
-                "idUsuario PRIMARY KEY AUTOINCREMENT," +
+                "idUsuario INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT NOT NULL," +
                 "apellidos TEXT NOT NULL," +
                 "edad INTEGER," +
                 "genero TEXT," +
                 "peso NUMERIC," +
-                "altura NUMERIC," +
-                "categoria TEXT NOT NULL )");
+                "altura NUMERIC)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_TENSION + "(" +
-                "idTension PRIMARY KEY AUTOINCREMENT," +
+                "idTension INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idUsuario INTEGER REFERENCES " + TABLE_USER + "," +
                 "fechaTension TEXT NOT NULL," +
                 "sistolica NUMERIC NOT NULL," +
@@ -45,7 +44,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "valoracion TEXT NOT NULL )");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_MEDICINE + "(" +
-                "idMedicamento PRIMARY KEY AUTOINCREMENT," +
+                "idMedicamento INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idUsuario INTEGER REFERENCES " + TABLE_USER + "," +
                 "nombreMedicamento TEXT NOT NULL," +
                 "dosis INTEGER," +
@@ -54,15 +53,15 @@ public class DbHelper extends SQLiteOpenHelper {
                 "comentario TEXT)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_WEIGHT + "(" +
-                "idPeso PRIMARY KEY AUTOINCREMENT," +
+                "idPeso INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idUsuario INTEGER REFERENCES " + TABLE_USER + "," +
                 "peso NUMERIC NOT NULL," +
                 "fechaPeso TEXT NOT NULL," +
                 "imc NUMERIC NOT NULL," +
-                "difereciaPeso NUMERIC NOT NULL)");
+                "diferenciaPeso NUMERIC NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ACTIVITY + "(" +
-                "idActividad PRIMARY KEY AUTOINCREMENT," +
+                "idActividad INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idUsuario INTEGER REFERENCES " + TABLE_USER + "," +
                 "tipo TEXT NOT NULL," +
                 "duracion TEXT," +
@@ -71,7 +70,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "fechaActividad TEXT)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ALERGY + "(" +
-                "idAlergia PRIMARY KEY AUTOINCREMENT," +
+                "idAlergia INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idUsuario INTEGER REFERENCES " + TABLE_USER + "," +
                 "nombre TEXT NOT NULL," +
                 "fechaDatos TEXT," +
@@ -79,7 +78,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "valoracion TEXT)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_WATER + "(" +
-                "idHidratacion PRIMARY KEY AUTOINCREMENT," +
+                "idHidratacion INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "idUsuario INTEGER REFERENCES " + TABLE_USER + "," +
                 "estado NUMERIC NOT NULL," +
                 "frecuencia INTEGER)");
