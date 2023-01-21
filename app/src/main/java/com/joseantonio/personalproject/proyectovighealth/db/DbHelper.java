@@ -58,7 +58,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "peso NUMERIC NOT NULL," +
                 "fechaPeso TEXT NOT NULL," +
                 "imc NUMERIC NOT NULL," +
-                "difereciaPeso NUMERIC NOT NULL)");
+                "diferenciaPeso NUMERIC NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_ACTIVITY + "(" +
                 "idActividad INTEGER PRIMARY KEY AUTOINCREMENT," +

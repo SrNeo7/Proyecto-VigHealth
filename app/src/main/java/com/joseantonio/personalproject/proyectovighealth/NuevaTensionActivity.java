@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.joseantonio.personalproject.proyectovighealth.adaptadores.TensionAdapter;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTensionImpl;
+import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityNuevaTensionBinding;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
 
@@ -29,25 +30,23 @@ public class NuevaTensionActivity extends DrawerBaseActivity {
 
     EditText sistolica, diastolica;
     Button guardar;
-    RecyclerView listaTension;
 
-    String fecha, categoria;
+    String fecha, categoria,activityTitle;
     float sist, diast;
+    int idUsuario;
 
-    ArrayList<Tension>listaRegistrosTension;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         nuevaTensionBinding = ActivityNuevaTensionBinding.inflate(getLayoutInflater());
         setContentView(nuevaTensionBinding.getRoot());
-        allocateActivityTitle("Nuevo registro de tension");
+        activityTitle = getString(R.string.at_nuevo_registro_tension);
+        allocateActivityTitle(activityTitle);
 
         sistolica = findViewById(R.id.et_sistolica);
         diastolica = findViewById(R.id.et_diastolica);
         guardar = findViewById(R.id.btn_añadirTension);
-        listaTension = findViewById(R.id.rvRegistrosTension);
-        listaTension.setLayoutManager(new LinearLayoutManager(this));
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,16 +56,16 @@ public class NuevaTensionActivity extends DrawerBaseActivity {
                 diast = Float.parseFloat(diastolica.getText().toString());
                 fecha = obtenerFechaHoy();
                 categoria = obtenerCategoria(sist,diast);
+                ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(NuevaTensionActivity.this);
+                idUsuario = consultasUsuario.obtenerIdUsuario();
 
                 ConsultasTensionImpl consultasTension =
                         new ConsultasTensionImpl(NuevaTensionActivity.this);
 
-                long id = consultasTension.nuevoRegistroTension(fecha,sist,diast,categoria);
+                long id = consultasTension.nuevoRegistroTension(idUsuario,fecha,sist,diast,categoria);
 
                 if (id>0){
                     Toast.makeText(NuevaTensionActivity.this, "Registro guardado",Toast.LENGTH_LONG).show();
-                    TensionAdapter adapter = new TensionAdapter(consultasTension.mostrarRegistrosTension());
-                    listaTension.setAdapter(adapter);
                     limpiar();
                 }else{
                     Toast.makeText(NuevaTensionActivity.this, "ERROR AL GUARDAR EL REGISTRO",Toast.LENGTH_LONG).show();
@@ -74,12 +73,6 @@ public class NuevaTensionActivity extends DrawerBaseActivity {
 
             }
         });
-
-        ConsultasTensionImpl consultasTension = new ConsultasTensionImpl(NuevaTensionActivity.this);
-        listaRegistrosTension = new ArrayList<>();
-        TensionAdapter adapter = new TensionAdapter(consultasTension.mostrarRegistrosTension());
-        listaTension.setAdapter(adapter);
-
 
     }
 

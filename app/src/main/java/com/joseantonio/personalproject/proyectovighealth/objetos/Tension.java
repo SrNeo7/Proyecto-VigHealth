@@ -20,6 +20,12 @@ public class Tension {
         this.valoracion = valoracion;
     }
 
+    public Tension(double sistolica,double diastolica,String valoracion){
+        this.sistolica = sistolica;
+        this.diastolica = diastolica;
+        this.valoracion = valoracion;
+    }
+
     public int getIdTension() {
         return idTension;
     }

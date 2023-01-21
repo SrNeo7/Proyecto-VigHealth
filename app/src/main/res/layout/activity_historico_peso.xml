@@ -4,117 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GraficaPesoActivity">
-
+    tools:context=".HistoricoPesoActivity">
 
     <LinearLayout
-        android:id="@+id/linLayGraPeFechaDesde"
+        android:id="@+id/linLayFechaDesde"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="50sp"
         android:orientation="horizontal"
-        android:padding="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btn_fechaGraPeDesde"
+            android:id="@+id/btn_fechaPesoDesde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/bluePrime"
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
-            android:textSize="15sp"
-            android:text="@string/btn_fecha_tension_desde" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/bluePrime"
+            android:text="@string/btn_fecha_tension_desde"
+            android:textColor="#5D4037"
+            android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/et_fechaGraPeDesde"
+            android:id="@+id/et_fechaPesoDesde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
             android:layout_weight="0.5"
-            android:inputType="date"
-            android:textSize="25sp"
-            android:minHeight="48sp"
-            android:textAlignment="center"
-            android:hint="@string/et_fecha_inicial_grafico" />
+            android:hint="@string/et_fecha_inicial_tension"
+            android:minHeight="48dp"
+            android:textColorHint="#78909C"
+            android:textSize="23sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linLayGraPeFechaHasta"
+        android:id="@+id/linLayFechaHasta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10sp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linLayGraPeFechaDesde">
+        app:layout_constraintTop_toBottomOf="@id/linLayFechaDesde">
 
         <Button
-            android:id="@+id/btn_fechaGraPeHasta"
+            android:id="@+id/btn_fechaPesoHasta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginStart="10sp"
-            android:textSize="15sp"
             android:layout_marginEnd="10sp"
-            android:minHeight="48sp"
+            android:layout_weight="1"
             android:backgroundTint="@color/bluePrime"
-            android:text="@string/btn_fecha_tension_hasta" />
+            android:text="@string/btn_fecha_tension_hasta"
+            android:textColor="#5D4037"
+            android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/et_fechaGraPeHasta"
+            android:id="@+id/et_fechaPesoHasta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
             android:layout_weight="0.5"
-            android:inputType="date"
-            android:textSize="25sp"
-            android:textAlignment="center"
-            android:hint="@string/et_fecha_final_grafico" />
+            android:hint="@string/et_fecha_final_tension"
+            android:minHeight="48dp"
+            android:textColorHint="#78909C"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_GPGenerar"
+        android:id="@+id/btn_HPConsultar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
-        android:layout_marginTop="260dp"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="260sp"
+        android:layout_marginEnd="10sp"
         android:backgroundTint="@color/bluePrime"
+        android:text="@string/btn_consultar_H_Tension"
+        android:textColor="#616161"
         android:textSize="30sp"
-        android:text="@string/btn_generar_G_Peso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvGraficoPesoGenerado"
+        android:id="@+id/tvRegistrosPesoRecuperados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="10sp"
         android:text=""
-        android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
-        tools:text="Gráfica"
+        android:textAlignment="center"
+        tools:text="Registos recuperados"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_GPGenerar" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_HPConsultar" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/graficaPeso"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistoricoPeso"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12sp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGraficoPesoGenerado"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistrosPesoRecuperados" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

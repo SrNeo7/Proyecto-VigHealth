@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface ConsultasTension {
 
-    public long nuevoRegistroTension(String fechaTension, double sistolica,
+    public long nuevoRegistroTension(int idUsuario,String fechaTension, double sistolica,
                                      double diastolica, String valoracion);
 
     public ArrayList<Tension>mostrarRegistrosTension();

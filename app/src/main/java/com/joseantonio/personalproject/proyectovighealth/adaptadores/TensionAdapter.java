@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class TensionAdapter extends RecyclerView.Adapter<TensionAdapter.TensionViewHolder> {
 
     ArrayList<Tension> listaTension;
+    private TensionViewHolder tensionViewHolder;
 
     public TensionAdapter(ArrayList<Tension>listaTension){
         this.listaTension = listaTension;
@@ -36,8 +37,8 @@ public class TensionAdapter extends RecyclerView.Adapter<TensionAdapter.TensionV
         String diastolica = Double.toString(listaTension.get(position).getDiastolica());
         String sistolica = Double.toString(listaTension.get(position).getSistolica());
         String medicion = sistolica + "/" + diastolica;
-
         String fechaFormateadaEU = fechaEuropea(listaTension.get(position).getFechaTension());
+
         holder.viewMedicion.setText(medicion);
         holder.viewValoracion.setText(listaTension.get(position).getValoracion());
         holder.viewFecha.setText(fechaFormateadaEU);

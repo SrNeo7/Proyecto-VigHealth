@@ -13,17 +13,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.joseantonio.personalproject.proyectovighealth.adaptadores.PesoAdapter;
 import com.joseantonio.personalproject.proyectovighealth.adaptadores.TensionAdapter;
+import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasPesoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTensionImpl;
-import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityHistoricoTensionBinding;
+import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityHistoricoPesoBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class HistoricoTensionActivity extends DrawerBaseActivity {
+public class HistoricoPesoActivity extends DrawerBaseActivity {
 
-    ActivityHistoricoTensionBinding historicoTensionBinding;
+    ActivityHistoricoPesoBinding historicoPesoBinding;
 
     EditText fechaInicial, fechaFinal;
     Button desdeBtn,hastaBtn,consultarBtn;
@@ -32,32 +34,29 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
     String fechaDesde,fechaHasta,activityTitle;
     int dia, mes, anno;
 
-    RecyclerView historialTension;
-
+    RecyclerView historialPeso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        historicoTensionBinding = ActivityHistoricoTensionBinding.inflate(getLayoutInflater());
-        setContentView(historicoTensionBinding.getRoot());
-        activityTitle = getString(R.string.at_historial_tension);
-        allocateActivityTitle(activityTitle);
+        historicoPesoBinding = ActivityHistoricoPesoBinding.inflate(getLayoutInflater());
+        setContentView(historicoPesoBinding.getRoot());
+        activityTitle = getString(R.string.at_peso_historial);
 
-
-        fechaInicial = findViewById(R.id.et_fechaTensionDesde);
-        fechaFinal = findViewById(R.id.et_fechaTensionHasta);
-        desdeBtn = findViewById(R.id.btn_fechaTensionDesde);
-        hastaBtn = findViewById(R.id.btn_fechaTensionHasta);
-        consultarBtn = findViewById(R.id.btn_HTConsultar);
-        registrosMostrados = findViewById(R.id.tvRegistrosTensionRecuperados);
-        historialTension = findViewById(R.id.rvHistoricoTension);
-        historialTension.setLayoutManager(new LinearLayoutManager(this));
+        fechaInicial = findViewById(R.id.et_fechaPesoDesde);
+        fechaFinal = findViewById(R.id.et_fechaPesoHasta);
+        desdeBtn = findViewById(R.id.btn_fechaPesoDesde);
+        hastaBtn = findViewById(R.id.btn_fechaPesoHasta);
+        consultarBtn = findViewById(R.id.btn_HPConsultar);
+        registrosMostrados = findViewById(R.id.tvRegistrosPesoRecuperados);
+        historialPeso = findViewById(R.id.rvHistoricoPeso);
+        historialPeso.setLayoutManager(new LinearLayoutManager(this));
 
         registrosMostrados.setText(R.string.tv_ultimos_registros);
 
-        ConsultasTensionImpl consultasTension = new ConsultasTensionImpl(HistoricoTensionActivity.this);
-        TensionAdapter adapter = new TensionAdapter(consultasTension.mostrarRegistrosTension());
-        historialTension.setAdapter(adapter);
+        ConsultasPesoImpl consultasPeso = new ConsultasPesoImpl(HistoricoPesoActivity.this);
+        PesoAdapter adapter = new PesoAdapter(consultasPeso.mostrarRegistrosPeso());
+        historialPeso.setAdapter(adapter);
 
         desdeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,18 +97,15 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
                     fechaHasta = fechaHasta + " 23:59";
 
 
-                    ConsultasTensionImpl consultasHistorialTension = new ConsultasTensionImpl(HistoricoTensionActivity.this);
-                    TensionAdapter adapterHistorico = new TensionAdapter(consultasHistorialTension.mostrarPorFechas(fechaDesde,fechaHasta));
-                    historialTension.setAdapter(adapterHistorico);
+                    ConsultasPesoImpl consultasHistorialPeso = new ConsultasPesoImpl(HistoricoPesoActivity.this);
+                    PesoAdapter adapterHistorico = new PesoAdapter(consultasHistorialPeso.mostrarPorFecha(fechaDesde,fechaHasta));
+                    historialPeso.setAdapter(adapterHistorico);
 
                 }else{
-                    Toast.makeText(HistoricoTensionActivity.this,"Fechas no introducidas o introducidas de forma incorrecta",Toast.LENGTH_LONG).show();
+                    Toast.makeText(HistoricoPesoActivity.this,"Fechas no introducidas o introducidas de forma incorrecta",Toast.LENGTH_LONG).show();
                 }
             }
         });
-
-
-
 
     }
 
@@ -122,8 +118,8 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
 
         try{
 
-        fechaInicialDate = date.parse(inicial);
-        fechaFinalDate = date.parse(fin);
+            fechaInicialDate = date.parse(inicial);
+            fechaFinalDate = date.parse(fin);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -142,7 +138,7 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
         mes = c.get(Calendar.MONTH);
         anno = c.get(Calendar.YEAR);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(HistoricoTensionActivity.this ,new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(HistoricoPesoActivity.this ,new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 final String selectedDate = dosDigitos(day) + "/" + dosDigitos(month+1) +

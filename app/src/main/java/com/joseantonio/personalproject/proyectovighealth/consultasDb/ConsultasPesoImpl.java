@@ -23,7 +23,7 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
     }
 
     @Override
-    public long nuevoPeso(int idUsuario, double peso, String fechaPeso, double imc, double diferenciaPeso) {
+    public long nuevoPeso(int idUsuario,double peso, String fechaPeso, double imc, double diferenciaPeso) {
         long id = 0;
 
         try {
@@ -54,8 +54,7 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         Peso peso = null;
         Cursor cursorPeso = null;
 
-        cursorPeso = db.rawQuery("SELECT peso, fechaPeso, imc, " +
-                "diferenciaPeso FROM " +
+        cursorPeso = db.rawQuery("SELECT peso, fechaPeso, imc, diferenciaPeso FROM " +
                 TABLE_WEIGHT + " ORDER BY fechaPeso DESC", null);
 
         if(cursorPeso.moveToFirst()){
@@ -105,4 +104,29 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
 
         return listaPesoHistorico;
     }
+
+    public Peso ultimoPeso() {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Peso peso = null;
+        Cursor cursorPeso = null;
+
+        cursorPeso = db.rawQuery("SELECT peso, diferenciaPeso FROM " +
+                TABLE_WEIGHT + " ORDER BY fechaPeso DESC LIMIT 1", null);
+
+        if(cursorPeso.moveToFirst()){
+            do{
+                peso = new Peso(cursorPeso.getDouble(0), cursorPeso.getFloat(1));
+
+            }while(cursorPeso.moveToNext());
+        }
+
+        cursorPeso.close();
+        return peso;
+
+    }
+
+
 }

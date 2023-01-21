@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.joseantonio.personalproject.proyectovighealth.db.DbHelper;
 import com.joseantonio.personalproject.proyectovighealth.interfaces.ConsultasTension;
+import com.joseantonio.personalproject.proyectovighealth.objetos.Peso;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
     }
 
     @Override
-    public long nuevoRegistroTension(String fechaTension, double sistolica,
+    public long nuevoRegistroTension(int idUsuario,String fechaTension, double sistolica,
                                      double diastolica, String valoracion){
 
         long id = 0;
@@ -34,6 +35,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();
+            values.put("idUsuario",idUsuario);
             values.put("sistolica", sistolica);
             values.put("diastolica", diastolica);
             values.put("fechaTension", fechaTension);
@@ -104,5 +106,29 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
 
         return listaRegistrosHist;
+    }
+
+    public Tension ultimaTension() {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Tension tension = null;
+        Cursor cursorTension = null;
+
+        cursorTension = db.rawQuery("SELECT sistolica, diastolica, valoracion FROM " +
+                TABLE_TENSION + " ORDER BY fechaTension DESC LIMIT 1", null);
+
+        if(cursorTension.moveToFirst()){
+            do{
+                tension = new Tension(cursorTension.getDouble(0), cursorTension.getDouble(1),cursorTension.getString(2));
+
+            }while(cursorTension.moveToNext());
+        }
+
+        cursorTension.close();
+
+        return tension;
+
     }
 }
