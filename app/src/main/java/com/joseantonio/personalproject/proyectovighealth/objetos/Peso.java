@@ -19,7 +19,11 @@ public class Peso {
         this.imc = imc;
         this.diferenciaPeso = diferenciaPeso;
     }
-    
+
+    public Peso (double peso, double diferenciaPeso){
+        this.peso = peso;
+        this.diferenciaPeso = diferenciaPeso;
+    }
 
     public int getIdPeso() {
         return idPeso;
