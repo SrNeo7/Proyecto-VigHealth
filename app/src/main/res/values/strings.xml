@@ -29,8 +29,8 @@
     <string name="et_comentarios">Comentarios…</string>
     <string name="btn_med_aceptar">Aceptar</string>
     <string name="btn_med_cancelar">Cancelar</string>
-    <string name="tv_lista_medicamentos">Mis Medicamentos</string>
-    <string name="tv_mod_medicamento">Modificar Medicamento</string>
+    <string name="at_lista_medicamentos">Mis Medicamentos</string>
+    <string name="at_mod_medicamento">Modificar Medicamento</string>
     <string name="btn_ed_modificar">Modificar</string>
     <string name="at_peso_seguimiento">Nuevo registro de peso</string>
     <string name="at_peso_historial">Historial de peso</string>

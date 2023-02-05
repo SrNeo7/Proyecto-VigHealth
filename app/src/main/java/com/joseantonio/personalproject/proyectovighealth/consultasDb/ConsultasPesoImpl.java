@@ -118,7 +118,7 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
 
         if(cursorPeso.moveToFirst()){
             do{
-                peso = new Peso(cursorPeso.getDouble(0), cursorPeso.getFloat(1));
+                peso = new Peso(cursorPeso.getDouble(0), cursorPeso.getDouble(1));
 
             }while(cursorPeso.moveToNext());
         }

@@ -42,6 +42,7 @@ public class HistoricoPesoActivity extends DrawerBaseActivity {
         historicoPesoBinding = ActivityHistoricoPesoBinding.inflate(getLayoutInflater());
         setContentView(historicoPesoBinding.getRoot());
         activityTitle = getString(R.string.at_peso_historial);
+        allocateActivityTitle(activityTitle);
 
         fechaInicial = findViewById(R.id.et_fechaPesoDesde);
         fechaFinal = findViewById(R.id.et_fechaPesoHasta);

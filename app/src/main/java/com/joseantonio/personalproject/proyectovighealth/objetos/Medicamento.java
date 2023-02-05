@@ -12,6 +12,12 @@ public class Medicamento {
 
     public Medicamento(){}
 
+    public Medicamento(String nombreMedicamento, int periodicidad){
+        this.nombreMedicamento = nombreMedicamento;
+        this.periodicidad = periodicidad;
+
+    }
+
     public Medicamento(int idMedicamento, int idUsuario, String nombreMedicamento, int dosis, String medidaDosis, int periodicidad, String comentarios) {
         this.idMedicamento = idMedicamento;
         this.idUsuario = idUsuario;

@@ -6,9 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasMedicamentoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasPesoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTensionImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityPrincipalBinding;
+import com.joseantonio.personalproject.proyectovighealth.objetos.Medicamento;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Peso;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
 
@@ -16,12 +18,14 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
     ActivityPrincipalBinding activityPrincipalBinding;
 
-    MaterialCardView tension, peso;
+    MaterialCardView tension, peso, medicamento;
 
     Peso statusPeso = null;
     Tension statusTension = null;
 
-    TextView pesoTv, difPesoTv,tensionTv,valTenTv;
+    Medicamento statusMedicamento = null;
+
+    TextView pesoTv, difPesoTv,tensionTv,valTenTv,nombreMedTv,periodicidadMedTv;
 
 
     @Override
@@ -33,10 +37,13 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
         tension = findViewById(R.id.cvTension);
         peso = findViewById(R.id.cvPeso);
+        medicamento = findViewById(R.id.cvMedicamento);
         pesoTv=findViewById(R.id.tvPplPeso);
         difPesoTv = findViewById(R.id.tvPplPesoDif);
         tensionTv = findViewById(R.id.tvPplTension);
         valTenTv = findViewById(R.id.tvPplTenVal);
+        nombreMedTv = findViewById(R.id.tvPplMedNombre);
+        periodicidadMedTv = findViewById(R.id.tvPplMedPeriodo);
 
        /* ConsultasPesoImpl consultasPeso = new ConsultasPesoImpl(PrincipalActivity.this);
         ultimoPeso = new Peso();
@@ -47,6 +54,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
         datosPanelTension();
         datosPanelPeso();
+        datosPanelMedicamento();
 
 
 
@@ -67,6 +75,17 @@ public class PrincipalActivity extends DrawerBaseActivity {
                 overridePendingTransition(0,0);
             }
         });
+
+        medicamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this,ListaMedicamentosActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+            }
+        });
+
+
 
     }
 
@@ -92,5 +111,20 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
         tensionTv.setText(ultimaMedicion);
         valTenTv.setText(statusTension.getValoracion());
+    }
+
+    private void datosPanelMedicamento(){
+        ConsultasMedicamentoImpl consultasMedicamento=new ConsultasMedicamentoImpl(PrincipalActivity.this);
+        statusMedicamento = new Medicamento();
+        statusMedicamento = consultasMedicamento.ultimoMedicamento();
+
+        int horas = statusMedicamento.getPeriodicidad();
+        String periodicidad = String.valueOf(horas + " horas");
+        
+        nombreMedTv.setText(statusMedicamento.getNombreMedicamento());
+        periodicidadMedTv.setText(periodicidad);
+
+
+
     }
 }
