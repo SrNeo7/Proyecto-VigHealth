@@ -37,6 +37,7 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
             values.put("nombreAlergia",nombreAlergia );
 
             id = db.insert(TABLE_ALERGY, null, values);
+            db.close();
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -61,6 +62,7 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
             values.put("valoracion", valoracion);
 
             id = db.insert(TABLE_ALERGY, null, values);
+            db.close();
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -94,6 +96,7 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
         }
 
         cursorRegistrosAlergia.close();
+        db.close();
 
         return listaRegistrosAlergia;
     }

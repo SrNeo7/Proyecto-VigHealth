@@ -35,6 +35,7 @@
     <string name="at_peso_seguimiento">Nuevo registro de peso</string>
     <string name="at_peso_historial">Historial de peso</string>
     <string name="at_peso_grafico">Gráfico de evolución del peso</string>
+    <string name="at_hidratacion">Hidratación </string>
     <string name="et_peso">Peso(kg)</string>
     <string name="btn_nuevo_peso">Guardar nuevo registro</string>
     <string name="tv_registros_peso">Últimos registros</string>
@@ -62,9 +63,9 @@
     </string-array>
     <string-array name="frecuencia">
         <item>1 hora</item>
-        <item>2 hora</item>
-        <item>3 hora</item>
-        <item>4 hora</item>
+        <item>2 horas</item>
+        <item>3 horas</item>
+        <item>4 horas</item>
     </string-array>
     <string-array name="alergenos">
         <item>Aliso</item>
@@ -92,4 +93,9 @@
     <string name="btn_nueva_tension">Guardar nuevo registro</string>
     <string name="tv_IMC_indicador">IMC:</string>
     <string name="btn_generar_G_Peso">Generar gráfico</string>
+    <string name="swtEstadoHid">Activar recordatorio</string>
+    <string name="tv_frecuencia_hid">Frecuencia</string>
+    <string name="btn_guardar_record_hid">Guardar recordatorio</string>
+    <string name="btn_modificar_record_hid">Modificar recordatorio</string>
+    <string name="btn_eliminar_record_hid">Eliminar recordatorio</string>
 </resources>

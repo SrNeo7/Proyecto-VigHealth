@@ -42,9 +42,11 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
             values.put("comentario", comentario);
 
             id = db.insert(TABLE_MEDICINE, null, values);
+            db.close();
         }catch (Exception ex){
             ex.printStackTrace();
         }
+
         return id;
     }
 
@@ -76,6 +78,7 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         }
 
         cursorMedicamentos.close();
+        db.close();
         return listaMedicamentos;
     }
 
@@ -148,6 +151,7 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         }
 
         cursorMedicamentos.close();
+        db.close();
 
         return medicamento;
     }
@@ -171,6 +175,7 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         }
 
         cursorMedicamento.close();
+        db.close();
         return medicamento;
 
     }

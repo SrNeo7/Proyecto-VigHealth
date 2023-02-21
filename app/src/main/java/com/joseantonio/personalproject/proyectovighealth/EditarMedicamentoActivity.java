@@ -2,6 +2,9 @@ package com.joseantonio.personalproject.proyectovighealth;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Data;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +18,9 @@ import android.widget.Toast;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasMedicamentoImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityEditarMedicamentoBinding;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Medicamento;
+import com.joseantonio.personalproject.proyectovighealth.workers.NotificacionesMedWorker;
+
+import java.util.concurrent.TimeUnit;
 
 public class EditarMedicamentoActivity extends DrawerBaseActivity {
 
@@ -34,6 +40,7 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
         setContentView(editarMedicamentoBinding.getRoot());
         activityTitle = getString(R.string.at_mod_medicamento);
         allocateActivityTitle(activityTitle);
+        ListaMedicamentosActivity.listaMed.finish();
 
         etNombreMed = findViewById(R.id.etEdNombreMedicamento);
         etDosisMed = findViewById(R.id.etEdDosis);
@@ -124,6 +131,8 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
         int dosisMedEdit = Integer.parseInt(etDosisMed.getText().toString());
         int periodicidadMedEdit = Integer.parseInt(etPeriodicidadMed.getText().toString());
 
+        String idTag = id + "med";
+
         ConsultasMedicamentoImpl consultasMedicamento = new ConsultasMedicamentoImpl(EditarMedicamentoActivity.this);
         boolean verificacionEdit = consultasMedicamento
                 .editarMedicamento(id,nombreMedEdit,dosisMedEdit,medidaDosisEdit,
@@ -132,6 +141,9 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
         if (verificacionEdit){
             Toast.makeText(EditarMedicamentoActivity.this,
                     "Medicamento actualizado correctamente",Toast.LENGTH_LONG).show();
+            eliminarRecordatorio(idTag);
+            Data data = notificacionDatos(nombreMedEdit,"Es hora de tomar tu medicación",(int)id);
+            guardarRecordatorio(periodicidadMedEdit,data,idTag);
             Intent intent = new Intent(EditarMedicamentoActivity.this,ListaMedicamentosActivity.class);
             startActivity(intent);
             finish();
@@ -145,10 +157,12 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
 
         ConsultasMedicamentoImpl consultasMedicamento = new ConsultasMedicamentoImpl(EditarMedicamentoActivity.this);
         boolean eliminado = consultasMedicamento.eliminarMedicamento(id);
+        String idTag = id + "med";
 
         if(eliminado){
             Toast.makeText(EditarMedicamentoActivity.this,
                     "Medicamento eliminado",Toast.LENGTH_LONG).show();
+            eliminarRecordatorio(idTag);
             Intent intent = new Intent(EditarMedicamentoActivity.this,ListaMedicamentosActivity.class);
             startActivity(intent);
             finish();
@@ -157,4 +171,29 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
                     "ERROR.No se ha podido eliminar el medicamento.",Toast.LENGTH_LONG).show();
         }
     }
+
+    void eliminarRecordatorio(String tag){
+        WorkManager.getInstance(this).cancelAllWorkByTag(tag);
+    }
+
+    private Data notificacionDatos(String titulo, String descripcion, int idRecordatorio){
+
+        return new Data.Builder()
+                .putString("titulo",titulo)
+                .putString("descripcion",descripcion)
+                .putInt("idRecordatorio",idRecordatorio).build();
+
+    }
+
+    public void guardarRecordatorio(int duracion, Data data, String tag){
+        PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
+                (NotificacionesMedWorker.class,duracion, TimeUnit.HOURS)
+                //.setInitialDelay(duracion,TimeUnit.HOURS)
+                .addTag(tag)
+                .setInputData(data)
+                .build();
+
+        WorkManager.getInstance(getApplicationContext()).enqueue(recordatorio);
+    }
+
 }
