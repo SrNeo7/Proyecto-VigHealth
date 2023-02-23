@@ -1,6 +1,10 @@
 package com.joseantonio.personalproject.proyectovighealth;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.BackoffPolicy;
+import androidx.work.Data;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +15,9 @@ import android.widget.Toast;
 
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasMedicamentoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
+import com.joseantonio.personalproject.proyectovighealth.workers.NotificacionesMedWorker;
+
+import java.util.concurrent.TimeUnit;
 
 public class NuevoMedicamentoActivity extends AppCompatActivity {
 
@@ -60,9 +67,13 @@ public class NuevoMedicamentoActivity extends AppCompatActivity {
                                 .nuevoMedicamento(idUsuario,nombreCad,dosisMedNum,
                                         medidaDosisCad,periodicNum,comentCad);
 
+
                 if(id>0){
                     Toast.makeText(NuevoMedicamentoActivity.this,
                             "Medicamento guardado correctamente",Toast.LENGTH_LONG).show();
+                    String idTag = id + "med";
+                    Data data = notificacionDatos(nombreCad,"Es hora de tomar tu medicación",(int)id);
+                    guardarRecordatorio(periodicNum,data,idTag);
                     limpiarcampos();
                 }else{
                     Toast.makeText(NuevoMedicamentoActivity.this,
@@ -89,4 +100,27 @@ public class NuevoMedicamentoActivity extends AppCompatActivity {
         comentMed.setText("");
 
     }
+
+    private Data notificacionDatos(String titulo, String descripcion, int idRecordatorio){
+
+        return new Data.Builder()
+                .putString("titulo",titulo)
+                .putString("descripcion",descripcion)
+                .putInt("idRecordatorio",idRecordatorio).build();
+
+    }
+
+    public void guardarRecordatorio(int duracion, Data data, String tag){
+        PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
+                (NotificacionesMedWorker.class,duracion,TimeUnit.HOURS)
+                //.setInitialDelay(duracion,TimeUnit.HOURS)
+                .addTag(tag)
+                .setInputData(data)
+                .build();
+
+        WorkManager.getInstance(getApplicationContext()).enqueue(recordatorio);
+    }
+
+
+
 }

@@ -42,6 +42,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
             values.put("valoracion", valoracion);
 
             id = db.insert(TABLE_TENSION, null, values);
+            db.close();
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -73,6 +74,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
             }while (cursorRegistrosTension.moveToNext());
         }
         cursorRegistrosTension.close();
+        db.close();
 
         return listaRegistrosTension;
     }
@@ -103,6 +105,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         }
 
         cursorHistorico.close();
+        db.close();
 
 
         return listaRegistrosHist;
@@ -127,6 +130,7 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         }
 
         cursorTension.close();
+        db.close();
 
         return tension;
 

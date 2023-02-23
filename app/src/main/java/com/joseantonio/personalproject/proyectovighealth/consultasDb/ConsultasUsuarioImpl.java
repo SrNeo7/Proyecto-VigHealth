@@ -41,6 +41,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
             values.put("altura", altura);
 
             id = db.insert(TABLE_USER, null, values);
+            db.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -72,6 +73,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         }
 
         cursorUsuario.close();
+        db.close();
 
         return usuario;
 
@@ -139,6 +141,8 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         if (id != 0) {
             usuario = true;
         }
+        cursorUsuario.close();
+        db.close();
 
         return usuario;
     }
@@ -158,7 +162,8 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
                 pesoUsuario = cursorUsuario.getFloat(0);
             } while (cursorUsuario.moveToNext());
         }
-
+        cursorUsuario.close();
+        db.close();
         return pesoUsuario;
 
     }
@@ -178,7 +183,8 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
                 alturaUsuario = cursorUsuario.getFloat(0);
             } while (cursorUsuario.moveToNext());
         }
-
+        cursorUsuario.close();
+        db.close();
         return alturaUsuario;
     }
 
@@ -196,6 +202,8 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
             idUsuario = cursorUsuario.getInt(0);
             }while (cursorUsuario.moveToNext());
         }
+        cursorUsuario.close();
+        db.close();
         return idUsuario;
     }
 }

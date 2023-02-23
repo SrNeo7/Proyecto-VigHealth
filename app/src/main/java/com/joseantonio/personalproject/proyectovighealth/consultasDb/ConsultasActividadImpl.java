@@ -41,6 +41,7 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
             values.put("fechaActividad",fechaActividad);
 
             id = db.insert(TABLE_ACTIVITY, null, values);
+            db.close();
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -73,6 +74,7 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         }
 
         cursorActividad.close();
+        db.close();
 
         return listaActividad;
     }
@@ -103,6 +105,7 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         }
 
         cursorActividadPasiva.close();
+        db.close();
 
         return listaActividadPasiva;
     }

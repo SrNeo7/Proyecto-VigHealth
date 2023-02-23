@@ -38,6 +38,7 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
             values.put("diferenciaPeso", diferenciaPeso);
 
             id = db.insert(TABLE_WEIGHT, null, values);
+            db.close();
         }catch (Exception ex){
             ex.printStackTrace();
         }
@@ -69,6 +70,7 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         }
 
         cursorPeso.close();
+        db.close();
         return listaPeso;
 
     }
@@ -101,6 +103,7 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         }
 
         cursorPesoHistorico.close();
+        db.close();
 
         return listaPesoHistorico;
     }
@@ -124,6 +127,7 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         }
 
         cursorPeso.close();
+        db.close();
         return peso;
 
     }

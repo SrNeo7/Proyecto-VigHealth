@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.joseantonio.personalproject.proyectovighealth.EditarMedicamentoActivity;
+import com.joseantonio.personalproject.proyectovighealth.ListaMedicamentosActivity;
 import com.joseantonio.personalproject.proyectovighealth.R;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Medicamento;
 

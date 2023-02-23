@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasHidratacionImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasMedicamentoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasPesoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTensionImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityPrincipalBinding;
+import com.joseantonio.personalproject.proyectovighealth.objetos.Hidratacion;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Medicamento;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Peso;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
@@ -18,14 +20,17 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
     ActivityPrincipalBinding activityPrincipalBinding;
 
-    MaterialCardView tension, peso, medicamento;
+    MaterialCardView tension, peso, medicamento, hidratacion, actividad;
 
     Peso statusPeso = null;
     Tension statusTension = null;
 
     Medicamento statusMedicamento = null;
 
-    TextView pesoTv, difPesoTv,tensionTv,valTenTv,nombreMedTv,periodicidadMedTv;
+    Hidratacion statusHidratacion = null;
+
+    TextView pesoTv, difPesoTv,tensionTv,valTenTv,nombreMedTv,periodicidadMedTv,
+            estadoHidTv,frecuenciaHidTv;
 
 
     @Override
@@ -38,12 +43,16 @@ public class PrincipalActivity extends DrawerBaseActivity {
         tension = findViewById(R.id.cvTension);
         peso = findViewById(R.id.cvPeso);
         medicamento = findViewById(R.id.cvMedicamento);
+        hidratacion = findViewById(R.id.cvHidratacion);
+        actividad = findViewById(R.id.cvActividad);
         pesoTv=findViewById(R.id.tvPplPeso);
         difPesoTv = findViewById(R.id.tvPplPesoDif);
         tensionTv = findViewById(R.id.tvPplTension);
         valTenTv = findViewById(R.id.tvPplTenVal);
         nombreMedTv = findViewById(R.id.tvPplMedNombre);
         periodicidadMedTv = findViewById(R.id.tvPplMedPeriodo);
+        estadoHidTv = findViewById(R.id.tvPplHiEstado);
+        frecuenciaHidTv = findViewById(R.id.tvPplHiFrec);
 
        /* ConsultasPesoImpl consultasPeso = new ConsultasPesoImpl(PrincipalActivity.this);
         ultimoPeso = new Peso();
@@ -55,6 +64,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
         datosPanelTension();
         datosPanelPeso();
         datosPanelMedicamento();
+        datosPanelHidratacion();
 
 
 
@@ -85,6 +95,23 @@ public class PrincipalActivity extends DrawerBaseActivity {
             }
         });
 
+        hidratacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this,HidratacionActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+            }
+        });
+
+        actividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this,NuevaActividadActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+            }
+        });
 
 
     }
@@ -118,13 +145,52 @@ public class PrincipalActivity extends DrawerBaseActivity {
         statusMedicamento = new Medicamento();
         statusMedicamento = consultasMedicamento.ultimoMedicamento();
 
-        int horas = statusMedicamento.getPeriodicidad();
-        String periodicidad = String.valueOf(horas + " horas");
-        
-        nombreMedTv.setText(statusMedicamento.getNombreMedicamento());
-        periodicidadMedTv.setText(periodicidad);
 
+        if ( statusMedicamento != null) {
+            String unidadHoras = pluralSingular(statusMedicamento.getPeriodicidad());
+            int horas = statusMedicamento.getPeriodicidad();
+            String periodicidad = String.valueOf(horas + unidadHoras);
 
+            nombreMedTv.setText(statusMedicamento.getNombreMedicamento());
+            periodicidadMedTv.setText(periodicidad);
+        }
+    }
 
+    private void datosPanelHidratacion(){
+        ConsultasHidratacionImpl consultasHidratacion = new ConsultasHidratacionImpl(PrincipalActivity.this);
+        statusHidratacion = new Hidratacion();
+        statusHidratacion = consultasHidratacion.obtenerRecordatorio();
+        String estadoStr = "Inactivo";
+
+        if(statusHidratacion != null ){
+            String unidadHoras = pluralSingular(statusHidratacion.getFrecuencia());
+            int estado = statusHidratacion.getEstado();
+            int frecuencia = statusHidratacion.getFrecuencia();
+            String frecucuenciaStr = frecuencia + unidadHoras;
+
+            if(estado == 1){
+
+                estadoStr = "Activado";
+            }
+
+            estadoHidTv.setText(estadoStr);
+            frecuenciaHidTv.setText(frecucuenciaStr);
+        }else{
+            estadoHidTv.setText(estadoStr);
+            frecuenciaHidTv.setText("-");
+        }
+
+    }
+
+    private String pluralSingular(int horas){
+        String hora = "";
+
+        if (horas>1){
+            hora = " horas";
+        }else if (horas == 1){
+            hora = " hora";
+        }
+
+        return hora;
     }
 }

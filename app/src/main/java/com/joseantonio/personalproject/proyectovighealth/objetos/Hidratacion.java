@@ -9,6 +9,11 @@ public class Hidratacion {
 
     public Hidratacion(){}
 
+    public Hidratacion(int estado,int frecuencia){
+        this.estado = estado;
+        this.frecuencia = frecuencia;
+    }
+
     public Hidratacion(int idHidratacion, int idUsuario, int estado, int frecuencia) {
         this.idHidratacion = idHidratacion;
         this.idUsuario = idUsuario;

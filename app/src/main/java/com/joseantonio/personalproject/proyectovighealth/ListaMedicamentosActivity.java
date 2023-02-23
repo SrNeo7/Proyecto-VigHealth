@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.joseantonio.personalproject.proyectovighealth.adaptadores.MedicamentoAdapter;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasMedicamentoImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityListaMedicamentosBinding;
@@ -20,6 +23,9 @@ public class ListaMedicamentosActivity extends DrawerBaseActivity {
     ActivityListaMedicamentosBinding listaMedicamentosBinding;
 
     String activityTitle;
+    FloatingActionButton fabNuevoMedicamento;
+
+    public static Activity listaMed;
 
 
     @Override
@@ -29,17 +35,26 @@ public class ListaMedicamentosActivity extends DrawerBaseActivity {
         setContentView(listaMedicamentosBinding.getRoot());
         activityTitle = getString(R.string.at_lista_medicamentos);
         allocateActivityTitle(activityTitle);
+        listaMed = this;
 
 
         listaMedicamentos = findViewById(R.id.rvListaMeds);
+        fabNuevoMedicamento = findViewById(R.id.fabNuevoMedicamento);
 
         ConsultasMedicamentoImpl consultasMedicamento = new ConsultasMedicamentoImpl(ListaMedicamentosActivity.this);
         MedicamentoAdapter adapter = new MedicamentoAdapter(consultasMedicamento.mostrarMedicamentos());
         listaMedicamentos.setAdapter(adapter);
         listaMedicamentos.setLayoutManager(new LinearLayoutManager(this));
+
+        fabNuevoMedicamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nuevoMedicamento();
+            }
+        });
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
+    /*public boolean onCreateOptionsMenu(Menu menu){
 
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_medicamentos, menu);
@@ -55,11 +70,12 @@ public class ListaMedicamentosActivity extends DrawerBaseActivity {
         }
         return super.onOptionsItemSelected(item);
 
-    }
+    }*/
 
     public void nuevoMedicamento(){
         Intent intent = new Intent(ListaMedicamentosActivity.this,NuevoMedicamentoActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
