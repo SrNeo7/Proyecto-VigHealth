@@ -7,26 +7,15 @@
     tools:context=".ListaActividadesActivity">
 
 
-    <TextView
-        android:id="@+id/tvListaActividades"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/tv_lista_actividad"
-        android:textSize="38sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvListaMeds"
+        android:id="@+id/rvListaActividades"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvListaActividades"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabtnNuevaActividad"
@@ -46,6 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24sp"
+        android:enabled="false"
+        android:visibility="gone"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@id/fabtnNuevaActividad"
         app:layout_constraintEnd_toEndOf="@id/fabtnNuevaActividad"
@@ -59,6 +50,7 @@
         android:layout_marginEnd="8sp"
         android:text="Andar"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/fabtnAndar"
         app:layout_constraintEnd_toStartOf="@+id/fabtnAndar"
         app:layout_constraintTop_toTopOf="@id/fabtnAndar"/>
@@ -69,6 +61,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24sp"
         app:fabSize="mini"
+        android:enabled="false"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/fabtnAndar"
         app:layout_constraintEnd_toEndOf="@id/fabtnAndar"
         app:layout_constraintStart_toStartOf="@id/fabtnAndar"
@@ -81,6 +75,7 @@
         android:layout_marginEnd="8sp"
         android:text="Correr"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/fabtnCorrer"
         app:layout_constraintEnd_toStartOf="@+id/fabtnCorrer"
         app:layout_constraintTop_toTopOf="@id/fabtnCorrer"/>
@@ -91,6 +86,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24sp"
         app:fabSize="mini"
+        android:enabled="false"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/fabtnCorrer"
         app:layout_constraintEnd_toEndOf="@id/fabtnCorrer"
         app:layout_constraintStart_toStartOf="@id/fabtnCorrer"
@@ -103,6 +100,7 @@
         android:layout_marginEnd="8sp"
         android:text="Ciclismo"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/fabtnCiclismo"
         app:layout_constraintEnd_toStartOf="@+id/fabtnCiclismo"
         app:layout_constraintTop_toTopOf="@id/fabtnCiclismo"/>

@@ -36,11 +36,12 @@
     <string name="at_peso_historial">Historial de peso</string>
     <string name="at_peso_grafico">Gráfico de evolución del peso</string>
     <string name="at_hidratacion">Hidratación </string>
+    <string name="at_detalle_actividad">Detalle Actividad</string>
     <string name="et_peso">Peso(kg)</string>
     <string name="btn_nuevo_peso">Guardar nuevo registro</string>
     <string name="tv_registros_peso">Últimos registros</string>
     <string name="tv_grafica_peso">Gráfica:Peso</string>
-    <string name="tv_lista_actividad">Actividad</string>
+    <string name="at_lista_actividad">Mis Actividades</string>
     <string-array name="genero">
         <item>Género</item>
         <item>Hombre</item>
@@ -68,23 +69,10 @@
         <item>4 horas</item>
     </string-array>
     <string-array name="alergenos">
-        <item>Aliso</item>
-        <item>Amarantáceas</item>
         <item>Abedul</item>
-        <item>Casuarina</item>
-        <item>Avellano</item>
-        <item>Ciprés</item>
-        <item>Fresno</item>
         <item>Olivo</item>
-        <item>Pino</item>
-        <item>Llantén</item>
-        <item>Plátano de sombra</item>
         <item>Gramíneas</item>
-        <item>Roble</item>
-        <item>Encina</item>
-        <item>Alcornoque</item>
-        <item>Ortiga</item>
-        <item>Parietaria</item>
+        <item>Ambrosía</item>
     </string-array>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="menu_drawer_open">Drawer Open</string>

@@ -11,5 +11,5 @@ public interface ConsultasAlergias {
     public long recogidaDatosAlergia(int idUsuario, String nombreAlergia, String fechaDatos,
                                      String concentracionAtm, String valoracion);
 
-    public ArrayList<Alergia>mostrarRegistrosAlergia();
+    public ArrayList<Alergia>mostrarRegistrosAlergia(String alergeno);
 }

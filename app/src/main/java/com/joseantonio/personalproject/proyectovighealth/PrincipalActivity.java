@@ -20,7 +20,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
     ActivityPrincipalBinding activityPrincipalBinding;
 
-    MaterialCardView tension, peso, medicamento, hidratacion, actividad;
+    MaterialCardView tension, peso, medicamento, hidratacion, actividad, alergia;
 
     Peso statusPeso = null;
     Tension statusTension = null;
@@ -45,6 +45,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
         medicamento = findViewById(R.id.cvMedicamento);
         hidratacion = findViewById(R.id.cvHidratacion);
         actividad = findViewById(R.id.cvActividad);
+        alergia = findViewById(R.id.cvAlergia);
         pesoTv=findViewById(R.id.tvPplPeso);
         difPesoTv = findViewById(R.id.tvPplPesoDif);
         tensionTv = findViewById(R.id.tvPplTension);
@@ -107,7 +108,16 @@ public class PrincipalActivity extends DrawerBaseActivity {
         actividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PrincipalActivity.this,NuevaActividadActivity.class);
+                Intent intent = new Intent(PrincipalActivity.this,ListaActividadesActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+            }
+        });
+
+        alergia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PrincipalActivity.this,AlergiaActivity.class);
                 startActivity(intent);
                 overridePendingTransition(0,0);
             }

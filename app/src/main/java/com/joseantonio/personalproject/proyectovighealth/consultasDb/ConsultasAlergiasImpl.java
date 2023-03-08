@@ -56,7 +56,7 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
 
             ContentValues values = new ContentValues();
             values.put("idUsuario",idUsuario);
-            values.put("nombreAlergia",nombreAlergia );
+            values.put("nombre",nombreAlergia );
             values.put("fechaDatos", fechaDatos);
             values.put("concentracionAtm", concentracionAtm);
             values.put("valoracion", valoracion);
@@ -70,7 +70,7 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
     }
 
     @Override
-    public ArrayList<Alergia> mostrarRegistrosAlergia() {
+    public ArrayList<Alergia> mostrarRegistrosAlergia(String alergeno) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -79,9 +79,10 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
         Alergia registrosAlergia = null;
         Cursor cursorRegistrosAlergia = null;
 
-        cursorRegistrosAlergia = db.rawQuery("SELECT nombreAlergia, fechaDatos, " +
+        cursorRegistrosAlergia = db.rawQuery("SELECT nombre, fechaDatos, " +
                 "concentracionAtm, valoracion FROM " + TABLE_ALERGY +
-                " ORDER BY fehcaDatos DESC",null);
+                " WHERE nombre = '" + alergeno +
+                "' ORDER BY fechaDatos DESC",null);
 
         if(cursorRegistrosAlergia.moveToFirst()){
             do{

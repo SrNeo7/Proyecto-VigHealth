@@ -58,16 +58,18 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         Actividad actividad= null;
         Cursor cursorActividad = null;
 
-        cursorActividad = db.rawQuery("SELECT tipo, duracion, distancia, ritmo, " +
+        cursorActividad = db.rawQuery("SELECT idActividad,tipo, duracion, distancia, ritmo, " +
                 " fechaActividad FROM " + TABLE_ACTIVITY + " ORDER BY fechaActividad DESC", null);
 
         if(cursorActividad.moveToFirst()){
             do{
                 actividad = new Actividad();
-                actividad.setTipo(cursorActividad.getString(0));
-                actividad.setDistancia(cursorActividad.getDouble(1));
-                actividad.setRitmo(cursorActividad.getString(2));
-                actividad.setFechaActividad(cursorActividad.getString(3));
+                actividad.setIdActividad(cursorActividad.getInt(0));
+                actividad.setTipo(cursorActividad.getString(1));
+                actividad.setDuracion(cursorActividad.getString(2));
+                actividad.setDistancia(cursorActividad.getDouble(3));
+                actividad.setRitmo(cursorActividad.getString(4));
+                actividad.setFechaActividad(cursorActividad.getString(5));
                 listaActividad.add(actividad);
 
             }while(cursorActividad.moveToNext());
@@ -108,5 +110,31 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         db.close();
 
         return listaActividadPasiva;
+    }
+
+    public Actividad mostrarActividadPorId(int id){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Actividad actividad = null;
+        Cursor cursorActividad = null;
+
+        cursorActividad = db.rawQuery("SELECT idActividad,tipo, duracion, distancia, ritmo, " +
+                " fechaActividad FROM " + TABLE_ACTIVITY + " WHERE idActividad = " + id + " LIMIT 1", null);
+
+        if(cursorActividad.moveToFirst()){
+            actividad = new Actividad();
+            actividad.setIdActividad(cursorActividad.getInt(0));
+            actividad.setTipo(cursorActividad.getString(1));
+            actividad.setDuracion(cursorActividad.getString(2));
+            actividad.setDistancia(cursorActividad.getDouble(3));
+            actividad.setRitmo(cursorActividad.getString(4));
+            actividad.setFechaActividad(cursorActividad.getString(5));
+        }
+        cursorActividad.close();
+        db.close();
+
+        return actividad;
     }
 }

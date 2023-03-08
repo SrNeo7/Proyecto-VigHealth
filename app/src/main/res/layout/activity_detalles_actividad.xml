@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetallesActividadActivity">
+
+    <ImageView
+        android:id="@+id/ivCapturaMapa"
+        android:layout_width="match_parent"
+        android:layout_height="400sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTipoFechaActividad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20sp"
+        android:minLines="2"
+        app:layout_constraintTop_toBottomOf="@+id/ivCapturaMapa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        tools:text="Paseo del 28/02/2023 18:33"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTipoFechaActividad">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_marginStart="30sp"
+                android:src="@drawable/map_marker_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:text="Distancia"
+                android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/tvDetalleDistancia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="5km"
+                android:layout_weight="0.5"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="40sp"
+                android:textSize="25sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20sp">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_marginStart="30sp"
+                android:src="@drawable/timer_outline"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:text="Duración"
+                android:textSize="25sp"/>
+            <TextView
+                android:id="@+id/tvDetalleDuracion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="0:40:57"
+                android:layout_weight="0.5"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="40sp"
+                android:textSize="25sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20sp">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_marginStart="30sp"
+                android:src="@drawable/speedometer"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:text="Ritmo(Km/min)"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/tvDetalleRitmo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="5'45"
+                android:layout_weight="0.5"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="40sp"
+                android:textSize="25sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
