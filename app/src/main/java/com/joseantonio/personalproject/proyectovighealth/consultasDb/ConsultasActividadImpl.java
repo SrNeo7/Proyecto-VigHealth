@@ -137,4 +137,27 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
 
         return actividad;
     }
+
+    public Actividad ultimaActividad(){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Actividad actividad = null;
+        Cursor cursorActividad = null;
+
+        cursorActividad = db.rawQuery("SELECT tipo, distancia FROM " +
+                TABLE_ACTIVITY + " ORDER BY idActividad DESC LIMIT 1", null);
+
+        if(cursorActividad.moveToFirst()){
+            do{
+                actividad = new Actividad(cursorActividad.getString(0),cursorActividad.getDouble(1));
+            }while(cursorActividad.moveToNext());
+        }
+
+        cursorActividad.close();
+        db.close();
+
+        return actividad;
+    }
 }

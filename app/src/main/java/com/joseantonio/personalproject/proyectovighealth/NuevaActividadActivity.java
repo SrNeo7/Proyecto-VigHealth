@@ -238,7 +238,7 @@ implements OnMapReadyCallback {
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbicacion));
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(miUbicacion)
-                        .zoom(18)
+                        .zoom(13)
                         .bearing(90)
                         .tilt(0)
                         .build();

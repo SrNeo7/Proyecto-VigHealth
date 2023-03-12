@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.ProyectoVigHealth" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/bluePrime</item>
+        <item name="colorPrimaryVariant">@color/blueGT</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/almostRed</item>
+        <item name="colorSecondaryVariant">@color/redGW</item>
+        <item name="colorOnSecondary">@color/grey</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/bluePrime</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

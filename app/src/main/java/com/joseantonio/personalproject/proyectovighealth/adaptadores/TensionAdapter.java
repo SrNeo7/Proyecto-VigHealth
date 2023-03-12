@@ -1,5 +1,7 @@
 package com.joseantonio.personalproject.proyectovighealth.adaptadores;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.joseantonio.personalproject.proyectovighealth.EditarTensionActivity;
 import com.joseantonio.personalproject.proyectovighealth.R;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
 
@@ -63,6 +66,16 @@ public class TensionAdapter extends RecyclerView.Adapter<TensionAdapter.TensionV
             viewFecha = itemView.findViewById(R.id.tv_fechaTension);
             viewValoracion = itemView.findViewById(R.id.tv_valoracionTension);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, EditarTensionActivity.class);
+                    intent.putExtra("ID",listaTension.get(getAdapterPosition()).getIdTension());
+                    context.startActivity(intent);
+                }
+            });
+
 
         }
     }
@@ -82,7 +95,6 @@ public class TensionAdapter extends RecyclerView.Adapter<TensionAdapter.TensionV
         mes = fecha.substring(5,7);
         dia = fecha.substring(8,10);
         hora= fecha.substring(11,16);
-
         fechaFormateada = dia + "/" + mes + "/" + anno + " " + hora;
 
         return fechaFormateada;

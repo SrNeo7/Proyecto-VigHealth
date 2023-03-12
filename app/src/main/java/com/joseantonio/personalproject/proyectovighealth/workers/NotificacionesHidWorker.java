@@ -50,6 +50,7 @@ public class NotificacionesHidWorker extends Worker {
             notificationChannel.setDescription("Recordatorio Hidratación");
             notificationChannel.setShowBadge(true);
             notificationChannel.enableVibration(true);
+            notificationChannel.enableLights(true);
             notificationChannel.setVibrationPattern(new long[]{1000,1000,1000,1000,1000});
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel);
@@ -69,7 +70,7 @@ public class NotificacionesHidWorker extends Worker {
                 .setSmallIcon(R.drawable.cup_water)
                 .setContentText(descripcion)
                 .setContentInfo("nuevo")
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setDefaults(Notification.DEFAULT_SOUND)
                 .setVibrate(new long[]{1000,1000,1000,1000,1000});
 
 

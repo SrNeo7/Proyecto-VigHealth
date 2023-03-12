@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,8 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
 
     RecyclerView historialTension;
 
+    public static Activity historicoTension;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
         setContentView(historicoTensionBinding.getRoot());
         activityTitle = getString(R.string.at_historial_tension);
         allocateActivityTitle(activityTitle);
+        historicoTension = this;
 
 
         fechaInicial = findViewById(R.id.et_fechaTensionDesde);

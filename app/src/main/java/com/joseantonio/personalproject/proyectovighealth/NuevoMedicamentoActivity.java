@@ -113,7 +113,8 @@ public class NuevoMedicamentoActivity extends AppCompatActivity {
     public void guardarRecordatorio(int duracion, Data data, String tag){
         PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
                 (NotificacionesMedWorker.class,duracion,TimeUnit.HOURS)
-                //.setInitialDelay(duracion,TimeUnit.HOURS)
+                .setInitialDelay(15,TimeUnit.MINUTES)
+                .setBackoffCriteria(BackoffPolicy.LINEAR,15,TimeUnit.MINUTES)
                 .addTag(tag)
                 .setInputData(data)
                 .build();

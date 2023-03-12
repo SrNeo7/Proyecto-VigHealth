@@ -22,6 +22,11 @@ public class Actividad {
         this.fechaActividad = fechaActividad;
     }
 
+    public Actividad(String tipo, double distancia) {
+        this.tipo = tipo;
+        this.distancia = distancia;
+    }
+
     public int getIdActividad() {
         return idActividad;
     }

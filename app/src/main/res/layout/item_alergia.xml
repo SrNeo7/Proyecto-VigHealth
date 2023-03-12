@@ -73,7 +73,7 @@
                     android:layout_marginStart="10sp"
                     android:layout_weight="0"
                     android:textSize="15sp"
-                    android:text="granos/m3"
+                    android:text="@string/tv_granos_m3"
                     android:textStyle="bold" />
 
                 <TextView
@@ -82,7 +82,7 @@
                     android:textAlignment="viewEnd"
                     android:layout_marginStart="10sp"
                     android:layout_marginEnd="10sp"
-                    android:text="Nivel:"
+                    android:text="@string/tv_nivel_concentracion"
                     android:layout_weight="1"
                     android:textSize="20sp" />
 

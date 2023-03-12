@@ -2,6 +2,7 @@ package com.joseantonio.personalproject.proyectovighealth;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.BackoffPolicy;
 import androidx.work.Data;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
@@ -99,7 +100,7 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
                     break;
                 case R.id.btmenu_delete:
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(EditarMedicamentoActivity.this);
-                    builder2.setMessage("¿Desea eliminar el  medicamento?");
+                    builder2.setMessage("¿Desea eliminar el medicamento?");
                     builder2.setTitle("Eliminar medicamento");
                     builder2.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                         @Override
@@ -188,7 +189,8 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
     public void guardarRecordatorio(int duracion, Data data, String tag){
         PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
                 (NotificacionesMedWorker.class,duracion, TimeUnit.HOURS)
-                //.setInitialDelay(duracion,TimeUnit.HOURS)
+                .setInitialDelay(15,TimeUnit.MINUTES)
+                .setBackoffCriteria(BackoffPolicy.LINEAR,15,TimeUnit.MINUTES)
                 .addTag(tag)
                 .setInputData(data)
                 .build();

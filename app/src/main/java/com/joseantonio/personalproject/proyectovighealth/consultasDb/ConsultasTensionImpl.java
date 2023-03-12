@@ -60,16 +60,17 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         Tension registroTension = null;
         Cursor cursorRegistrosTension = null;
 
-        cursorRegistrosTension = db.rawQuery("SELECT sistolica, diastolica, fechaTension, valoracion FROM " +
+        cursorRegistrosTension = db.rawQuery("SELECT idTension, sistolica, diastolica, fechaTension, valoracion FROM " +
                 TABLE_TENSION + " ORDER BY fechaTension DESC", null);
 
         if(cursorRegistrosTension.moveToFirst()){
             do{
                 registroTension = new Tension();
-                registroTension.setSistolica(cursorRegistrosTension.getDouble(0));
-                registroTension.setDiastolica(cursorRegistrosTension.getDouble(1));
-                registroTension.setFechaTension(cursorRegistrosTension.getString(2));
-                registroTension.setValoracion(cursorRegistrosTension.getString(3));
+                registroTension.setIdTension(cursorRegistrosTension.getInt(0));
+                registroTension.setSistolica(cursorRegistrosTension.getDouble(1));
+                registroTension.setDiastolica(cursorRegistrosTension.getDouble(2));
+                registroTension.setFechaTension(cursorRegistrosTension.getString(3));
+                registroTension.setValoracion(cursorRegistrosTension.getString(4));
                 listaRegistrosTension.add(registroTension);
             }while (cursorRegistrosTension.moveToNext());
         }
@@ -89,17 +90,18 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         Tension registro = null;
         Cursor cursorHistorico = null;
 
-        cursorHistorico = db.rawQuery("SELECT sistolica, diastolica, fechaTension, valoracion FROM " +
+        cursorHistorico = db.rawQuery("SELECT idTension, sistolica, diastolica, fechaTension, valoracion FROM " +
                         TABLE_TENSION + " WHERE fechaTension BETWEEN '" + fechaInicialTension + "' AND '" + fechaFinalTension +"'",
                 null);
 
         if (cursorHistorico.moveToFirst()){
             do{
                 registro = new Tension();
-                registro.setSistolica(cursorHistorico.getDouble(0));
-                registro.setDiastolica(cursorHistorico.getDouble(1));
-                registro.setFechaTension(cursorHistorico.getString(2));
-                registro.setValoracion(cursorHistorico.getString(3));
+                registro.setIdTension(cursorHistorico.getInt(0));
+                registro.setSistolica(cursorHistorico.getDouble(1));
+                registro.setDiastolica(cursorHistorico.getDouble(2));
+                registro.setFechaTension(cursorHistorico.getString(3));
+                registro.setValoracion(cursorHistorico.getString(4));
                 listaRegistrosHist.add(registro);
             }while (cursorHistorico.moveToNext());
         }
@@ -109,6 +111,43 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
 
         return listaRegistrosHist;
+    }
+    @Override
+    public boolean editarTension(int idTension, double sistolica, double diastolica,String valoracion) {
+
+        boolean correcto = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+
+        try (SQLiteDatabase db = dbHelper.getWritableDatabase()) {
+            db.execSQL("UPDATE " + TABLE_TENSION + " SET sistolica = " + sistolica + "," +
+                    "diastolica = " + diastolica + "," + "valoracion = '" + valoracion + "'" +
+                    "WHERE idTension = '" + idTension + "' ");
+            correcto = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            correcto = false;
+        }
+
+
+        return correcto;
+    }
+    @Override
+    public boolean eliminarTension(int idTension) {
+
+        boolean correcto = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+
+        try (SQLiteDatabase db = dbHelper.getWritableDatabase()) {
+            db.execSQL("DELETE FROM " + TABLE_TENSION + " WHERE idTension = " + idTension);
+            correcto = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            correcto = false;
+        }
+
+        return correcto;
     }
 
     public Tension ultimaTension() {
@@ -135,4 +174,31 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         return tension;
 
     }
+
+    public Tension verTension(int id){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Tension tension = null;
+        Cursor cursorTension = null;
+
+        cursorTension = db.rawQuery("SELECT idTension, sistolica, diastolica, fechaTension, " +
+                "valoracion FROM " +
+                TABLE_TENSION + " WHERE idTension = " + id + " LIMIT 1",null);
+
+        if(cursorTension.moveToFirst()){
+            tension = new Tension();
+            tension.setIdTension(cursorTension.getInt(0));
+            tension.setSistolica(cursorTension.getDouble(1));
+            tension.setDiastolica(cursorTension.getDouble(2));
+            tension.setFechaTension(cursorTension.getString(3));
+            tension.setValoracion(cursorTension.getString(4));
+        }
+        cursorTension.close();
+        db.close();
+
+        return tension;
+    }
+
 }

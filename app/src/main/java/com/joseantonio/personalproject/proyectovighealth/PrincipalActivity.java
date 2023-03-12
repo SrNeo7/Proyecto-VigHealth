@@ -6,11 +6,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasActividadImpl;
+import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasAlergiasImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasHidratacionImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasMedicamentoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasPesoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTensionImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityPrincipalBinding;
+import com.joseantonio.personalproject.proyectovighealth.objetos.Actividad;
+import com.joseantonio.personalproject.proyectovighealth.objetos.Alergia;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Hidratacion;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Medicamento;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Peso;
@@ -29,8 +33,12 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
     Hidratacion statusHidratacion = null;
 
+    Actividad statusActividad = null;
+
+    Alergia statusAlergia = null;
+
     TextView pesoTv, difPesoTv,tensionTv,valTenTv,nombreMedTv,periodicidadMedTv,
-            estadoHidTv,frecuenciaHidTv;
+            estadoHidTv,frecuenciaHidTv,tipoActividadTv,distanciaTv,nombreAlergiaTv,valAlergiaTv;
 
 
     @Override
@@ -54,6 +62,10 @@ public class PrincipalActivity extends DrawerBaseActivity {
         periodicidadMedTv = findViewById(R.id.tvPplMedPeriodo);
         estadoHidTv = findViewById(R.id.tvPplHiEstado);
         frecuenciaHidTv = findViewById(R.id.tvPplHiFrec);
+        tipoActividadTv = findViewById(R.id.tvPplActividadTipo);
+        distanciaTv = findViewById(R.id.tvPplActividadDistancia);
+        nombreAlergiaTv = findViewById(R.id.tvPplAlergeno);
+        valAlergiaTv = findViewById(R.id.tvPplConVal);
 
        /* ConsultasPesoImpl consultasPeso = new ConsultasPesoImpl(PrincipalActivity.this);
         ultimoPeso = new Peso();
@@ -66,6 +78,8 @@ public class PrincipalActivity extends DrawerBaseActivity {
         datosPanelPeso();
         datosPanelMedicamento();
         datosPanelHidratacion();
+        datosPanelActividad();
+        datosPanelAlergia();
 
 
 
@@ -132,8 +146,11 @@ public class PrincipalActivity extends DrawerBaseActivity {
         statusPeso = new Peso();
         statusPeso = consultasPeso.ultimoPeso();
 
+        if(statusPeso!=null){
+
         pesoTv.setText(String.valueOf(statusPeso.getPeso()) + " Kg.");
         difPesoTv.setText(String.valueOf(statusPeso.getDiferenciaPeso()) + " Kg.");
+        }
 
     }
 
@@ -142,12 +159,14 @@ public class PrincipalActivity extends DrawerBaseActivity {
         statusTension = new Tension();
         statusTension = consultasTension.ultimaTension();
 
+        if(statusTension!=null){
         double sistolicaTemp = statusTension.getSistolica();
         double diastolicaTemp = statusTension.getDiastolica();
         String ultimaMedicion = String.valueOf(sistolicaTemp+"/"+diastolicaTemp);
 
         tensionTv.setText(ultimaMedicion);
         valTenTv.setText(statusTension.getValoracion());
+        }
     }
 
     private void datosPanelMedicamento(){
@@ -190,6 +209,33 @@ public class PrincipalActivity extends DrawerBaseActivity {
             frecuenciaHidTv.setText("-");
         }
 
+    }
+
+    private void datosPanelActividad(){
+        ConsultasActividadImpl consultasActividad = new ConsultasActividadImpl(PrincipalActivity.this);
+        statusActividad = new Actividad();
+        statusActividad = consultasActividad.ultimaActividad();
+
+        if (statusActividad!= null){
+            String tipoActividad = statusActividad.getTipo();
+            double distancia = statusActividad.getDistancia();
+
+            String distanciaStr = distancia + " KM";
+
+            tipoActividadTv.setText(tipoActividad);
+            distanciaTv.setText(distanciaStr);
+        }
+    }
+
+    private void datosPanelAlergia(){
+        ConsultasAlergiasImpl consultasAlergias = new ConsultasAlergiasImpl(PrincipalActivity.this);
+        statusAlergia = new Alergia();
+        statusAlergia = consultasAlergias.ultimaAlergia();
+
+        if(statusAlergia!= null){
+            nombreAlergiaTv.setText(statusAlergia.getNombreAlergia());
+            valAlergiaTv.setText(statusAlergia.getValoracion());
+        }
     }
 
     private String pluralSingular(int horas){

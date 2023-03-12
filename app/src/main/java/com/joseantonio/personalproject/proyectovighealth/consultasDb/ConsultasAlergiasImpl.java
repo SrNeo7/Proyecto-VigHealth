@@ -101,4 +101,26 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
 
         return listaRegistrosAlergia;
     }
+
+    public Alergia ultimaAlergia(){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Alergia alergia = null;
+        Cursor cursorAlergias = null;
+
+        cursorAlergias = db.rawQuery("SELECT nombre, valoracion FROM " +
+                TABLE_ALERGY + " ORDER BY idAlergia DESC LIMIT 1", null);
+
+        if(cursorAlergias.moveToFirst()){
+            do{
+                alergia = new Alergia(cursorAlergias.getString(0),cursorAlergias.getString(1));
+            }while(cursorAlergias.moveToNext());
+        }
+        cursorAlergias.close();
+        db.close();
+
+        return alergia;
+    }
 }

@@ -13,5 +13,9 @@ public interface ConsultasPeso {
 
     public ArrayList<Peso>mostrarPorFecha(String fechaInicialPeso, String fechaFinalPeso);
 
+    public boolean editarPeso(int idPeso, double peso, double imc, double diferenciaPeso);
+
+    public boolean eliminarPeso(int idPeso);
+
 
 }

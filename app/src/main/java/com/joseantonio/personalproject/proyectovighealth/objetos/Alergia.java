@@ -20,6 +20,11 @@ public class Alergia {
         this.valoracion = valoracion;
     }
 
+    public Alergia(String nombreAlergia, String valoracion) {
+        this.nombreAlergia = nombreAlergia;
+        this.valoracion = valoracion;
+    }
+
     public int getIdAlergia() {
         return idAlergia;
     }

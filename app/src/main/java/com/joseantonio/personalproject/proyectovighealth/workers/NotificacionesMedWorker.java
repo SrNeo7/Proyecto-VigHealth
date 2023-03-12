@@ -56,6 +56,9 @@ public class NotificacionesMedWorker extends Worker {
                     NotificationManager.IMPORTANCE_HIGH);
             notificationChannel.setDescription("Recordatorio Medicamento");
             notificationChannel.setShowBadge(true);
+            notificationChannel.enableVibration(true);
+            notificationChannel.enableLights(true);
+            notificationChannel.setVibrationPattern(new long[]{1000,1000,1000,1000,1000});
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel);
         }
@@ -75,7 +78,7 @@ public class NotificacionesMedWorker extends Worker {
                 .setContentText(descripcion)
                 .setContentInfo("nuevo")
                 .setDefaults(Notification.DEFAULT_SOUND)
-                .setVibrate(new long[]{0,100,200,300});
+                .setVibrate(new long[]{1000,1000,1000,1000,1000});
 
 
         Random random = new Random();

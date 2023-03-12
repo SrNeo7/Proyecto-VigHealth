@@ -3,9 +3,11 @@
 
     <item
         android:id="@+id/mnHistorialPeso"
-        android:title="Ver historial peso" />
+        android:title="Ver historial peso"
+        android:icon="@drawable/historial_icon"/>
     <item
         android:id="@+id/mnGraficaPeso"
-        android:title="Gráfica peso"/>
+        android:title="Gráfica peso"
+        android:icon="@drawable/chart_bell_curve_cumulative"/>
 
 </menu>

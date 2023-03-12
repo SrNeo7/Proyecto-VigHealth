@@ -57,7 +57,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         Cursor cursorUsuario = null;
 
         cursorUsuario = db.rawQuery("SELECT nombre, apellidos, edad, genero, peso, altura FROM " +
-                TABLE_USER + " ORDER BY fecha DESC", null);
+                TABLE_USER, null);
 
         if (cursorUsuario.moveToFirst()) {
             do {
@@ -80,7 +80,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
     }
 
     @Override
-    public boolean modificarDatosUsuario(int idUsuario, String nombre, String apellidos, int edad,
+    public boolean modificarDatosUsuario(int idUsuario,int edad,
                                          String genero, double peso, double altura) {
         boolean correcto = false;
 
@@ -88,8 +88,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("UPDATE " + TABLE_USER + " SET nombre = '" + nombre + "'," +
-                    "apellidos = '" + apellidos + "', edad = '" + edad + "'," +
+            db.execSQL("UPDATE " + TABLE_USER + " SET edad = '" + edad + "'," +
                     "genero = '" + genero + "', peso = '" + peso + "', altura = '" + altura + "'" +
                     "WHERE idUsuario = '" + idUsuario + "' ");
             correcto = true;

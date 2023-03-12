@@ -69,7 +69,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="2sp"
                 android:textSize="15sp"
-                android:text="Distancia"/>
+                android:text="@string/tv_etiqueta_distancia"/>
 
 
         </LinearLayout>
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="35sp"
                 android:textStyle="bold"
-                android:text="-:--"
+                android:text="@string/tv_ritmo_inicial"
                 android:layout_gravity="center"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="2sp"
                 android:textSize="15sp"
-                android:text="Ritmo(min/km)"/>
+                android:text="@string/tv_etiqueta_ritmo"/>
 
         </LinearLayout>
 

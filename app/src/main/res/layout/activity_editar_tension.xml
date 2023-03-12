@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NuevaTensionActivity">
+    tools:context=".EditarTensionActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -12,10 +12,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120sp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_fechaRegistroTension"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25sp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:text="Fecha del registro: 11/03/2023 18:12"/>
 
         <EditText
-            android:id="@+id/et_sistolica"
+            android:id="@+id/etEd_sistolica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
@@ -26,7 +37,7 @@
             android:textSize="50sp" />
 
         <EditText
-            android:id="@+id/et_diastolica"
+            android:id="@+id/etEd_diastolica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
@@ -38,33 +49,32 @@
             android:textSize="50sp" />
 
         <Button
-            android:id="@+id/btn_añadirTension"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_editarTension"
+            android:layout_width="300sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_marginTop="100sp"
             android:layout_marginEnd="10sp"
             android:layout_gravity="center"
             android:backgroundTint="@color/bluePrime"
-            android:text="@string/btn_nueva_tension"
+            android:text="@string/btn_modificar_tension"
+            android:textColor="#616161"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btn_eliminarTension"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="30sp"
+            android:layout_marginEnd="10sp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/bluePrime"
+            android:text="@string/btn_eliminar_tension"
             android:textColor="#616161"
             android:textSize="30sp" />
 
 
     </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btNavNuevaTension"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:defaultFocusHighlightEnabled="false"
-        app:menu="@menu/menu_tension"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

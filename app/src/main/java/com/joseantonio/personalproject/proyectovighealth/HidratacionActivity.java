@@ -1,6 +1,7 @@
 package com.joseantonio.personalproject.proyectovighealth;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.BackoffPolicy;
 import androidx.work.Data;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
@@ -184,7 +185,8 @@ public class HidratacionActivity extends DrawerBaseActivity {
     public void guardarRecordatorioNotif(int duracion, Data data, String tag){
         PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
                 (NotificacionesHidWorker.class,duracion, TimeUnit.HOURS)
-                //.setInitialDelay(duracion,TimeUnit.HOURS)
+                .setInitialDelay(15,TimeUnit.MINUTES)
+                .setBackoffCriteria(BackoffPolicy.LINEAR,15,TimeUnit.MINUTES)
                 .addTag(tag)
                 .setInputData(data)
                 .build();

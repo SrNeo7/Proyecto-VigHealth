@@ -7,32 +7,11 @@
     tools:context=".ConfiguracionActivity">
 
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tbConfiguracion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30sp"
-            android:text="Configuración"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-    </com.google.android.material.appbar.MaterialToolbar>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/tbConfiguracion"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -40,56 +19,27 @@
             android:id="@+id/tvClkDatos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Datos personales"
+            android:text="@string/tv_datos_personales"
             android:textSize="30sp"
             android:textStyle="bold"
             android:clickable="true"
             android:layout_marginStart="25sp"
-            android:layout_marginTop="30sp"
-            android:hint="Pulsar para cambiar tus datos personales"/>
+            android:layout_marginTop="50sp"
+            android:hint="@string/hint_datos_personales"
+            android:focusable="true" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/swtBackupOn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25sp"
-            android:text="Copia de seguridad      "
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/spIdioma"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25sp"
-            android:layout_marginEnd="25sp"
-            android:hint="Idioma"
-            android:layout_marginTop="20sp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
-
-            <AutoCompleteTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtIdioma"
-                android:inputType="none">
-
-
-            </AutoCompleteTextView>
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvClkBorrarDatos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Borrar datos"
+            android:text="@string/tv_borrar_datos"
             android:textSize="30sp"
             android:textStyle="bold"
             android:clickable="true"
             android:layout_marginStart="25sp"
-            android:layout_marginTop="30sp"
-            android:hint="Pulsar para borrar todos los datos de la aplicación"/>
+            android:hint="@string/hint_borrar_datos"
+            android:focusable="true" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvClkCerrarSesion"
@@ -98,11 +48,12 @@
             android:layout_marginStart="25sp"
             android:layout_marginBottom="20sp"
             android:clickable="true"
-            android:hint="Pulsar para cerrar tu sesión"
+            android:hint="@string/hint_cerrar_sesion"
             android:minHeight="48dp"
-            android:text="Cerrar sesión"
+            android:text="@string/tv_cerrar_sesion"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:focusable="true" />
 
 
 
