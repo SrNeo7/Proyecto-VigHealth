@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.joseantonio.personalproject.proyectovighealth.R;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Alergia;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class AlergiaAdapter extends RecyclerView.Adapter<AlergiaAdapter.AlergiaV
     @Override
     public void onBindViewHolder(@NonNull AlergiaAdapter.AlergiaViewHolder holder, int position) {
         String nombreAlergeno = listaAlergia.get(position).getNombreAlergia();
-        String fechaAlergia = fechaEuropea(listaAlergia.get(position).getFechaDatos());
+        String fechaAlergia = Utilidades.fechaEuropea(listaAlergia.get(position).getFechaDatos());
         String concentracionPolen = listaAlergia.get(position).getConcentracionAtm();
         String valoracion = listaAlergia.get(position).getValoracion();
 
@@ -62,25 +63,5 @@ public class AlergiaAdapter extends RecyclerView.Adapter<AlergiaAdapter.AlergiaV
         }
 
 
-    }
-
-    /**
-     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
-     * @param fecha
-     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
-     */
-    private String fechaEuropea (String fecha){
-
-        String fechaFormateada;
-        String dia, mes, anno ,hora;
-
-        anno = fecha.substring(0,4);
-        mes = fecha.substring(5,7);
-        dia = fecha.substring(8,10);
-        hora= fecha.substring(11,16);
-
-        fechaFormateada = dia + "/" + mes + "/" + anno + " " + hora;
-
-        return fechaFormateada;
     }
 }

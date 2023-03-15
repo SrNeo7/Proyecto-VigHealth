@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.joseantonio.personalproject.proyectovighealth.EditarTensionActivity;
 import com.joseantonio.personalproject.proyectovighealth.R;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class TensionAdapter extends RecyclerView.Adapter<TensionAdapter.TensionV
         String diastolica = Double.toString(listaTension.get(position).getDiastolica());
         String sistolica = Double.toString(listaTension.get(position).getSistolica());
         String medicion = sistolica + "/" + diastolica;
-        String fechaFormateadaEU = fechaEuropea(listaTension.get(position).getFechaTension());
+        String fechaFormateadaEU = Utilidades.fechaEuropea(listaTension.get(position).getFechaTension());
 
         holder.viewMedicion.setText(medicion);
         holder.viewValoracion.setText(listaTension.get(position).getValoracion());
@@ -79,25 +80,5 @@ public class TensionAdapter extends RecyclerView.Adapter<TensionAdapter.TensionV
 
 
         }
-    }
-
-
-    /**
-     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
-     * @param fecha
-     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
-     */
-    private String fechaEuropea (String fecha){
-
-        String fechaFormateada;
-        String dia, mes, anno ,hora;
-
-        anno = fecha.substring(0,4);
-        mes = fecha.substring(5,7);
-        dia = fecha.substring(8,10);
-        hora= fecha.substring(11,16);
-        fechaFormateada = dia + "/" + mes + "/" + anno + " " + hora;
-
-        return fechaFormateada;
     }
 }

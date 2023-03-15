@@ -26,6 +26,7 @@ import com.joseantonio.personalproject.proyectovighealth.adaptadores.AlergiaAdap
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasAlergiasImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityAlergiaBinding;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,7 +90,7 @@ public class AlergiaActivity extends DrawerBaseActivity{
                 obtenerUbicacion();
                 nombreAlergenoES = spAlergenos.getSelectedItem().toString();
                 nombreAlergenoEN = traducirNombreAlergeno(nombreAlergenoES);
-                fechaDatos = obtenerFechaActual();
+                fechaDatos = Utilidades.obtenerFechaActual();
                 ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(AlergiaActivity.this);
                 idUsuario = consultasUsuario.obtenerIdUsuario();
 
@@ -198,20 +199,6 @@ public class AlergiaActivity extends DrawerBaseActivity{
                 break;
         }
         return alergenoTraducido;
-    }
-
-    /**
-     * obtenerFechaActual: Funcion para obtener la fecha del momento en el que se introduce
-     * el nuevo registro.
-     * @return Se devuelve una cadena con la fecha en un formato fecha compatible con SQLite
-     */
-    public String obtenerFechaActual(){
-
-        String fechaActual;
-
-        fechaActual = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime());
-
-        return fechaActual;
     }
 
     /**

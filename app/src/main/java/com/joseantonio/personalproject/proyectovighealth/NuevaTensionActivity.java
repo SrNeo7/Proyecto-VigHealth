@@ -19,6 +19,7 @@ import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTe
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityNuevaTensionBinding;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,8 +55,8 @@ public class NuevaTensionActivity extends DrawerBaseActivity {
 
                 sist = Float.parseFloat(sistolica.getText().toString());
                 diast = Float.parseFloat(diastolica.getText().toString());
-                fecha = obtenerFechaHoy();
-                categoria = obtenerCategoria(sist,diast);
+                fecha = Utilidades.obtenerFechaActual();
+                categoria = Utilidades.obtenerCategoria(sist,diast);
                 ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(NuevaTensionActivity.this);
                 idUsuario = consultasUsuario.obtenerIdUsuario();
 
@@ -105,40 +106,4 @@ public class NuevaTensionActivity extends DrawerBaseActivity {
         diastolica.setText("");
     }
 
-    public String obtenerFechaHoy(){
-
-        String fechaActual;
-
-        fechaActual = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime());
-
-        return fechaActual;
-    }
-
-    /**
-     * obtenerCategoria: Funcion que asigna una categoria a la medicion de tension introducida
-     * @param sistolica Float con la tension sistolica introducida por el usuario
-     * @param diastolica Float con la tension diastolica introducida por el usuario
-     * @return Un string con el resultado de la evaluacion de la medicion recibida como parametro
-     */
-    public String obtenerCategoria(float sistolica , float diastolica){
-
-        String categoriaAsignada;
-
-        //Limites de los valores de tension para establecer la comparacion con los parametros
-        final float limiteHipoSis = 8;
-        final float limiteHipoDias = 6;
-        final float limiteHiperSis = 12;
-        final float limiteHiperDias = 8;
-
-        //Comparacion de los valores recibidos por parametro con los limites establecidos
-        if (sistolica<limiteHipoSis || diastolica<limiteHipoDias){
-            categoriaAsignada = "Baja";
-        }else if (sistolica>limiteHiperSis || diastolica>limiteHiperDias){
-            categoriaAsignada = "Alta";
-        }else{
-            categoriaAsignada = "Normal";
-        }
-
-        return categoriaAsignada;
-    }
 }

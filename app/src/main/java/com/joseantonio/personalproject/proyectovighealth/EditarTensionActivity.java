@@ -16,6 +16,7 @@ import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTe
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityEditarMedicamentoBinding;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityEditarTensionBinding;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Tension;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 public class EditarTensionActivity extends DrawerBaseActivity {
 
@@ -73,7 +74,7 @@ public class EditarTensionActivity extends DrawerBaseActivity {
         if(tension!=null){
             etEdSistolica.setText(String.valueOf(tension.getSistolica()));
             etEdDiastolica.setText(String.valueOf(tension.getDiastolica()));
-            String fechaEuropea = fechaEuropea(tension.getFechaTension());
+            String fechaEuropea = Utilidades.fechaEuropea(tension.getFechaTension());
             tvFechaRegistro.setText(etiquetaFecha + fechaEuropea);
             valoracion = tension.getValoracion();
         }
@@ -135,53 +136,6 @@ public class EditarTensionActivity extends DrawerBaseActivity {
 
     }
 
-    /**
-     * obtenerCategoria: Funcion que asigna una categoria a la medicion de tension introducida
-     * @param sistolica Float con la tension sistolica introducida por el usuario
-     * @param diastolica Float con la tension diastolica introducida por el usuario
-     * @return Un string con el resultado de la evaluacion de la medicion recibida como parametro
-     */
-    public String obtenerCategoria(float sistolica , float diastolica){
-
-        String categoriaAsignada;
-
-        //Limites de los valores de tension para establecer la comparacion con los parametros
-        final float limiteHipoSis = 8;
-        final float limiteHipoDias = 6;
-        final float limiteHiperSis = 12;
-        final float limiteHiperDias = 8;
-
-        //Comparacion de los valores recibidos por parametro con los limites establecidos
-        if (sistolica<limiteHipoSis || diastolica<limiteHipoDias){
-            categoriaAsignada = "Baja";
-        }else if (sistolica>limiteHiperSis || diastolica>limiteHiperDias){
-            categoriaAsignada = "Alta";
-        }else{
-            categoriaAsignada = "Normal";
-        }
-
-        return categoriaAsignada;
-    }
-
-    /**
-     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
-     * @param fecha
-     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
-     */
-    private String fechaEuropea (String fecha){
-
-        String fechaFormateada;
-        String dia, mes, anno ,hora;
-
-        anno = fecha.substring(0,4);
-        mes = fecha.substring(5,7);
-        dia = fecha.substring(8,10);
-        hora= fecha.substring(11,16);
-
-        fechaFormateada = dia + "/" + mes + "/" + anno + " " + hora;
-
-        return fechaFormateada;
-    }
 
     /**
      * editarTension: lleva a cabo la operacion de edicion del registro de Tension seleccionado por el usuario
@@ -189,7 +143,7 @@ public class EditarTensionActivity extends DrawerBaseActivity {
     private void editarTension(){
         sistolica = Float.parseFloat(etEdSistolica.getText().toString());
         diastolica = Float.parseFloat(etEdDiastolica.getText().toString());
-        valoracion = obtenerCategoria(sistolica,diastolica);
+        valoracion = Utilidades.obtenerCategoria(sistolica,diastolica);
 
         ConsultasTensionImpl consultasTension = new ConsultasTensionImpl(EditarTensionActivity.this);
         boolean verificacionEdicion = consultasTension.editarTension(id,sistolica,diastolica,valoracion);
