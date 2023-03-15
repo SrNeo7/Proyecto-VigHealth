@@ -68,6 +68,7 @@ public class PesoAdapter extends RecyclerView.Adapter<PesoAdapter.PesoViewHolder
             viewDiferencia = itemView.findViewById(R.id.tv_diferenciaPeso);
             viewImc = itemView.findViewById(R.id.tv_imc);
 
+            //Esto hace que los items del recycler view sean clickeables
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

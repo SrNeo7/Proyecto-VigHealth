@@ -85,6 +85,7 @@ implements OnMapReadyCallback {
         chronometer = findViewById(R.id.cmCrono);
 
 
+        //Recupera el nombre de la actividad elegida por el usuario en el Activity previo
        if(savedInstanceState == null){
             Bundle extras = getIntent().getExtras();
             if(extras == null){
@@ -137,6 +138,7 @@ implements OnMapReadyCallback {
         btnParar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Obtenemos el tiempo transcurrido en el cronómetro
                 pausa = SystemClock.elapsedRealtime()-chronometer.getBase();
                 chronometer.stop();
                 chronoIsRunning = false;
@@ -174,6 +176,9 @@ implements OnMapReadyCallback {
 
     }
 
+    /**
+     * getLocalizacion: Comprueba los permisos acceder a la ubicación del usuario
+     */
     private void getLocalizacion(){
         int permiso = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
         if(permiso == PackageManager.PERMISSION_DENIED){
@@ -212,9 +217,9 @@ implements OnMapReadyCallback {
             public void onLocationChanged(@NonNull Location location) {
 
                 LatLng miUbicacion = new LatLng(location.getLatitude(),location.getLongitude());
-                //mMap.addMarker(new MarkerOptions().position(miUbicacion).title("Yo"));
-                //mMap.addPolyline(new PolylineOptions().add(miUbicacion).width(5).color(Color.BLUE));
                 if (chronoIsRunning) {
+                    /*Se obtienen los valores de los datos que se muestran mientras el usuario lleva
+                     a cabo la actividad y se dibuja el itinerario seguido */
                     List<LatLng> points = line.getPoints();
                     if (points.size() > 0) {
                         LatLng ubicacionPrevia = points.get(points.size() - 1);
@@ -235,6 +240,7 @@ implements OnMapReadyCallback {
                     points.add(miUbicacion);
                     line.setPoints(points);
                 }
+                //Configura la vista del mapa
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbicacion));
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(miUbicacion)
@@ -260,11 +266,18 @@ implements OnMapReadyCallback {
 
             }
         };
-
+        //Actualiza el mapa periodicamente
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,distanciaActulizarMapa,
                 locationListener);
     }
 
+    /**
+     * calculoDistancia: calcula la distancia que esta recorriendo el usuario midiendo entre los dos
+     * puntos pasado como parametro
+     * @param origen
+     * @param destino
+     * @return
+     */
     private float calculoDistancia(LatLng origen, LatLng destino){
 
         Location locOrigen = new Location("origen");
@@ -278,6 +291,12 @@ implements OnMapReadyCallback {
 
     }
 
+    /**
+     * distanciaActualizacionMapa: destermina la cada cuantos metros se actualiza el mapa en funcion
+     * de la actividad fisica seleccionada por el usuario
+     * @param actividad
+     * @return
+     */
     private int distanciaActualizacionMapa (String actividad){
         int distancia;
 
@@ -299,6 +318,12 @@ implements OnMapReadyCallback {
         return distancia;
     }
 
+    /**
+     * velocidadUsuario: calcula la velocidad a la que avanaza el usuario
+     * @param distancia
+     * @param tiempo
+     * @return
+     */
     private double velocidadUsuario(double distancia, long tiempo){
         double velocidad;
 
@@ -307,6 +332,11 @@ implements OnMapReadyCallback {
         return velocidad;
     }
 
+    /**
+     * ritmoUsuario: calcula el ritmo al que avanza en el usuario en minutos/kilometro
+     * @param velocidad
+     * @return
+     */
     private double ritmoUsuario(double velocidad){
 
         double ritmo;
@@ -326,6 +356,12 @@ implements OnMapReadyCallback {
         return segundosFormateados;
     }
 
+    /**
+     * dosDigitos: Funcion para corregir la fecha recogida de los datepicker para que el dia y
+     * el mes tengan dos digitos
+     * @param n
+     * @return String con el dia o el mes corregid0.
+     */
     private String dosDigitos (int n){
 
         return (n<=9) ? ("0"+n) : String.valueOf(n);
@@ -345,6 +381,11 @@ implements OnMapReadyCallback {
         return fechaActual;
     }
 
+    /**
+     * obtenerDuracion: formatea la duracion del ejercicio de milisegundos al formato horas, minutos,segundos
+     * @param milisegundos
+     * @return
+     */
     private String obtenerDuracion (long milisegundos){
         String duracion;
 
@@ -358,14 +399,12 @@ implements OnMapReadyCallback {
 
     }
 
-   /* private String obtenerDuracion (long milisegundos){
 
-        Date date = new Date(milisegundos);
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-
-        return formatter.format(date);
-    }*/
-
+    /**
+     * capturaMapa: hace una captura del mapa con el itineratio hecho por el usuario cuando
+     * finaliza el ejercicio
+     * @param fechaCaptura
+     */
     private void capturarMapa (String fechaCaptura){
         mMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
             @Override

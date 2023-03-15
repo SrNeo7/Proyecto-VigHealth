@@ -50,24 +50,6 @@ public class ListaMedicamentosActivity extends DrawerBaseActivity {
         });
     }
 
-    /*public boolean onCreateOptionsMenu(Menu menu){
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_medicamentos, menu);
-
-        return true;
-
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.mnNuevoMedicamento) {
-            nuevoMedicamento();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-
-    }*/
-
     public void nuevoMedicamento(){
         Intent intent = new Intent(ListaMedicamentosActivity.this,NuevoMedicamentoActivity.class);
         startActivity(intent);

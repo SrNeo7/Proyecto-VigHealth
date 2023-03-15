@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".GraficaPesoActivity">
 
 
@@ -11,7 +12,7 @@
         android:id="@+id/linLayGraPeFechaDesde"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:padding="10sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,13 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="@color/bluePrime"
+            android:backgroundTint="@color/pinky"
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
             android:textSize="15sp"
             android:text="@string/btn_fecha_tension_desde" />
 
         <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/et_fechaGraPeDesde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,10 +64,11 @@
             android:textSize="15sp"
             android:layout_marginEnd="10sp"
             android:minHeight="48sp"
-            android:backgroundTint="@color/bluePrime"
+            android:backgroundTint="@color/pinky"
             android:text="@string/btn_fecha_tension_hasta" />
 
         <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/et_fechaGraPeHasta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,8 +87,8 @@
         android:layout_marginStart="20sp"
         android:layout_marginEnd="20sp"
         android:layout_marginTop="260dp"
-        android:backgroundTint="@color/bluePrime"
-        android:textSize="30sp"
+        android:backgroundTint="@color/pinky"
+        android:textSize="24sp"
         android:text="@string/btn_generar_G_Peso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

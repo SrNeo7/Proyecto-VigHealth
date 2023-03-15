@@ -157,8 +157,11 @@ public class HidratacionActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * comprobarRecordatorio: recupera la informacion del recordatorio de hidratacion
+     * @return
+     */
     public Hidratacion comprobarRecordatorio(){
-
 
         Hidratacion hidratacion = null;
 
@@ -169,10 +172,22 @@ public class HidratacionActivity extends DrawerBaseActivity {
         return hidratacion;
     }
 
+    /**
+     * eliminarRecordatorio: Elimina el recordatorio asociado al medicamento eliminado
+     * @param tag
+     */
     void eliminarRecordatorioNotif(String tag){
         WorkManager.getInstance(this).cancelAllWorkByTag(tag);
     }
 
+    /**
+     * notifiacionDatos: coloca en la notificacion la informacion que se mostrara en la notificacion
+     * del recordatorio
+     * @param titulo
+     * @param descripcion
+     * @param idRecordatorio
+     * @return
+     */
     private Data notificacionDatos(String titulo, String descripcion, int idRecordatorio){
 
         return new Data.Builder()
@@ -182,6 +197,13 @@ public class HidratacionActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * guardarRecordatorio: Crea y configura el WorkRequest que se encargara de mostrar las
+     * notificaciones de recordatorio
+     * @param duracion
+     * @param data
+     * @param tag
+     */
     public void guardarRecordatorioNotif(int duracion, Data data, String tag){
         PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
                 (NotificacionesHidWorker.class,duracion, TimeUnit.HOURS)

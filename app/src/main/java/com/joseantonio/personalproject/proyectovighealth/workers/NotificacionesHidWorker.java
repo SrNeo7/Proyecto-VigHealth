@@ -22,6 +22,10 @@ public class NotificacionesHidWorker extends Worker {
         super(context, workerParams);
     }
 
+    /**
+     * doWork: lleva a cabo el trabajo solicitado mediante las WorkRequest
+     * @return
+     */
     @NonNull
     @Override
     public Result doWork() {
@@ -36,6 +40,11 @@ public class NotificacionesHidWorker extends Worker {
         return Result.success();
     }
 
+    /**
+     * notificacionHid: crea y configura la notificacion para la funcion de recordatorios de Hidratacion
+     * @param titulo
+     * @param descripcion
+     */
     private void notificacionHid(String titulo, String descripcion){
 
         String id ="message";

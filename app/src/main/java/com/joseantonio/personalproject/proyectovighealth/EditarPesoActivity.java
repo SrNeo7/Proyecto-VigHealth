@@ -53,6 +53,7 @@ public class EditarPesoActivity extends DrawerBaseActivity {
         allocateActivityTitle(activityTitle);
         HistoricoPesoActivity.historicoPeso.finish();
 
+        //Formatea decimales
         symbols.setDecimalSeparator('.');
         DecimalFormat formatoDos = new DecimalFormat("##.##",symbols);
 
@@ -61,6 +62,7 @@ public class EditarPesoActivity extends DrawerBaseActivity {
         btnEditarPeso = findViewById(R.id.btnEditarPeso);
         btnEliminarPeso = findViewById(R.id.btnEliminarPeso);
 
+        //Recupera el id enviado desde el item del recycler view seleccionado
         if(savedInstanceState == null){
             Bundle extras = getIntent().getExtras();
             if(extras == null){
@@ -138,6 +140,11 @@ public class EditarPesoActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
+     * @param fecha
+     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
+     */
     private String fechaEuropea (String fecha){
 
         String fechaFormateada;
@@ -153,9 +160,13 @@ public class EditarPesoActivity extends DrawerBaseActivity {
         return fechaFormateada;
     }
 
+    /**
+     * editarPeso: lleva a cabo la operacion de edicion del registro de Peso seleccionado por el usuario
+     */
     private void editarPeso(){
         pesoRecuperado = Float.parseFloat(etEditarPeso.getText().toString());
 
+        //Para formatear decimales
         symbols.setDecimalSeparator('.');
         DecimalFormat formatoDos = new DecimalFormat("##.##",symbols);
 
@@ -186,6 +197,9 @@ public class EditarPesoActivity extends DrawerBaseActivity {
         }
     }
 
+    /**
+     * eliminarPeso: lleva a cabo la operacion de eliminación del registro de Peso seleccionado por el usuario
+     */
     private void eliminarPeso(){
 
         ConsultasPesoImpl consultasPeso = new ConsultasPesoImpl(EditarPesoActivity.this);

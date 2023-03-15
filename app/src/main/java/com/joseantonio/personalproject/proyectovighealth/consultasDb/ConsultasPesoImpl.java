@@ -23,6 +23,15 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         this.context = context;
     }
 
+    /**
+     * nuevoPeso: crea un nuevo registro en la tabla Peso con la informacion de los parametros
+     * @param idUsuario
+     * @param peso
+     * @param fechaPeso
+     * @param imc
+     * @param diferenciaPeso
+     * @return el id del registro creado si la transaccion se ha llevado a cabo
+     */
     @Override
     public long nuevoPeso(int idUsuario,double peso, String fechaPeso, double imc, double diferenciaPeso) {
         long id = 0;
@@ -46,6 +55,10 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         return id;
     }
 
+    /**
+     * mostrarRegistrosPeso: recupera la informaicon de la tabla Peso
+     * @return un ArrayListo con la informacion recuperada
+     */
     @Override
     public ArrayList<Peso> mostrarRegistrosPeso() {
 
@@ -77,6 +90,12 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
 
     }
 
+    /**
+     * mostrarPorFecha: recupera los registros de la tabla Peso entre dos fechas recibidas por parametro
+     * @param fechaInicialPeso
+     * @param fechaFinalPeso
+     * @return un ArrayListo con la informacion recuperada
+     */
     @Override
     public ArrayList<Peso> mostrarPorFecha(String fechaInicialPeso, String fechaFinalPeso) {
 
@@ -111,6 +130,14 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         return listaPesoHistorico;
     }
 
+    /**
+     * editarPeso: modifica un registro de la tabla Peso con la informacion de los parametros
+     * @param idPeso
+     * @param peso
+     * @param imc
+     * @param diferenciaPeso
+     * @return true si la transaccion se lleva a cabo, falso si hay algun error
+     */
     @Override
     public boolean editarPeso(int idPeso, double peso, double imc, double diferenciaPeso) {
 
@@ -132,6 +159,11 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         return correcto;
     }
 
+    /**
+     * eliminarPeso: elimina el registro de la tabla Peso cuyo id se correspponda con el parametro idPeso
+     * @param idPeso
+     * @return true si la transaccion se lleva a cabo, falso si hay algun error
+     */
     @Override
     public boolean eliminarPeso(int idPeso) {
 
@@ -150,6 +182,11 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
         return correcto;
     }
 
+    /**
+     * ultimoPeso: recupera el ultimo registro introducido en la tabla Peso
+     * @return un objeto Peso que contiene la informacion recuperada
+     */
+    @Override
     public Peso ultimoPeso() {
 
         DbHelper dbHelper = new DbHelper(context);
@@ -174,6 +211,12 @@ public class ConsultasPesoImpl extends DbHelper implements ConsultasPeso {
 
     }
 
+    /**
+     * verPeso: recupera un registro de la tabla Peso cuyo id se corresponda con el parametro id
+     * @param id
+     * @return un objeto Peso que contiene la informacion recuperada
+     */
+    @Override
     public Peso verPeso(int id){
 
         DbHelper dbHelper = new DbHelper(context);

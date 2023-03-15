@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         signInButton = (SignInButton) findViewById(R.id.signInButton);
         signInButton.setSize(SignInButton.SIZE_WIDE);
         signInButton.setColorScheme(SignInButton.COLOR_DARK);
@@ -92,6 +94,10 @@ public class LoginActivity extends AppCompatActivity{
         }
     }
 
+    /**
+     * Hace la autenticacion de la cuenta Google de usuario
+     * @param idToken
+     */
     private void firebaseAuthWithGoogle(String idToken){
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken,null);
         myAuth.signInWithCredential(credential)
@@ -108,13 +114,20 @@ public class LoginActivity extends AppCompatActivity{
                 });
     }
 
+
     private void updateUI(FirebaseUser user) {
         user = myAuth.getCurrentUser();
         if(user!=null){
             irHome();
+        }else{
+            signIn();
         }
     }
 
+    /**
+     * irHome: dependiendo de si el usuario ya hizo login antes o no va a la actividad para que
+     * el usuario introduzca sus datos o al dashboard
+     */
     private void irHome() {
 
         ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(LoginActivity.this);

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".NuevaTensionActivity">
 
     <LinearLayout
@@ -14,28 +15,56 @@
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/bluePrime"
+            app:boxStrokeWidth="3sp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomStart="15sp"
+            app:boxCornerRadiusBottomEnd="15sp"
+            app:boxCornerRadiusTopStart="15sp"
+            app:boxCornerRadiusTopEnd="15sp">
+
         <EditText
             android:id="@+id/et_sistolica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginEnd="10sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
             android:hint="@string/et_sistolica_alta"
             android:inputType="numberDecimal"
             android:textColorHint="#78909C"
             android:textSize="50sp" />
 
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/bluePrime"
+            app:boxStrokeWidth="3sp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomStart="15sp"
+            app:boxCornerRadiusBottomEnd="15sp"
+            app:boxCornerRadiusTopStart="15sp"
+            app:boxCornerRadiusTopEnd="15sp">
+
         <EditText
             android:id="@+id/et_diastolica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
+            android:layout_marginStart="20sp"
             android:layout_marginTop="50sp"
-            android:layout_marginEnd="10sp"
+            android:layout_marginEnd="20sp"
             android:hint="@string/et_diastolica_baja"
             android:inputType="numberDecimal"
             android:textColorHint="#78909C"
             android:textSize="50sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_añadirTension"

@@ -53,6 +53,7 @@ public class EditarTensionActivity extends DrawerBaseActivity {
         btnModificarTension = findViewById(R.id.btn_editarTension);
         btnEliminarTension = findViewById(R.id.btn_eliminarTension);
 
+        //Recupera el id enviado desde el item del recycler view seleccionado
         if(savedInstanceState == null){
             Bundle extras = getIntent().getExtras();
             if(extras == null){
@@ -162,6 +163,11 @@ public class EditarTensionActivity extends DrawerBaseActivity {
         return categoriaAsignada;
     }
 
+    /**
+     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
+     * @param fecha
+     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
+     */
     private String fechaEuropea (String fecha){
 
         String fechaFormateada;
@@ -177,6 +183,9 @@ public class EditarTensionActivity extends DrawerBaseActivity {
         return fechaFormateada;
     }
 
+    /**
+     * editarTension: lleva a cabo la operacion de edicion del registro de Tension seleccionado por el usuario
+     */
     private void editarTension(){
         sistolica = Float.parseFloat(etEdSistolica.getText().toString());
         diastolica = Float.parseFloat(etEdDiastolica.getText().toString());
@@ -197,6 +206,9 @@ public class EditarTensionActivity extends DrawerBaseActivity {
         }
     }
 
+    /**
+     * eliminarTension: lleva a cabo la operacion de eliminación del registro de Tension seleccionado por el usuario
+     */
     private void eliminarTension(){
         ConsultasTensionImpl consultasTension = new ConsultasTensionImpl(EditarTensionActivity.this);
         boolean verificacionEliminacion = consultasTension.eliminarTension(id);

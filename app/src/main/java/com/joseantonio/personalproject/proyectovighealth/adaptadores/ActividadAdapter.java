@@ -61,6 +61,7 @@ public class ActividadAdapter extends RecyclerView.Adapter<ActividadAdapter.Acti
             viewDistanciaActividad = itemView.findViewById(R.id.tv_distanciaActividad);
             viewFechaActividad = itemView.findViewById(R.id.tv_fechaActividad);
 
+           //Esto hace que los items del recycler view sean clickeables
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

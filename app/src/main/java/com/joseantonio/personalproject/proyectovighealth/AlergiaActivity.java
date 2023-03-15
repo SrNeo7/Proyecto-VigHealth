@@ -61,6 +61,7 @@ public class AlergiaActivity extends DrawerBaseActivity{
 
     String activityTitle;
 
+    //ApiKey para usar en el endpoint
     final String POLENAPI_KEY = "191fef0e85281094dd38fac1acdea48f58247060";
 
     @Override
@@ -81,6 +82,10 @@ public class AlergiaActivity extends DrawerBaseActivity{
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                /*aqui se reune toda la informacion necesaria para la consulta a la API
+                *  y para posteriormente guardar el registro en la base de datos */
+
                 obtenerUbicacion();
                 nombreAlergenoES = spAlergenos.getSelectedItem().toString();
                 nombreAlergenoEN = traducirNombreAlergeno(nombreAlergenoES);
@@ -88,6 +93,7 @@ public class AlergiaActivity extends DrawerBaseActivity{
                 ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(AlergiaActivity.this);
                 idUsuario = consultasUsuario.obtenerIdUsuario();
 
+                //formacion del endpoint
                 String url = "https://api.elichens.com/v0/pollen/now?lat="+latitud+"&lon="+longitud+"&api_key="+POLENAPI_KEY;
 
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -105,8 +111,10 @@ public class AlergiaActivity extends DrawerBaseActivity{
                                     .getJSONObject("index")
                                     .getJSONObject("elichens")
                                     .getString("category");
+
                             valoracionTraducida = traducirValoracion(valoracionConcentracion);
                             concentracionStr = String.format("%.4f",concentracionAire);
+
                             ConsultasAlergiasImpl consultasAlergias = new ConsultasAlergiasImpl(AlergiaActivity.this);
                             long id = consultasAlergias.recogidaDatosAlergia(idUsuario,nombreAlergenoES,
                                     fechaDatos,concentracionStr,valoracionTraducida);
@@ -120,10 +128,7 @@ public class AlergiaActivity extends DrawerBaseActivity{
                             }else{
                                 Toast.makeText(AlergiaActivity.this,"Se ha producido un error.",Toast.LENGTH_LONG).show();
                             }
-                            System.out.println("Concentracion Olivo: " + concentracionAire);
-                            System.out.println("Valoracion de concentracion: " + valoracionConcentracion);
-                           /* if (listener!=null){
-                                listener.onValuesObtained(concentracionAire,valoracionConcentracion);*/
+
                             }
                          catch (JSONException e) {
 
@@ -143,7 +148,10 @@ public class AlergiaActivity extends DrawerBaseActivity{
     }
 
 
-
+    /**
+     * obtenerUbicacion: Obtiene la ubicacion del usuario necesaria para poder hacer la consulta
+     * a la API
+     */
     private void obtenerUbicacion() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -163,6 +171,12 @@ public class AlergiaActivity extends DrawerBaseActivity{
         }
     }
 
+    /**
+     * traducirNombreAlergeno: Traduce el nombre del alergeno del JSON recuperado al hacer la
+     * consulta a la API
+     * @param AlergenoES
+     * @return
+     */
     private String traducirNombreAlergeno(String AlergenoES){
         String alergenoTraducido;
 
@@ -200,6 +214,12 @@ public class AlergiaActivity extends DrawerBaseActivity{
         return fechaActual;
     }
 
+    /**
+     * traducirValoracion: Traduce la valoración de la contración del polen del JSON
+     * recuperado al hacer la consulta a la API
+     * @param valoracion
+     * @return
+     */
     private String traducirValoracion(String valoracion){
         String traduccionValoracion;
 

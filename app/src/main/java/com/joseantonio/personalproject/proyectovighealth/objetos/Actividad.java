@@ -22,11 +22,13 @@ public class Actividad {
         this.fechaActividad = fechaActividad;
     }
 
+    //Constructor para recuperar los datos  que se muestran en la pantalla Principal
     public Actividad(String tipo, double distancia) {
         this.tipo = tipo;
         this.distancia = distancia;
     }
 
+    //Getters y Setters
     public int getIdActividad() {
         return idActividad;
     }

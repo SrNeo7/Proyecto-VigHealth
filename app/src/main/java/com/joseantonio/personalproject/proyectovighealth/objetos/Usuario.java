@@ -24,6 +24,7 @@ public class Usuario {
         this.altura = altura;
     }
 
+    //Getters y Setters
     public int getIdUsuario() {
         return idUsuario;
     }

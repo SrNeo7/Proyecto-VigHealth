@@ -117,6 +117,12 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * verificaFecha: comprobamos que el usuario haya introducido una fecha correcta
+     * @param inicial
+     * @param fin
+     * @return
+     */
     private boolean verificaFecha(String inicial, String fin){
 
         boolean verificado;
@@ -139,6 +145,10 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
         return verificado;
     }
 
+    /**
+     * seleccionarFecho: se encarga de mostrar y gestionar el DatePicker
+     * @param fecha
+     */
     private void seleccionarFecha(EditText fecha){
 
         final Calendar c = Calendar.getInstance();

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".EditarUsuarioActivity">
 
     <TextView
@@ -67,8 +68,23 @@
         android:background="@drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.305"
-        app:layout_constraintStart_toEndOf="@+id/etEdAlturaUsuario"
+        app:layout_constraintStart_toEndOf="@+id/tiEdAltura"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEdAltura"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     <EditText
         android:id="@+id/etEdAlturaUsuario"
@@ -81,8 +97,24 @@
         android:hint="@string/et_altura_usuario"
         android:inputType="numberDecimal"
         android:textColorHint="#757575"
+         />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEdEdad"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
     <EditText
         android:id="@+id/etEdEdadUsuario"
@@ -94,9 +126,26 @@
         android:ems="10"
         android:hint="@string/et_edad_usuario"
         android:inputType="number"
-        android:textColorHint="#757575"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColorHint="#757575" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEdPeso"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toEndOf="@+id/tiEdEdad"
+        app:layout_constraintTop_toTopOf="parent" >
 
     <EditText
         android:id="@+id/etEdPesoUsuario"
@@ -108,10 +157,9 @@
         android:hint="@string/et_peso_usuario"
         android:inputType="numberDecimal"
         android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.305"
-        app:layout_constraintStart_toEndOf="@+id/etEdEdadUsuario"
-        app:layout_constraintTop_toTopOf="parent" />
+       />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnEditarUsuario"
@@ -120,7 +168,7 @@
         android:layout_marginBottom="144dp"
         android:text="@string/btn_user_ed_ok"
         android:textSize="20sp"
-        android:backgroundTint="@color/bluePrime"
+        android:backgroundTint="@color/blackGS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -133,7 +181,7 @@
         android:layout_marginBottom="30sp"
         android:text="@string/btn_cancel_ed_us"
         android:textSize="20sp"
-        android:backgroundTint="@color/bluePrime"
+        android:backgroundTint="@color/blackGS"
         app:layout_constraintTop_toBottomOf="@+id/btnEditarUsuario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

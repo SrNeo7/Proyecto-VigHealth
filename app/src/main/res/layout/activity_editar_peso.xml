@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".EditarPesoActivity">
 
     <LinearLayout
@@ -27,6 +28,18 @@
             android:textStyle="bold"
             tools:text="Fecha del registro: 11/03/2023 18:12"/>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/pinky"
+            app:boxStrokeWidth="3sp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomStart="15sp"
+            app:boxCornerRadiusBottomEnd="15sp"
+            app:boxCornerRadiusTopStart="15sp"
+            app:boxCornerRadiusTopEnd="15sp">
+
         <EditText
             android:id="@+id/etEdPeso"
             android:layout_width="match_parent"
@@ -37,6 +50,8 @@
             android:textAlignment="center"
             android:textColorHint="#78909C"
             android:textSize="50sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnEditarPeso"

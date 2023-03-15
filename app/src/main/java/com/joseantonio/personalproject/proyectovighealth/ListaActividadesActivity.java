@@ -57,6 +57,7 @@ public class ListaActividadesActivity extends DrawerBaseActivity {
             @Override
             public void onClick(View view) {
 
+                //Controla la visibilidad de los Floating Buttons de las actividades
                 if (!nuevaActividad){
                 fbtnAndar.setEnabled(true);
                 fbtnAndar.setVisibility(View.VISIBLE);

@@ -94,7 +94,7 @@ public class GraficaTensionActivity extends DrawerBaseActivity {
                     periodoGrafico = "Periodo representado desde " + fechaInicialString + " hasta " + fechaFinalString;
                     periodoRepresentado.setText(periodoGrafico);
                     fechaHasta = fechaHasta + " 23:59";
-
+                    //Cargamos los valores para el gráfico y configuramos aspectos visuales del gráfico
                     ConsultasTensionImpl consultasTension = new ConsultasTensionImpl(GraficaTensionActivity.this);
                     datosTension = new ArrayList<>(consultasTension.mostrarPorFechas(fechaDesde,fechaHasta));
                     ArrayList<String> labelsEjeX = new ArrayList<>(ejeX(datosTension));
@@ -154,6 +154,12 @@ public class GraficaTensionActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * verificaFecha: comprobamos que el usuario haya introducido una fecha correcta
+     * @param inicial
+     * @param fin
+     * @return
+     */
     private boolean verificaFecha(String inicial, String fin){
 
         boolean verificado;
@@ -176,6 +182,10 @@ public class GraficaTensionActivity extends DrawerBaseActivity {
         return verificado;
     }
 
+    /**
+     * seleccionarFecho: se encarga de mostrar y gestionar el DatePicker
+     * @param fecha
+     */
     private void seleccionarFecha(EditText fecha){
 
         final Calendar c = Calendar.getInstance();

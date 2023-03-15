@@ -17,12 +17,22 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
 
     Context context;
 
+    //Constructor de la clase
     public ConsultasActividadImpl(@Nullable Context context) {
         super(context);
         this.context = context;
     }
 
-
+    /**
+     * nueva actividad: Añade un nuevo registro a la tabla Actividad de la base de datos
+     * @param idUsuario
+     * @param tipo
+     * @param duracion
+     * @param distancia
+     * @param ritmo
+     * @param fechaActividad
+     * @return si la operacion ha tenido exito devuelve el id del registro
+     */
     @Override
     public long nuevaActividad(int idUsuario, String tipo, String duracion, double distancia,
                                String ritmo, String fechaActividad) {
@@ -48,6 +58,10 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         return id;
     }
 
+    /**
+     * mostrarActividad:Recupera todos los registros de la tabla Actividad
+     * @return Devuelve un ArrayList con el que poblar un recycler view
+     */
     @Override
     public ArrayList<Actividad> mostrarActividadTotal() {
 
@@ -81,37 +95,12 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         return listaActividad;
     }
 
-    @Override
-    public ArrayList<Actividad> mostrarActividadPasiva() {
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        ArrayList<Actividad>listaActividadPasiva = new ArrayList<>();
-        Actividad actividadPasiva= null;
-        Cursor cursorActividadPasiva = null;
-
-        cursorActividadPasiva = db.rawQuery("SELECT tipo, distancia, ritmo, " +
-                " fechaActividad FROM " + TABLE_ACTIVITY + " WHERE tipo = 'Pasiva'" +
-                " ORDER BY fechaActividad DESC", null);
-
-        if(cursorActividadPasiva.moveToFirst()){
-            do{
-                actividadPasiva = new Actividad();
-                actividadPasiva.setTipo(cursorActividadPasiva.getString(0));
-                actividadPasiva.setDistancia(cursorActividadPasiva.getDouble(1));
-                actividadPasiva.setRitmo(cursorActividadPasiva.getString(2));
-                actividadPasiva.setFechaActividad(cursorActividadPasiva.getString(3));
-                listaActividadPasiva.add(actividadPasiva);
-
-            }while(cursorActividadPasiva.moveToNext());
-        }
-
-        cursorActividadPasiva.close();
-        db.close();
-
-        return listaActividadPasiva;
-    }
-
+    /**
+     * mostrarActividadPorId: Recupera la fila de la tabla Actividad cuyo id coincida con el parametro id
+     * @param id
+     * @return un objeto Actividad con la informacion recuperada
+     */
     public Actividad mostrarActividadPorId(int id){
 
         DbHelper dbHelper = new DbHelper(context);
@@ -138,6 +127,11 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         return actividad;
     }
 
+    /**
+     * ultimaActividad: Recupera la informacion del ultimo registro introducido en la tabla Actividad
+     * @return un objeto Actividad con la informacion recuperada
+     */
+    @Override
     public Actividad ultimaActividad(){
 
         DbHelper dbHelper = new DbHelper(context);

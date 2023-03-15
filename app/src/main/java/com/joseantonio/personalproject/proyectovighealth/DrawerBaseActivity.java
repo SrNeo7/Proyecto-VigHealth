@@ -78,6 +78,10 @@ public class DrawerBaseActivity extends AppCompatActivity implements NavigationV
         return false;
     }
 
+    /**
+     * Funcion para poner el titulo de la actividad en la toolbar
+     * @param titleString
+     */
     protected  void allocateActivityTitle(String titleString){
         if(getSupportActionBar() != null){
             getSupportActionBar().setTitle(titleString);

@@ -42,6 +42,8 @@ public class DetallesActividadActivity extends DrawerBaseActivity {
         tvDetalleRitmo = findViewById(R.id.tvDetalleRitmo);
         ivCapturaMapaRuta = findViewById(R.id.ivCapturaMapa);
 
+        //Recupera el id enviado desde el item del recycler view seleccionado
+
         if(savedInstanceState==null){
             Bundle extras = getIntent().getExtras();
             if(extras==null){
@@ -69,6 +71,7 @@ public class DetallesActividadActivity extends DrawerBaseActivity {
             fileName= "map_capture_" + fechaActividad + ".png";
         }
 
+        //Recupera la captura del mapa con el itinerario hecho por el usuario
         File file = new File(getFilesDir(),fileName);
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.RGB_565;
@@ -79,6 +82,11 @@ public class DetallesActividadActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
+     * @param fecha
+     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
+     */
     private String fechaEuropea (String fecha){
 
         String fechaFormateada;
@@ -94,6 +102,12 @@ public class DetallesActividadActivity extends DrawerBaseActivity {
         return fechaFormateada;
     }
 
+    /**
+     * sinonimoTipoActividad: cambia el nombre de la actividad hecha por el usuario por un sinonimo
+     * que se mostrara en un textview de la actividad
+     * @param tipo
+     * @return una cadena con el sinonimo de la actividad
+     */
     private String sinonimoTipoActividad(String tipo){
 
         String sinonimo;

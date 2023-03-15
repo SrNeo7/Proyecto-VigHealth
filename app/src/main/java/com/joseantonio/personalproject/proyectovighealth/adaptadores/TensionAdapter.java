@@ -66,6 +66,7 @@ public class TensionAdapter extends RecyclerView.Adapter<TensionAdapter.TensionV
             viewFecha = itemView.findViewById(R.id.tv_fechaTension);
             viewValoracion = itemView.findViewById(R.id.tv_valoracionTension);
 
+            //Esto hace que los items del recycler view sean clickeables
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

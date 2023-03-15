@@ -20,11 +20,13 @@ public class Peso {
         this.diferenciaPeso = diferenciaPeso;
     }
 
+    //Constructor para recuperar los datos  que se muestran en la pantalla Principal
     public Peso (double peso, double diferenciaPeso){
         this.peso = peso;
         this.diferenciaPeso = diferenciaPeso;
     }
 
+    //Getters y Setters
     public int getIdPeso() {
         return idPeso;
     }

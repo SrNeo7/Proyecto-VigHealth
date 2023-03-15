@@ -17,5 +17,9 @@ public interface ConsultasPeso {
 
     public boolean eliminarPeso(int idPeso);
 
+    public Peso ultimoPeso();
+
+    public Peso verPeso(int id);
+
 
 }

@@ -4,58 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".NuevoUsuarioActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tbNuevoUsuario"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiNombreUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/bluePrime"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:layout_marginTop="148dp"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30sp"
-            android:text="@string/tv_nuevo_usuario"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-    </com.google.android.material.appbar.MaterialToolbar>
 
     <EditText
         android:id="@+id/etNombreUsuario"
         android:layout_width="294dp"
         android:layout_height="61dp"
-        android:layout_marginTop="148dp"
         android:autofillHints="Introduzca su nombre"
         android:ems="10"
         android:hint="@string/et_nombre_usuario"
         android:inputType="textPersonName"
-        android:textColorHint="#757575"
+        android:textColorHint="#757575" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiApellidosUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        android:layout_marginTop="36dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tiNombreUsuario">
 
     <EditText
         android:id="@+id/etApellidosUsuario"
         android:layout_width="294dp"
         android:layout_height="61dp"
-        android:layout_marginTop="36dp"
         android:autofillHints="Introduzca sus apellidos"
         android:ems="10"
         android:hint="@string/et_apellidos_usuario"
         android:inputType="textPersonName"
         android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombreUsuario" />
+         />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/spGenero"
@@ -65,53 +76,99 @@
         android:entries="@array/genero"
         android:prompt="@string/sp_genero"
         android:hint="@string/sp_genero"
+        android:background="@drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.305"
-        app:layout_constraintStart_toEndOf="@+id/etAlturaUsuario"
+        app:layout_constraintStart_toEndOf="@+id/tiAltura"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiAltura"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="444dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     <EditText
         android:id="@+id/etAlturaUsuario"
         android:layout_width="128dp"
         android:layout_height="63dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="444dp"
         android:autofillHints="Introduzca su altura"
         android:ems="10"
         android:hint="@string/et_altura_usuario"
         android:inputType="numberDecimal"
-        android:textColorHint="#757575"
+        android:textColorHint="#757575"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEdad"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="348dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
 
     <EditText
         android:id="@+id/etEdadUsuario"
         android:layout_width="128dp"
         android:layout_height="62dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="348dp"
         android:autofillHints="Introduzca su edad"
         android:ems="10"
         android:hint="@string/et_edad_usuario"
         android:inputType="number"
-        android:textColorHint="#757575"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColorHint="#757575" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiPeso"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/blackGS"
+        app:boxStrokeWidth="3sp"
+        android:layout_marginTop="348dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomStart="15sp"
+        app:boxCornerRadiusBottomEnd="15sp"
+        app:boxCornerRadiusTopStart="15sp"
+        app:boxCornerRadiusTopEnd="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toEndOf="@+id/tiEdad"
+        app:layout_constraintTop_toTopOf="parent">
 
     <EditText
         android:id="@+id/etPesoUsuario"
         android:layout_width="142dp"
         android:layout_height="62dp"
-        android:layout_marginTop="348dp"
         android:autofillHints="Introduzca su peso"
         android:ems="10"
         android:hint="@string/et_peso_usuario"
         android:inputType="numberDecimal"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.305"
-        app:layout_constraintStart_toEndOf="@+id/etEdadUsuario"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColorHint="#757575" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btbGuardarUsuario"
@@ -120,7 +177,7 @@
         android:layout_marginBottom="84dp"
         android:text="@string/btn_guardar_datos"
         android:textSize="20sp"
-        android:backgroundTint="@color/bluePrime"
+        android:backgroundTint="@color/blackGS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

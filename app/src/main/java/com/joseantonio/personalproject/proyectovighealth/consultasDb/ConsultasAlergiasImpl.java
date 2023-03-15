@@ -23,27 +23,15 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
     }
 
 
-    @Override
-    public long nuevoRegistroAlergia(int idUsuario, String nombreAlergia) {
-
-        long id = 0;
-
-        try {
-            DbHelper dbHelper = new DbHelper(context);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-            ContentValues values = new ContentValues();
-            values.put("idUsuario",idUsuario);
-            values.put("nombreAlergia",nombreAlergia );
-
-            id = db.insert(TABLE_ALERGY, null, values);
-            db.close();
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return id;
-    }
-
+    /**
+     * recogidaDatosAlergia: crea un registro en la tabla Alergia
+     * @param idUsuario
+     * @param nombreAlergia
+     * @param fechaDatos
+     * @param concentracionAtm
+     * @param valoracion
+     * @return si la operacion ha tenido exito devuelve el id del registro
+     */
     @Override
     public long recogidaDatosAlergia(int idUsuario, String nombreAlergia, String fechaDatos,
                                      String concentracionAtm,
@@ -69,6 +57,11 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
         return id;
     }
 
+    /**
+     * mostrarRegistrosAlergia: Recupera los registros de un determinado alergeno pasado por parametro
+     * @param alergeno
+     * @return devuelve un ArrayList con los registros recuperados
+     */
     @Override
     public ArrayList<Alergia> mostrarRegistrosAlergia(String alergeno) {
 
@@ -102,6 +95,11 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
         return listaRegistrosAlergia;
     }
 
+    /**
+     * ultimaAlergia: Recupera el ultimo registro introducido en la tabla Alergia
+     * @return devuelve un objeto Alergia con la informacion del registro recuperado
+     */
+    @Override
     public Alergia ultimaAlergia(){
 
         DbHelper dbHelper = new DbHelper(context);

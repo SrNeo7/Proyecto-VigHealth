@@ -11,7 +11,8 @@ public interface ConsultasActividad {
 
     public ArrayList<Actividad>mostrarActividadTotal();
 
-    public ArrayList<Actividad>mostrarActividadPasiva();
+    public Actividad ultimaActividad();
+
 
 
 }

@@ -12,6 +12,7 @@ public class Medicamento {
 
     public Medicamento(){}
 
+    //Constructor para recuperar los datos  que se muestran en la pantalla Principal
     public Medicamento(String nombreMedicamento, int periodicidad){
         this.nombreMedicamento = nombreMedicamento;
         this.periodicidad = periodicidad;
@@ -28,6 +29,7 @@ public class Medicamento {
         this.comentarios = comentarios;
     }
 
+    //Getters y Setters
     public int getIdMedicamento() {
         return idMedicamento;
     }

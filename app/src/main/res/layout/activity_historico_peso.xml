@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".HistoricoPesoActivity">
 
     <LinearLayout
         android:id="@+id/linLayFechaDesde"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="30sp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,12 +24,13 @@
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
             android:layout_weight="1"
-            android:backgroundTint="@color/bluePrime"
+            android:backgroundTint="@color/pinky"
             android:text="@string/btn_fecha_tension_desde"
             android:textColor="#5D4037"
             android:textSize="15sp" />
 
         <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/et_fechaPesoDesde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,12 +60,13 @@
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
             android:layout_weight="1"
-            android:backgroundTint="@color/bluePrime"
+            android:backgroundTint="@color/pinky"
             android:text="@string/btn_fecha_tension_hasta"
             android:textColor="#5D4037"
             android:textSize="15sp" />
 
         <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/et_fechaPesoHasta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,12 +84,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10sp"
-        android:layout_marginTop="260sp"
+        android:layout_marginTop="220sp"
         android:layout_marginEnd="10sp"
-        android:backgroundTint="@color/bluePrime"
+        android:backgroundTint="@color/pinky"
         android:text="@string/btn_consultar_H_Tension"
         android:textColor="#616161"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

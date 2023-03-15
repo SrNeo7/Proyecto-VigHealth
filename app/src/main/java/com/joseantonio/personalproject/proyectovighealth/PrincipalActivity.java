@@ -67,12 +67,6 @@ public class PrincipalActivity extends DrawerBaseActivity {
         nombreAlergiaTv = findViewById(R.id.tvPplAlergeno);
         valAlergiaTv = findViewById(R.id.tvPplConVal);
 
-       /* ConsultasPesoImpl consultasPeso = new ConsultasPesoImpl(PrincipalActivity.this);
-        ultimoPeso = new Peso();
-        ultimoPeso = consultasPeso.ultimoPeso();
-
-        pesoTv.setText(String.valueOf(ultimoPeso.getPeso()) + " Kg.");
-        difPesoTv.setText(String.valueOf(ultimoPeso.getDiferenciaPeso()) + " Kg.");*/
 
         datosPanelTension();
         datosPanelPeso();
@@ -139,6 +133,8 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
 
     }
+
+    //Funciones para obtener los datos que se muestran en los paneles del dashboard
 
     private void datosPanelPeso(){
 

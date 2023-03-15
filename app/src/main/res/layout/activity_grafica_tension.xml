@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".GraficaTensionActivity">
 
 
@@ -11,7 +12,7 @@
         android:id="@+id/linLayGraFechaDesde"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="30sp"
         android:orientation="horizontal"
         android:padding="10sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +32,7 @@
             android:textSize="15sp" />
 
         <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/et_fechaGraTensionDesde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,6 +70,7 @@
             android:textSize="15sp" />
 
         <EditText
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/et_fechaGraTensionHasta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,7 +94,7 @@
         android:backgroundTint="@color/bluePrime"
         android:text="@string/btn_generar_G_Tension"
         android:textColor="#616161"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -30,6 +30,10 @@ public class NotificacionesMedWorker extends Worker {
         super(context, workerParams);
     }
 
+    /**
+     * doWork: lleva a cabo el trabajo solicitado mediante las WorkRequest
+     * @return
+     */
     @NonNull
     @Override
     public Result doWork() {
@@ -43,6 +47,11 @@ public class NotificacionesMedWorker extends Worker {
         return Result.success();
     }
 
+    /**
+     * notificacionMed: crea y configura la notificacion para la funcion de medicamentos
+     * @param titulo
+     * @param descripcion
+     */
     private void notificacionMed(String titulo, String descripcion){
 
         String id ="message";

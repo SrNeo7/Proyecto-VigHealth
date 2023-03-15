@@ -24,6 +24,15 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         this.context = context;
     }
 
+    /**
+     * nuevoRegistroTension: crea un nuevo registro en la tabla Tension
+     * @param idUsuario
+     * @param fechaTension
+     * @param sistolica
+     * @param diastolica
+     * @param valoracion
+     * @return el id del registro creado si la transaccion se ha llevado a cabo
+     */
     @Override
     public long nuevoRegistroTension(int idUsuario,String fechaTension, double sistolica,
                                      double diastolica, String valoracion){
@@ -51,6 +60,10 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
     }
 
+    /**
+     * mostrarRegistrosTension: recupera todos los registros de la tabla Tension
+     * @return un ArrayList que contiene la informacion de los registros recuperados
+     */
     @Override
     public ArrayList<Tension> mostrarRegistrosTension(){
         DbHelper dbHelper = new DbHelper(context);
@@ -79,7 +92,10 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
         return listaRegistrosTension;
     }
-
+    /**
+     * mostrarPorFechas: recupera todos los registros de la tabla Tension entre dos fechas
+     * @return un ArrayList que contiene la informacion de los registros recuperados
+     */
     @Override
     public ArrayList<Tension>mostrarPorFechas(String fechaInicialTension, String fechaFinalTension){
 
@@ -112,6 +128,16 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
         return listaRegistrosHist;
     }
+
+    /**
+     * editarTension: modifica la informacion de un registro de la tabla Tension con los valores
+     * de los parametros
+     * @param idTension
+     * @param sistolica
+     * @param diastolica
+     * @param valoracion
+     * @return true si la transaccion se lleva a cabo, false si ocurre un error
+     */
     @Override
     public boolean editarTension(int idTension, double sistolica, double diastolica,String valoracion) {
 
@@ -132,6 +158,13 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
         return correcto;
     }
+
+    /**
+     * eliminarTension: elimina un registro de la tabla Tension cuyo id se corresponda con el valor
+     * del parametro idTension
+     * @param idTension
+     * @return true si la transaccion se lleva a cabo, false si ocurre un error
+     */
     @Override
     public boolean eliminarTension(int idTension) {
 
@@ -150,6 +183,11 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         return correcto;
     }
 
+    /**
+     * ultimaTension: recupera el ultimo registro introducido en la tabla Tension
+     * @return un objeto Tension que contiene la informacion recuperada
+     */
+    @Override
     public Tension ultimaTension() {
 
         DbHelper dbHelper = new DbHelper(context);
@@ -175,6 +213,13 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
     }
 
+    /**
+     * verTension: recupera un registro de la tabla Tension cuyo id se corresponda con el valor
+     * del parametro id
+     * @param id
+     * @return un objeto Tension que contiene la informacion recuperada
+     */
+    @Override
     public Tension verTension(int id){
 
         DbHelper dbHelper = new DbHelper(context);

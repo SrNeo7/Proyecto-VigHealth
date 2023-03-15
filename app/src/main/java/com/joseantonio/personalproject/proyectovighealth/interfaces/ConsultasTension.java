@@ -17,5 +17,9 @@ public interface ConsultasTension {
 
     public boolean eliminarTension(int idTension);
 
+    public Tension ultimaTension();
+
+    public Tension verTension(int id);
+
 
 }

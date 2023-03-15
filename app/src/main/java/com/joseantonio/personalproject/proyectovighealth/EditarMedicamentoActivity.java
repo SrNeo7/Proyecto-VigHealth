@@ -49,6 +49,7 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
         etComentariosMed = findViewById(R.id.etEdComentarios);
         spMedidaMed = findViewById(R.id.spEdMedida);
 
+        //Recupera el id enviado desde el item del recycler view seleccionado
         if(savedInstanceState == null){
             Bundle extras = getIntent().getExtras();
             if(extras == null){
@@ -73,6 +74,7 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
             spMedidaMed.setSelection(0);
         }
 
+        //Controles del bottom navigation drawer de la actividad
         editarMedicamentoBinding.btNavEdMed.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.btmenu_home:
@@ -125,6 +127,10 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * modificarMed: Se encarga de llevar a cabo la recopilacion de datos y la operacion de
+     * modificacion del medicamento
+     */
     void modificarMed(){
         String nombreMedEdit = etNombreMed.getText().toString();
         String medidaDosisEdit = spMedidaMed.getSelectedItem().toString();
@@ -154,6 +160,9 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
         }
     }
 
+    /**
+     * eliminarMed: Se encarga de llevar a cabo la operacion de eliminación del medicamento
+     */
     void eliminiarMed(){
 
         ConsultasMedicamentoImpl consultasMedicamento = new ConsultasMedicamentoImpl(EditarMedicamentoActivity.this);
@@ -173,10 +182,22 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
         }
     }
 
+    /**
+     * eliminarRecordatorio: Elimina el recordatorio asociado al medicamento eliminado
+     * @param tag
+     */
     void eliminarRecordatorio(String tag){
         WorkManager.getInstance(this).cancelAllWorkByTag(tag);
     }
 
+    /**
+     * notifiacionDatos: coloca en la notificacion la informacion que se mostrara en la notificacion
+     * del recordatorio
+     * @param titulo
+     * @param descripcion
+     * @param idRecordatorio
+     * @return
+     */
     private Data notificacionDatos(String titulo, String descripcion, int idRecordatorio){
 
         return new Data.Builder()
@@ -186,6 +207,13 @@ public class EditarMedicamentoActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * guardarRecordatorio: Crea y configura el WorkRequest que se encargara de mostrar las
+     * notificaciones de recordatorio
+     * @param duracion
+     * @param data
+     * @param tag
+     */
     public void guardarRecordatorio(int duracion, Data data, String tag){
         PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
                 (NotificacionesMedWorker.class,duracion, TimeUnit.HOURS)

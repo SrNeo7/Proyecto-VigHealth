@@ -20,12 +20,14 @@ public class Tension {
         this.valoracion = valoracion;
     }
 
+    //Constructor para recuperar los datos  que se muestran en la pantalla Principal
     public Tension(double sistolica,double diastolica,String valoracion){
         this.sistolica = sistolica;
         this.diastolica = diastolica;
         this.valoracion = valoracion;
     }
 
+    //Getters y Setters
     public int getIdTension() {
         return idTension;
     }
