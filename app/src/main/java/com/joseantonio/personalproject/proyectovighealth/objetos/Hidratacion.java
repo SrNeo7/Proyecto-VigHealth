@@ -9,6 +9,7 @@ public class Hidratacion {
 
     public Hidratacion(){}
 
+    //Constructor para recuperar los datos  que se muestran en la pantalla Principal
     public Hidratacion(int estado,int frecuencia){
         this.estado = estado;
         this.frecuencia = frecuencia;
@@ -20,7 +21,7 @@ public class Hidratacion {
         this.estado = estado;
         this.frecuencia = frecuencia;
     }
-
+    //Getters y Setters
     public int getIdHidratacion() {
         return idHidratacion;
     }

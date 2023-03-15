@@ -23,27 +23,15 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
     }
 
 
-    @Override
-    public long nuevoRegistroAlergia(int idUsuario, String nombreAlergia) {
-
-        long id = 0;
-
-        try {
-            DbHelper dbHelper = new DbHelper(context);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-            ContentValues values = new ContentValues();
-            values.put("idUsuario",idUsuario);
-            values.put("nombreAlergia",nombreAlergia );
-
-            id = db.insert(TABLE_ALERGY, null, values);
-            db.close();
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return id;
-    }
-
+    /**
+     * recogidaDatosAlergia: crea un registro en la tabla Alergia
+     * @param idUsuario
+     * @param nombreAlergia
+     * @param fechaDatos
+     * @param concentracionAtm
+     * @param valoracion
+     * @return si la operacion ha tenido exito devuelve el id del registro
+     */
     @Override
     public long recogidaDatosAlergia(int idUsuario, String nombreAlergia, String fechaDatos,
                                      String concentracionAtm,
@@ -56,7 +44,7 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
 
             ContentValues values = new ContentValues();
             values.put("idUsuario",idUsuario);
-            values.put("nombreAlergia",nombreAlergia );
+            values.put("nombre",nombreAlergia );
             values.put("fechaDatos", fechaDatos);
             values.put("concentracionAtm", concentracionAtm);
             values.put("valoracion", valoracion);
@@ -69,8 +57,13 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
         return id;
     }
 
+    /**
+     * mostrarRegistrosAlergia: Recupera los registros de un determinado alergeno pasado por parametro
+     * @param alergeno
+     * @return devuelve un ArrayList con los registros recuperados
+     */
     @Override
-    public ArrayList<Alergia> mostrarRegistrosAlergia() {
+    public ArrayList<Alergia> mostrarRegistrosAlergia(String alergeno) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -79,9 +72,10 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
         Alergia registrosAlergia = null;
         Cursor cursorRegistrosAlergia = null;
 
-        cursorRegistrosAlergia = db.rawQuery("SELECT nombreAlergia, fechaDatos, " +
+        cursorRegistrosAlergia = db.rawQuery("SELECT nombre, fechaDatos, " +
                 "concentracionAtm, valoracion FROM " + TABLE_ALERGY +
-                " ORDER BY fehcaDatos DESC",null);
+                " WHERE nombre = '" + alergeno +
+                "' ORDER BY fechaDatos DESC",null);
 
         if(cursorRegistrosAlergia.moveToFirst()){
             do{
@@ -99,5 +93,32 @@ public class ConsultasAlergiasImpl extends DbHelper implements ConsultasAlergias
         db.close();
 
         return listaRegistrosAlergia;
+    }
+
+    /**
+     * ultimaAlergia: Recupera el ultimo registro introducido en la tabla Alergia
+     * @return devuelve un objeto Alergia con la informacion del registro recuperado
+     */
+    @Override
+    public Alergia ultimaAlergia(){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Alergia alergia = null;
+        Cursor cursorAlergias = null;
+
+        cursorAlergias = db.rawQuery("SELECT nombre, valoracion FROM " +
+                TABLE_ALERGY + " ORDER BY idAlergia DESC LIMIT 1", null);
+
+        if(cursorAlergias.moveToFirst()){
+            do{
+                alergia = new Alergia(cursorAlergias.getString(0),cursorAlergias.getString(1));
+            }while(cursorAlergias.moveToNext());
+        }
+        cursorAlergias.close();
+        db.close();
+
+        return alergia;
     }
 }

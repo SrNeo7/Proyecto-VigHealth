@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softBlue"
     tools:context=".PesoSeguimientoActivity">
-
-
 
 
     <LinearLayout
@@ -21,6 +20,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/pinky"
+            app:boxStrokeWidth="3sp"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomStart="15sp"
+            app:boxCornerRadiusBottomEnd="15sp"
+            app:boxCornerRadiusTopStart="15sp"
+            app:boxCornerRadiusTopEnd="15sp">
+
         <EditText
             android:id="@+id/etPeso"
             android:layout_width="match_parent"
@@ -32,18 +43,31 @@
             android:textColorHint="#78909C"
             android:textSize="50sp" />
 
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/btnNuevoPeso"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="75sp"
-            android:backgroundTint="@color/bluePrime"
+            android:backgroundTint="@color/pinky"
             android:text="@string/btn_nuevo_peso"
             android:textColor="#616161"
             android:textSize="30sp" />
 
+
     </LinearLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btNavSeguimientoPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:defaultFocusHighlightEnabled="false"
+        app:menu="@menu/menu_peso"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

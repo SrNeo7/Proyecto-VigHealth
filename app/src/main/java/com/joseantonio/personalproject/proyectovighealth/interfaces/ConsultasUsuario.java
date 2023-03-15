@@ -10,7 +10,16 @@ public interface ConsultasUsuario {
 
     public Usuario mostarDatosUsuario();
 
-    public boolean modificarDatosUsuario(int idUsuario, String nombre, String apellidos, int edad,
+    public boolean modificarDatosUsuario(int idUsuario, int edad,
                                          String genero, double peso, double altura);
+    public boolean modificarPesoUsuario(int idUsuario, double peso);
+
+    public boolean comprobarUsuario();
+
+    public double obtenerPesoUsuario();
+
+    public double obtenerAlturaUsuario();
+
+    public int obtenerIdUsuario();
 
 }

@@ -83,32 +83,21 @@ public class PesoSeguimientoActivity extends DrawerBaseActivity {
             }
         });
 
+        pesoSeguimientoBinding.btNavSeguimientoPeso.setOnItemSelectedListener(item -> {
+            switch(item.getItemId()){
+                case R.id.mnHistorialPeso:
+                    historialPeso();
+                    break;
+                case R.id.mnGraficaPeso:
+                    graficaPeso();
+                    break;
+            }
+            return true;
+        });
+
 
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_peso, menu);
-
-        return true;
-
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.mnHistorialPeso:
-                historialPeso();
-                return true;
-            case R.id.mnGraficaPeso:
-                graficaPeso();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
 
     private void historialPeso(){
         Intent intent = new Intent(this,HistoricoPesoActivity.class);

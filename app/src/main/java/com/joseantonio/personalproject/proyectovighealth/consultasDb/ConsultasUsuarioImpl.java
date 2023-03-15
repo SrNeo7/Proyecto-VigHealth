@@ -22,6 +22,16 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
     }
 
 
+    /**
+     * nuevoUsuario: crea un nuevo registro en la tabla Usuario con los valores de los parametros
+     * @param nombre
+     * @param apellidos
+     * @param edad
+     * @param genero
+     * @param peso
+     * @param altura
+     * @return el id del registro creado si la transaccion se ha llevado a cabo
+     */
     @Override
     public long nuevoUsuario(String nombre, String apellidos, int edad, String genero, double peso,
                              double altura) {
@@ -48,6 +58,10 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         return id;
     }
 
+    /**
+     * mostrarUsuario: recupera la informacion del registros de la tabla Usuario
+     * @return un objeto Usuario que contiene la informacion recuperada
+     */
     @Override
     public Usuario mostarDatosUsuario() {
 
@@ -57,7 +71,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         Cursor cursorUsuario = null;
 
         cursorUsuario = db.rawQuery("SELECT nombre, apellidos, edad, genero, peso, altura FROM " +
-                TABLE_USER + " ORDER BY fecha DESC", null);
+                TABLE_USER, null);
 
         if (cursorUsuario.moveToFirst()) {
             do {
@@ -79,8 +93,17 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
 
     }
 
+    /**
+     * modificarDatosUsuario: modifica el registro de la tabla Usuario con los valores de los parametros
+     * @param idUsuario
+     * @param edad
+     * @param genero
+     * @param peso
+     * @param altura
+     * @return true si la transaccion se lleva a cabo, false si ocurre un error
+     */
     @Override
-    public boolean modificarDatosUsuario(int idUsuario, String nombre, String apellidos, int edad,
+    public boolean modificarDatosUsuario(int idUsuario,int edad,
                                          String genero, double peso, double altura) {
         boolean correcto = false;
 
@@ -88,8 +111,7 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("UPDATE " + TABLE_USER + " SET nombre = '" + nombre + "'," +
-                    "apellidos = '" + apellidos + "', edad = '" + edad + "'," +
+            db.execSQL("UPDATE " + TABLE_USER + " SET edad = '" + edad + "'," +
                     "genero = '" + genero + "', peso = '" + peso + "', altura = '" + altura + "'" +
                     "WHERE idUsuario = '" + idUsuario + "' ");
             correcto = true;
@@ -104,6 +126,14 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         return correcto;
     }
 
+    /**
+     * modificarPesoUsuario: modificar el campo peso del registro de la tabla Usuario. Sirve para
+     * actualizar el peso del usuario cuando se introduce un nuevo registro en la tabla Peso
+     * @param idUsuario
+     * @param peso
+     * @return true si la transaccion se lleva a cabo, false si ocurre un error
+     */
+    @Override
     public boolean modificarPesoUsuario(int idUsuario, double peso) {
         boolean correcto = false;
 
@@ -125,6 +155,11 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         return correcto;
     }
 
+    /**
+     * comprobarUsuario: comprueba la existencia del registro de la tabla Usuario
+     * @return true si se ha recuperado informacion del usuario, false si no existe el usuario
+     */
+    @Override
     public boolean comprobarUsuario() {
 
         boolean usuario = false;
@@ -147,6 +182,11 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         return usuario;
     }
 
+    /**
+     * obtenerPesoUsuario: recupera el valor del campo peso del registro de la tabla Usuario
+     * @return el valor del campo peso del usuario
+     */
+    @Override
     public double obtenerPesoUsuario() {
 
         double pesoUsuario = 0;
@@ -168,6 +208,11 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
 
     }
 
+    /**
+     * obtenerAlturaUsuario: recupera el valor del campo altura del registro de la tabla Usuario
+     * @return el valor del campo altura del usuario
+     */
+    @Override
     public double obtenerAlturaUsuario() {
 
         double alturaUsuario = 0;
@@ -188,6 +233,11 @@ public class ConsultasUsuarioImpl extends DbHelper implements ConsultasUsuario {
         return alturaUsuario;
     }
 
+    /**
+     * obtenerIdUsuario: recupera el valor del campo id del registro de la tabla Usuario
+     * @return el valor del campo id del Usuario
+     */
+    @Override
     public int obtenerIdUsuario(){
         int idUsuario = 0;
         DbHelper dbHelper = new DbHelper(context);

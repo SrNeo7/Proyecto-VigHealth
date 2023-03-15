@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200sp"
+    android:layout_height="220sp"
     android:padding="20sp"
     android:background="@color/bluePrime"
     android:orientation="vertical">
@@ -9,12 +9,14 @@
     <ImageView
         android:layout_width="120sp"
         android:layout_height="120sp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:src="@drawable/app_icon_candidate"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VigHealth"
+        android:text="@string/tv_drawer_vighealth"
         android:textColor="@color/white"
         android:layout_gravity="center"
         android:textSize="18sp"

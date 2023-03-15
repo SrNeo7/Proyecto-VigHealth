@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PrincipalActivity"
-    android:background="@drawable/mainbggradient">
+    android:background="@color/softBlue">
 
 <ScrollView
     android:layout_width="match_parent"
@@ -18,16 +18,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="100sp">
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvTension"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
                 android:layout_marginStart="10sp"
                 android:layout_marginEnd="10sp"
                 app:cardBackgroundColor="@color/bluePrime"
@@ -39,32 +34,39 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:background="@drawable/tensiongradient">
 
+
                     <ImageView
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
+                        android:layout_width="90dp"
+                        android:layout_height="90sp"
                         android:layout_marginStart="10sp"
-                        android:src="@drawable/heart_pulse"/>
+                        android:src="@drawable/tension_color"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvPplTension"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="12/8"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvPplTenVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="Normal"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -79,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginEnd="10sp"
+                android:layout_marginTop="30sp"
                 app:cardBackgroundColor="@color/bluePrime"
                 app:cardCornerRadius="15sp"
                 android:clickable="true"
@@ -88,33 +91,38 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:background="@drawable/weightgradient">
 
                     <ImageView
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
+                        android:layout_width="90sp"
+                        android:layout_height="90sp"
                         android:layout_marginStart="10sp"
-                        android:src="@drawable/scale_bathroom"/>
+                        android:src="@drawable/peso_color"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvPplPeso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="90 kg."
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvPplPesoDif"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="-0'7 kg."
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
-
+                 </LinearLayout>
 
                 </LinearLayout>
 
@@ -122,12 +130,11 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_marginTop="30sp">
 
             <com.google.android.material.card.MaterialCardView
@@ -145,35 +152,41 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:background="@drawable/sportgradient">
 
                     <ImageView
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
+                        android:layout_width="90sp"
+                        android:layout_height="90sp"
                         android:layout_marginStart="10sp"
-                        android:src="@drawable/run" />
+                        android:src="@drawable/actividad_color" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvPplActividadTipo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="Correr"
                         android:textColor="@color/white"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvPplActividadDistancia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         android:textColor="@color/white"
                         tools:text="10,67KM"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -187,6 +200,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginEnd="10sp"
+                android:layout_marginTop="30sp"
                 app:cardBackgroundColor="@color/bluePrime"
                 app:cardCornerRadius="15sp"
                 android:clickable="true"
@@ -196,33 +210,39 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:background="@drawable/alergicgradient">
 
                     <ImageView
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
+                        android:layout_width="90sp"
+                        android:layout_height="90sp"
                         android:layout_marginStart="10sp"
-                        android:src="@drawable/flower_pollen_outline"/>
+                        android:src="@drawable/alergia_color_2"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvPplAlergeno"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="Olivo"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvPplConVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="Baja"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
+                 </LinearLayout>
 
                 </LinearLayout>
 
@@ -235,7 +255,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_marginTop="30sp">
 
             <com.google.android.material.card.MaterialCardView
@@ -253,33 +273,39 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:background="@drawable/medgradient">
 
                     <ImageView
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
+                        android:layout_width="90sp"
+                        android:layout_height="90sp"
                         android:layout_marginStart="10sp"
-                        android:src="@drawable/pill"/>
+                        android:src="@drawable/medicamento_color"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvPplMedNombre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="Ibuprofeno"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvPplMedPeriodo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="8 horas"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
+                 </LinearLayout>
 
                 </LinearLayout>
 
@@ -293,6 +319,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
                 android:layout_marginEnd="10sp"
+                android:layout_marginTop="30sp"
                 app:cardBackgroundColor="@color/bluePrime"
                 app:cardCornerRadius="15sp"
                 android:clickable="true"
@@ -302,33 +329,39 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:background="@drawable/bluegradient">
 
                     <ImageView
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
+                        android:layout_width="90sp"
+                        android:layout_height="90sp"
                         android:layout_marginStart="10sp"
-                        android:src="@drawable/cup_water"/>
+                        android:src="@drawable/hidratacion_color"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tvPplHiEstado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="Activo"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tvPplHiFrec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
+                        android:layout_marginStart="20sp"
                         tools:text="3 horas"
-                        android:textSize="30sp"
+                        android:textSize="35sp"
                         android:textStyle="bold"/>
 
+                    </LinearLayout>
 
                 </LinearLayout>
 

@@ -5,19 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NuevoMedicamentoActivity"
-    android:background="@drawable/medgradient">
-
-    <TextView
-        android:id="@+id/tvNuevoMedicamento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/tv_nuevo_medicamento"
-        android:textSize="38sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@color/softBlue">
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -170,7 +158,8 @@
         android:layout_marginTop="116dp"
         android:layout_marginEnd="68dp"
         android:text="@string/btn_med_cancelar"
-        android:backgroundTint="@color/greyGS"
+        android:backgroundTint="@color/softGreen"
+        android:textColor="@color/blackGS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tiComentarios" />
 
@@ -181,7 +170,8 @@
         android:layout_marginStart="72dp"
         android:layout_marginTop="116dp"
         android:text="@string/btn_med_aceptar"
-        android:backgroundTint="@color/greyGS"
+        android:backgroundTint="@color/softGreen"
+        android:textColor="@color/blackGS"
         app:layout_constraintEnd_toStartOf="@+id/btnMedCancelar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

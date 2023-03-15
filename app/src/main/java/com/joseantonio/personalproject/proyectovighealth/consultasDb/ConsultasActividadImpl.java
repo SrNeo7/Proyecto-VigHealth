@@ -17,12 +17,22 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
 
     Context context;
 
+    //Constructor de la clase
     public ConsultasActividadImpl(@Nullable Context context) {
         super(context);
         this.context = context;
     }
 
-
+    /**
+     * nueva actividad: Añade un nuevo registro a la tabla Actividad de la base de datos
+     * @param idUsuario
+     * @param tipo
+     * @param duracion
+     * @param distancia
+     * @param ritmo
+     * @param fechaActividad
+     * @return si la operacion ha tenido exito devuelve el id del registro
+     */
     @Override
     public long nuevaActividad(int idUsuario, String tipo, String duracion, double distancia,
                                String ritmo, String fechaActividad) {
@@ -48,6 +58,10 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         return id;
     }
 
+    /**
+     * mostrarActividad:Recupera todos los registros de la tabla Actividad
+     * @return Devuelve un ArrayList con el que poblar un recycler view
+     */
     @Override
     public ArrayList<Actividad> mostrarActividadTotal() {
 
@@ -58,16 +72,18 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         Actividad actividad= null;
         Cursor cursorActividad = null;
 
-        cursorActividad = db.rawQuery("SELECT tipo, duracion, distancia, ritmo, " +
+        cursorActividad = db.rawQuery("SELECT idActividad,tipo, duracion, distancia, ritmo, " +
                 " fechaActividad FROM " + TABLE_ACTIVITY + " ORDER BY fechaActividad DESC", null);
 
         if(cursorActividad.moveToFirst()){
             do{
                 actividad = new Actividad();
-                actividad.setTipo(cursorActividad.getString(0));
-                actividad.setDistancia(cursorActividad.getDouble(1));
-                actividad.setRitmo(cursorActividad.getString(2));
-                actividad.setFechaActividad(cursorActividad.getString(3));
+                actividad.setIdActividad(cursorActividad.getInt(0));
+                actividad.setTipo(cursorActividad.getString(1));
+                actividad.setDuracion(cursorActividad.getString(2));
+                actividad.setDistancia(cursorActividad.getDouble(3));
+                actividad.setRitmo(cursorActividad.getString(4));
+                actividad.setFechaActividad(cursorActividad.getString(5));
                 listaActividad.add(actividad);
 
             }while(cursorActividad.moveToNext());
@@ -79,34 +95,63 @@ public class ConsultasActividadImpl extends DbHelper implements ConsultasActivid
         return listaActividad;
     }
 
-    @Override
-    public ArrayList<Actividad> mostrarActividadPasiva() {
+
+    /**
+     * mostrarActividadPorId: Recupera la fila de la tabla Actividad cuyo id coincida con el parametro id
+     * @param id
+     * @return un objeto Actividad con la informacion recuperada
+     */
+    public Actividad mostrarActividadPorId(int id){
+
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        ArrayList<Actividad>listaActividadPasiva = new ArrayList<>();
-        Actividad actividadPasiva= null;
-        Cursor cursorActividadPasiva = null;
+        Actividad actividad = null;
+        Cursor cursorActividad = null;
 
-        cursorActividadPasiva = db.rawQuery("SELECT tipo, distancia, ritmo, " +
-                " fechaActividad FROM " + TABLE_ACTIVITY + " WHERE tipo = 'Pasiva'" +
-                " ORDER BY fechaActividad DESC", null);
+        cursorActividad = db.rawQuery("SELECT idActividad,tipo, duracion, distancia, ritmo, " +
+                " fechaActividad FROM " + TABLE_ACTIVITY + " WHERE idActividad = " + id + " LIMIT 1", null);
 
-        if(cursorActividadPasiva.moveToFirst()){
-            do{
-                actividadPasiva = new Actividad();
-                actividadPasiva.setTipo(cursorActividadPasiva.getString(0));
-                actividadPasiva.setDistancia(cursorActividadPasiva.getDouble(1));
-                actividadPasiva.setRitmo(cursorActividadPasiva.getString(2));
-                actividadPasiva.setFechaActividad(cursorActividadPasiva.getString(3));
-                listaActividadPasiva.add(actividadPasiva);
-
-            }while(cursorActividadPasiva.moveToNext());
+        if(cursorActividad.moveToFirst()){
+            actividad = new Actividad();
+            actividad.setIdActividad(cursorActividad.getInt(0));
+            actividad.setTipo(cursorActividad.getString(1));
+            actividad.setDuracion(cursorActividad.getString(2));
+            actividad.setDistancia(cursorActividad.getDouble(3));
+            actividad.setRitmo(cursorActividad.getString(4));
+            actividad.setFechaActividad(cursorActividad.getString(5));
         }
-
-        cursorActividadPasiva.close();
+        cursorActividad.close();
         db.close();
 
-        return listaActividadPasiva;
+        return actividad;
+    }
+
+    /**
+     * ultimaActividad: Recupera la informacion del ultimo registro introducido en la tabla Actividad
+     * @return un objeto Actividad con la informacion recuperada
+     */
+    @Override
+    public Actividad ultimaActividad(){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Actividad actividad = null;
+        Cursor cursorActividad = null;
+
+        cursorActividad = db.rawQuery("SELECT tipo, distancia FROM " +
+                TABLE_ACTIVITY + " ORDER BY idActividad DESC LIMIT 1", null);
+
+        if(cursorActividad.moveToFirst()){
+            do{
+                actividad = new Actividad(cursorActividad.getString(0),cursorActividad.getDouble(1));
+            }while(cursorActividad.moveToNext());
+        }
+
+        cursorActividad.close();
+        db.close();
+
+        return actividad;
     }
 }

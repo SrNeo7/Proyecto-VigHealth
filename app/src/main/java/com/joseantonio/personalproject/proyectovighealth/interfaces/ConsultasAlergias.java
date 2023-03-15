@@ -6,10 +6,11 @@ import java.util.ArrayList;
 
 public interface ConsultasAlergias {
 
-    public long nuevoRegistroAlergia(int idUsuario,String nombreAlergia);
 
     public long recogidaDatosAlergia(int idUsuario, String nombreAlergia, String fechaDatos,
                                      String concentracionAtm, String valoracion);
 
-    public ArrayList<Alergia>mostrarRegistrosAlergia();
+    public ArrayList<Alergia>mostrarRegistrosAlergia(String alergeno);
+
+    public Alergia ultimaAlergia();
 }

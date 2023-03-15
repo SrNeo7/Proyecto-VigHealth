@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,8 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
 
     RecyclerView historialTension;
 
+    public static Activity historicoTension;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
         setContentView(historicoTensionBinding.getRoot());
         activityTitle = getString(R.string.at_historial_tension);
         allocateActivityTitle(activityTitle);
+        historicoTension = this;
 
 
         fechaInicial = findViewById(R.id.et_fechaTensionDesde);
@@ -113,6 +117,12 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
 
     }
 
+    /**
+     * verificaFecha: comprobamos que el usuario haya introducido una fecha correcta
+     * @param inicial
+     * @param fin
+     * @return
+     */
     private boolean verificaFecha(String inicial, String fin){
 
         boolean verificado;
@@ -135,6 +145,10 @@ public class HistoricoTensionActivity extends DrawerBaseActivity {
         return verificado;
     }
 
+    /**
+     * seleccionarFecho: se encarga de mostrar y gestionar el DatePicker
+     * @param fecha
+     */
     private void seleccionarFecha(EditText fecha){
 
         final Calendar c = Calendar.getInstance();

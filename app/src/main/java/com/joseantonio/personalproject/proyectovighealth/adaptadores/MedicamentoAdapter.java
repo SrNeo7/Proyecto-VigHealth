@@ -39,11 +39,13 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
         String dosisMed = String.valueOf(listaMedicamentos.get(position).getDosis());
         String medidaDosis = listaMedicamentos.get(position).getMedidaDosis();
         String periodicidad = String.valueOf(listaMedicamentos.get(position).getPeriodicidad()) +" h";
+        String comentario = listaMedicamentos.get(position).getComentarios();
 
         holder.viewNombreMed.setText(nombreMedicamento);
         holder.viewDosisMed.setText(dosisMed);
         holder.viewMedidaDosisMed.setText(medidaDosis);
         holder.viewPeriodicidadMed.setText(periodicidad);
+        holder.viewComentario.setText(comentario);
 
 
     }
@@ -55,7 +57,7 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
 
     public class MedicamentoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView viewNombreMed, viewDosisMed,viewMedidaDosisMed,viewPeriodicidadMed;
+        TextView viewNombreMed, viewDosisMed,viewMedidaDosisMed,viewPeriodicidadMed,viewComentario;
 
         public MedicamentoViewHolder(@NonNull View itemView){
             super(itemView);
@@ -64,7 +66,9 @@ public class MedicamentoAdapter extends RecyclerView.Adapter<MedicamentoAdapter.
             viewDosisMed = itemView.findViewById(R.id.tv_dosisMedicamento);
             viewMedidaDosisMed = itemView.findViewById(R.id.tv_medidaMedicamento);
             viewPeriodicidadMed = itemView.findViewById(R.id.tv_periodicidadMedicamento);
+            viewComentario = itemView.findViewById(R.id.tvComentario);
 
+            //Esto hace que los items del recycler view sean clickeables
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

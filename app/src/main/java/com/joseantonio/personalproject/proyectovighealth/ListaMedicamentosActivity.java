@@ -1,15 +1,11 @@
 package com.joseantonio.personalproject.proyectovighealth;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -53,24 +49,6 @@ public class ListaMedicamentosActivity extends DrawerBaseActivity {
             }
         });
     }
-
-    /*public boolean onCreateOptionsMenu(Menu menu){
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_medicamentos, menu);
-
-        return true;
-
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.mnNuevoMedicamento) {
-            nuevoMedicamento();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-
-    }*/
 
     public void nuevoMedicamento(){
         Intent intent = new Intent(ListaMedicamentosActivity.this,NuevoMedicamentoActivity.class);

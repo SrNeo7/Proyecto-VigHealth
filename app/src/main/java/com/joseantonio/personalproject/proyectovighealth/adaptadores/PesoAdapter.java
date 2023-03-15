@@ -1,5 +1,7 @@
 package com.joseantonio.personalproject.proyectovighealth.adaptadores;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.joseantonio.personalproject.proyectovighealth.EditarPesoActivity;
+import com.joseantonio.personalproject.proyectovighealth.EditarTensionActivity;
 import com.joseantonio.personalproject.proyectovighealth.R;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Peso;
 
@@ -63,6 +67,17 @@ public class PesoAdapter extends RecyclerView.Adapter<PesoAdapter.PesoViewHolder
             viewFecha = itemView.findViewById(R.id.tv_fechaPeso);
             viewDiferencia = itemView.findViewById(R.id.tv_diferenciaPeso);
             viewImc = itemView.findViewById(R.id.tv_imc);
+
+            //Esto hace que los items del recycler view sean clickeables
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, EditarPesoActivity.class);
+                    intent.putExtra("ID",listaPeso.get(getAdapterPosition()).getIdPeso());
+                    context.startActivity(intent);
+                }
+            });
 
 
         }

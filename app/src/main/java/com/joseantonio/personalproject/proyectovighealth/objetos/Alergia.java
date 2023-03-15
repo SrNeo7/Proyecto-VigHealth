@@ -19,7 +19,13 @@ public class Alergia {
         this.concentracionAtm = concentracionAtm;
         this.valoracion = valoracion;
     }
+    //Constructor para recuperar los datos  que se muestran en la pantalla Principal
+    public Alergia(String nombreAlergia, String valoracion) {
+        this.nombreAlergia = nombreAlergia;
+        this.valoracion = valoracion;
+    }
 
+    //Getters y Setters
     public int getIdAlergia() {
         return idAlergia;
     }

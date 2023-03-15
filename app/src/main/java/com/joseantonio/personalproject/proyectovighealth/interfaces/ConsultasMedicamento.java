@@ -16,5 +16,9 @@ public interface ConsultasMedicamento {
 
     public boolean eliminarMedicamento(int idMedicamento);
 
+    public Medicamento verMedicamento(int id);
+
+    public Medicamento ultimoMedicamento();
+
 
 }

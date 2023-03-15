@@ -22,6 +22,13 @@ public class ConsultasHidratacionImpl extends DbHelper implements ConsultasHidra
     }
 
 
+    /**
+     * nuevoRecordatorio: crea un nuevo registro en la tabla Hidratacion
+     * @param idUsuario
+     * @param estado
+     * @param frecuencia
+     * @return si la operacion ha tenido exito devuelve el id del registro
+     */
     @Override
     public long nuevoRecordatorio(int idUsuario, int estado, int frecuencia) {
 
@@ -44,6 +51,11 @@ public class ConsultasHidratacionImpl extends DbHelper implements ConsultasHidra
         return id;
     }
 
+    /**
+     * obtenerRecordatorio: recupera la informacion de un registro de la tabla Hidratacion
+     * @return un objeto Hidratacion con la informacion recuperada
+     */
+    @Override
     public Hidratacion obtenerRecordatorio(){
 
         DbHelper dbHelper = new DbHelper(context);
@@ -66,6 +78,13 @@ public class ConsultasHidratacionImpl extends DbHelper implements ConsultasHidra
 
     }
 
+    /**
+     * editarRecordatorio: modifica la informacion de un registro de la tabla Hidratacion
+     * @param idHidratacion
+     * @param estado
+     * @param frecuencia
+     * @return true si la operacion se lleva a cabo con exito, false si no
+     */
     @Override
     public boolean editarRecordatorio(int idHidratacion, int estado, int frecuencia) {
 
@@ -89,6 +108,12 @@ public class ConsultasHidratacionImpl extends DbHelper implements ConsultasHidra
         return correcto;
     }
 
+    /**
+     * eliminarRecordatorio: elimina el registro de la tabla Hidratacion cuyo id
+     * se corresponda con el parametro idHidratacion
+     * @param idHidratacion
+     * @return true si la operacion se lleva a cabo con exito, false si no
+     */
     @Override
     public boolean eliminarRecordatorio(int idHidratacion) {
 
@@ -110,6 +135,11 @@ public class ConsultasHidratacionImpl extends DbHelper implements ConsultasHidra
         return correcto;
     }
 
+    /**
+     * obtenerIdRecordatorio: recupera el id de un registro de la tabla Hidratacion
+     * @return un int con el id recuperado
+     */
+    @Override
     public int obtenerIdRecordatorio(){
         int idHidratacion = 0;
         DbHelper dbHelper = new DbHelper(context);

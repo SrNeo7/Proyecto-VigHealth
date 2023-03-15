@@ -24,6 +24,16 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         this.context = context;
     }
 
+    /**
+     * nuevoMedicamento: crea un nuevo registro en la tabla Medicamento
+     * @param idUsuario
+     * @param nombreMedicamento
+     * @param dosis
+     * @param medidaDosis
+     * @param periodicidad
+     * @param comentario
+     * @return el id del registro creado si la operacion ha concluido de forma satisfactoria
+     */
     @Override
     public long nuevoMedicamento(int idUsuario, String nombreMedicamento, int dosis,
                                  String medidaDosis, int periodicidad, String comentario) {
@@ -50,6 +60,10 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         return id;
     }
 
+    /**
+     * mostrarMedicamentos: Recupera todos los registros de la tabla Medicamento
+     * @return un ArrayList con toda la informacion recuperada
+     */
     @Override
     public ArrayList<Medicamento> mostrarMedicamentos() {
 
@@ -82,6 +96,16 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         return listaMedicamentos;
     }
 
+    /**
+     * editarMedicamento: modifica un registro de la tabla Medicamentos con la informacion de los parametros
+     * @param idMedicamento
+     * @param nombreMedicamento
+     * @param dosis
+     * @param medidaDosis
+     * @param periodicidad
+     * @param comentario
+     * @return true si la transaccion ha sido exitosa, false si se produce un error
+     */
     @Override
     public boolean editarMedicamento(int idMedicamento, String nombreMedicamento, int dosis,
                                      String medidaDosis, int periodicidad, String comentario) {
@@ -107,6 +131,11 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         return correcto;
     }
 
+    /**
+     * eliminarMedicamento: elimina el registro de la tabla Medicamento cuyo id es igual al parametro idMedicamento
+     * @param idMedicamento
+     * @return true si la transaccion ha sido exitosa, false si se produce un error
+     */
     @Override
     public boolean eliminarMedicamento(int idMedicamento) {
 
@@ -128,6 +157,13 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         return correcto;
     }
 
+    /**
+     * verMedicamento: recupera la informacion de un registro de la tabla Medicamento cuyo id
+     * coincide con el parametro id
+     * @param id
+     * @return un objeto Medicamento que contiene la informacion recuperada
+     */
+    @Override
     public Medicamento verMedicamento(int id) {
 
         DbHelper dbHelper = new DbHelper(context);
@@ -156,6 +192,11 @@ public class ConsultasMedicamentoImpl extends DbHelper implements ConsultasMedic
         return medicamento;
     }
 
+    /**
+     * ultimoMedicamento: recupera el ultimo registro introducido en la tabla Medicamento
+     * @return un objeto Medicamento que contiene la informacion recuperada
+     */
+    @Override
     public Medicamento ultimoMedicamento() {
 
         DbHelper dbHelper = new DbHelper(context);

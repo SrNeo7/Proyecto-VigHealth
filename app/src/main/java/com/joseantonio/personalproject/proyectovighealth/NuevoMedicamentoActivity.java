@@ -15,12 +15,14 @@ import android.widget.Toast;
 
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasMedicamentoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
+import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityNuevoMedicamentoBinding;
 import com.joseantonio.personalproject.proyectovighealth.workers.NotificacionesMedWorker;
 
 import java.util.concurrent.TimeUnit;
 
-public class NuevoMedicamentoActivity extends AppCompatActivity {
+public class NuevoMedicamentoActivity extends DrawerBaseActivity {
 
+    ActivityNuevoMedicamentoBinding nuevoMedicamentoBinding;
     EditText nombreMed, dosisMed, periodicMed,comentMed;
     Spinner medidaDosis;
     Button aceptarBtn, cancelarBtn;
@@ -29,13 +31,16 @@ public class NuevoMedicamentoActivity extends AppCompatActivity {
 
     int periodicNum,dosisMedNum,idUsuario;
 
-
+    String activityTitle;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nuevo_medicamento);
+        nuevoMedicamentoBinding = ActivityNuevoMedicamentoBinding.inflate(getLayoutInflater());
+        setContentView(nuevoMedicamentoBinding.getRoot());
+        activityTitle = getString(R.string.at_nuevo_medicamento);
+        allocateActivityTitle(activityTitle);
 
         nombreMed = findViewById(R.id.etNombreMedicamento);
         dosisMed = findViewById(R.id.etDosis);
@@ -101,6 +106,14 @@ public class NuevoMedicamentoActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * notifiacionDatos: coloca en la notificacion la informacion que se mostrara en la notificacion
+     * del recordatorio
+     * @param titulo
+     * @param descripcion
+     * @param idRecordatorio
+     * @return
+     */
     private Data notificacionDatos(String titulo, String descripcion, int idRecordatorio){
 
         return new Data.Builder()
@@ -110,10 +123,18 @@ public class NuevoMedicamentoActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * guardarRecordatorio: Crea y configura el WorkRequest que se encargara de mostrar las
+     * notificaciones de recordatorio
+     * @param duracion
+     * @param data
+     * @param tag
+     */
     public void guardarRecordatorio(int duracion, Data data, String tag){
         PeriodicWorkRequest recordatorio = new PeriodicWorkRequest.Builder
                 (NotificacionesMedWorker.class,duracion,TimeUnit.HOURS)
-                //.setInitialDelay(duracion,TimeUnit.HOURS)
+                .setInitialDelay(15,TimeUnit.MINUTES)
+                .setBackoffCriteria(BackoffPolicy.LINEAR,15,TimeUnit.MINUTES)
                 .addTag(tag)
                 .setInputData(data)
                 .build();

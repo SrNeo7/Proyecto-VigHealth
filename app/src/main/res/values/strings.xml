@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Proyecto VigHealth</string>
-    <string name="tv_nuevo_usuario">Nuevo usuario</string>
+    <string name="app_name">VigHealth</string>
+    <string name="at_nuevo_usuario">Nuevo usuario</string>
     <string name="et_nombre_usuario">Nombre</string>
     <string name="et_apellidos_usuario">Apellidos</string>
     <string name="et_edad_usuario">Edad</string>
@@ -36,11 +36,17 @@
     <string name="at_peso_historial">Historial de peso</string>
     <string name="at_peso_grafico">Gráfico de evolución del peso</string>
     <string name="at_hidratacion">Hidratación </string>
+    <string name="at_detalle_actividad">Detalle Actividad</string>
     <string name="et_peso">Peso(kg)</string>
     <string name="btn_nuevo_peso">Guardar nuevo registro</string>
     <string name="tv_registros_peso">Últimos registros</string>
     <string name="tv_grafica_peso">Gráfica:Peso</string>
-    <string name="tv_lista_actividad">Actividad</string>
+    <string name="at_lista_actividad">Mis Actividades</string>
+    <string name="at_alergias">Alergias</string>
+    <string name="at_editar_tension">Editar registro tensión</string>
+    <string name="at_editar_peso">Editar registro peso</string>
+    <string name="at_configuracion">Ajustes y configuración</string>
+    <string name="at_nuevo_medicamento">Nuevo medicamento</string>
     <string-array name="genero">
         <item>Género</item>
         <item>Hombre</item>
@@ -68,28 +74,15 @@
         <item>4 horas</item>
     </string-array>
     <string-array name="alergenos">
-        <item>Aliso</item>
-        <item>Amarantáceas</item>
         <item>Abedul</item>
-        <item>Casuarina</item>
-        <item>Avellano</item>
-        <item>Ciprés</item>
-        <item>Fresno</item>
         <item>Olivo</item>
-        <item>Pino</item>
-        <item>Llantén</item>
-        <item>Plátano de sombra</item>
         <item>Gramíneas</item>
-        <item>Roble</item>
-        <item>Encina</item>
-        <item>Alcornoque</item>
-        <item>Ortiga</item>
-        <item>Parietaria</item>
+        <item>Ambrosía</item>
     </string-array>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="menu_drawer_open">Drawer Open</string>
     <string name="menu_drawer_close">Drawer Close</string>
-    <string name="btn_generar_G_Tension">Generar grárfico</string>
+    <string name="btn_generar_G_Tension">Generar gráfico</string>
     <string name="btn_nueva_tension">Guardar nuevo registro</string>
     <string name="tv_IMC_indicador">IMC:</string>
     <string name="btn_generar_G_Peso">Generar gráfico</string>
@@ -98,4 +91,27 @@
     <string name="btn_guardar_record_hid">Guardar recordatorio</string>
     <string name="btn_modificar_record_hid">Modificar recordatorio</string>
     <string name="btn_eliminar_record_hid">Eliminar recordatorio</string>
+    <string name="btn_user_ed_ok">Guardar cambios</string>
+    <string name="btn_cancel_ed_us">Cancelar</string>
+    <string name="tv_ed_nombre">Nombre</string>
+    <string name="tv_ed_apellidos">Apellidos</string>
+    <string name="btn_modificar_tension">Modificar</string>
+    <string name="btn_eliminar_tension">Eliminar</string>
+    <string name="btn_editar_peso">Editar registro</string>
+    <string name="btn_eliminar_peso">Eliminar registro</string>
+    <string name="tv_datos_personales">Datos personales</string>
+    <string name="hint_datos_personales">Pulsar para cambiar tus datos personales</string>
+    <string name="tv_borrar_datos">Borrar datos</string>
+    <string name="hint_borrar_datos">Pulsar para borrar todos los datos de la aplicación</string>
+    <string name="tv_cerrar_sesion">Cerrar sesión</string>
+    <string name="hint_cerrar_sesion">Pulsar para cerrar tu sesión</string>
+    <string name="tv_alergeno">Alergeno</string>
+    <string name="btn_consultar_alergia">Consultar</string>
+    <string name="tv_pronostico">Pronostico</string>
+    <string name="tv_etiqueta_distancia">Distancia</string>
+    <string name="tv_ritmo_inicial">-:--</string>
+    <string name="tv_etiqueta_ritmo">Ritmo(min/km)</string>
+    <string name="tv_granos_m3">granos/m3</string>
+    <string name="tv_nivel_concentracion">Nivel:</string>
+    <string name="tv_drawer_vighealth">VigHealth</string>
 </resources>

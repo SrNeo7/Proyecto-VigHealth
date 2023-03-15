@@ -11,13 +11,18 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
+import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityNuevoUsuarioBinding;
 
-public class NuevoUsuarioActivity extends AppCompatActivity {
+public class NuevoUsuarioActivity extends DrawerBaseActivity {
+
+    ActivityNuevoUsuarioBinding nuevoUsuarioBinding;
 
     EditText nombreUsuario, apellidosUsuario, alturaUsuario, edadUsuario, pesoUsuario;
     Spinner spGenero;
     Button btnNuevoUsuario;
     String nombre,apellidos,genero;
+
+    String activityTitle;
 
     int edad;
     float altura, peso;
@@ -25,7 +30,10 @@ public class NuevoUsuarioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nuevo_usuario);
+        nuevoUsuarioBinding = ActivityNuevoUsuarioBinding.inflate(getLayoutInflater());
+        setContentView(nuevoUsuarioBinding.getRoot());
+        activityTitle = getString(R.string.at_nuevo_usuario);
+        allocateActivityTitle(activityTitle);
 
         nombreUsuario = findViewById(R.id.etNombreUsuario);
         apellidosUsuario = findViewById(R.id.etApellidosUsuario);

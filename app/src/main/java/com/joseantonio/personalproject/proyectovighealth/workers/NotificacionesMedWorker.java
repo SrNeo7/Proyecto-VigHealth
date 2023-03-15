@@ -30,6 +30,10 @@ public class NotificacionesMedWorker extends Worker {
         super(context, workerParams);
     }
 
+    /**
+     * doWork: lleva a cabo el trabajo solicitado mediante las WorkRequest
+     * @return
+     */
     @NonNull
     @Override
     public Result doWork() {
@@ -43,6 +47,11 @@ public class NotificacionesMedWorker extends Worker {
         return Result.success();
     }
 
+    /**
+     * notificacionMed: crea y configura la notificacion para la funcion de medicamentos
+     * @param titulo
+     * @param descripcion
+     */
     private void notificacionMed(String titulo, String descripcion){
 
         String id ="message";
@@ -56,6 +65,9 @@ public class NotificacionesMedWorker extends Worker {
                     NotificationManager.IMPORTANCE_HIGH);
             notificationChannel.setDescription("Recordatorio Medicamento");
             notificationChannel.setShowBadge(true);
+            notificationChannel.enableVibration(true);
+            notificationChannel.enableLights(true);
+            notificationChannel.setVibrationPattern(new long[]{1000,1000,1000,1000,1000});
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel);
         }
@@ -75,7 +87,7 @@ public class NotificacionesMedWorker extends Worker {
                 .setContentText(descripcion)
                 .setContentInfo("nuevo")
                 .setDefaults(Notification.DEFAULT_SOUND)
-                .setVibrate(new long[]{0,100,200,300});
+                .setVibrate(new long[]{1000,1000,1000,1000,1000});
 
 
         Random random = new Random();

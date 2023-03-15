@@ -3,9 +3,12 @@
 
     <item
         android:id="@+id/mnHistorialTension"
-        android:title="Ver historial" />
+        android:title="Ver historial"
+        android:icon="@drawable/historial_icon"/>
+
     <item
         android:id="@+id/mnGrafica"
-        android:title="Gráfica"/>
+        android:title="Gráfica"
+        android:icon="@drawable/chart_bar"/>
 
 </menu>

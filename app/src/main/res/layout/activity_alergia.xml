@@ -4,36 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/softGreen"
     tools:context=".AlergiaActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tbAlergia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/yellowPollen"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30sp"
-            android:text="Control de Alergias"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-    </com.google.android.material.appbar.MaterialToolbar>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="30sp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/tbAlergia">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
                 android:layout_weight="0.25"
-                android:text="Alergeno"
+                android:text="@string/tv_alergeno"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -56,6 +37,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textSize="30sp"
+                android:background="@drawable/spinner_background"
+                android:textAlignment="center"
+                android:entries="@array/alergenos"
                 android:layout_marginEnd="10sp"
                 android:textStyle="bold" />
 
@@ -64,25 +48,25 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15sp" />
+            android:layout_height="35sp" />
 
         <Button
-            android:id="@+id/btnAñadirAlergeno"
+            android:id="@+id/btnConsultarAlergeno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/yellowPollen"
-            android:text="Añadir alergeno"
+            android:text="@string/btn_consultar_alergia"
             android:textColor="@color/black" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvConcentracion"
+        android:id="@+id/tvPronostico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Concentración"
+        android:text="@string/tv_pronostico"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,12 +75,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAlergenoCon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0sp"
+        android:layout_height="0sp"
         android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvConcentracion" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPronostico" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

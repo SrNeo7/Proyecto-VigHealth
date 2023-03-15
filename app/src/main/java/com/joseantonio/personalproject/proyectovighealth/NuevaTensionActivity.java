@@ -74,29 +74,18 @@ public class NuevaTensionActivity extends DrawerBaseActivity {
             }
         });
 
-    }
+        nuevaTensionBinding.btNavNuevaTension.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.mnHistorialTension:
+                    historialTension();
+                    break;
+                case R.id.mnGrafica:
+                    graficaTension();
+                    break;
+            }
 
-    public boolean onCreateOptionsMenu(Menu menu){
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_tension, menu);
-
-        return true;
-
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.mnHistorialTension:
-                historialTension();
-                return true;
-            case R.id.mnGrafica:
-                graficaTension();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+            return true;
+        });
 
     }
 

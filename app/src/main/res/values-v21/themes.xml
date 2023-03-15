@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ProyectoVigHealth" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/bluePrime</item>
+        <item name="colorPrimaryVariant">@color/blueGT</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/almostRed</item>
+        <item name="colorSecondaryVariant">@color/redGW</item>
+        <item name="colorOnSecondary">@color/grey</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/bluePrime</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

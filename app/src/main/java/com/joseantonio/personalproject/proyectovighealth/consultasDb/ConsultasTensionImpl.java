@@ -24,6 +24,15 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         this.context = context;
     }
 
+    /**
+     * nuevoRegistroTension: crea un nuevo registro en la tabla Tension
+     * @param idUsuario
+     * @param fechaTension
+     * @param sistolica
+     * @param diastolica
+     * @param valoracion
+     * @return el id del registro creado si la transaccion se ha llevado a cabo
+     */
     @Override
     public long nuevoRegistroTension(int idUsuario,String fechaTension, double sistolica,
                                      double diastolica, String valoracion){
@@ -51,6 +60,10 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
     }
 
+    /**
+     * mostrarRegistrosTension: recupera todos los registros de la tabla Tension
+     * @return un ArrayList que contiene la informacion de los registros recuperados
+     */
     @Override
     public ArrayList<Tension> mostrarRegistrosTension(){
         DbHelper dbHelper = new DbHelper(context);
@@ -60,16 +73,17 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         Tension registroTension = null;
         Cursor cursorRegistrosTension = null;
 
-        cursorRegistrosTension = db.rawQuery("SELECT sistolica, diastolica, fechaTension, valoracion FROM " +
+        cursorRegistrosTension = db.rawQuery("SELECT idTension, sistolica, diastolica, fechaTension, valoracion FROM " +
                 TABLE_TENSION + " ORDER BY fechaTension DESC", null);
 
         if(cursorRegistrosTension.moveToFirst()){
             do{
                 registroTension = new Tension();
-                registroTension.setSistolica(cursorRegistrosTension.getDouble(0));
-                registroTension.setDiastolica(cursorRegistrosTension.getDouble(1));
-                registroTension.setFechaTension(cursorRegistrosTension.getString(2));
-                registroTension.setValoracion(cursorRegistrosTension.getString(3));
+                registroTension.setIdTension(cursorRegistrosTension.getInt(0));
+                registroTension.setSistolica(cursorRegistrosTension.getDouble(1));
+                registroTension.setDiastolica(cursorRegistrosTension.getDouble(2));
+                registroTension.setFechaTension(cursorRegistrosTension.getString(3));
+                registroTension.setValoracion(cursorRegistrosTension.getString(4));
                 listaRegistrosTension.add(registroTension);
             }while (cursorRegistrosTension.moveToNext());
         }
@@ -78,7 +92,10 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
 
         return listaRegistrosTension;
     }
-
+    /**
+     * mostrarPorFechas: recupera todos los registros de la tabla Tension entre dos fechas
+     * @return un ArrayList que contiene la informacion de los registros recuperados
+     */
     @Override
     public ArrayList<Tension>mostrarPorFechas(String fechaInicialTension, String fechaFinalTension){
 
@@ -89,17 +106,18 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         Tension registro = null;
         Cursor cursorHistorico = null;
 
-        cursorHistorico = db.rawQuery("SELECT sistolica, diastolica, fechaTension, valoracion FROM " +
+        cursorHistorico = db.rawQuery("SELECT idTension, sistolica, diastolica, fechaTension, valoracion FROM " +
                         TABLE_TENSION + " WHERE fechaTension BETWEEN '" + fechaInicialTension + "' AND '" + fechaFinalTension +"'",
                 null);
 
         if (cursorHistorico.moveToFirst()){
             do{
                 registro = new Tension();
-                registro.setSistolica(cursorHistorico.getDouble(0));
-                registro.setDiastolica(cursorHistorico.getDouble(1));
-                registro.setFechaTension(cursorHistorico.getString(2));
-                registro.setValoracion(cursorHistorico.getString(3));
+                registro.setIdTension(cursorHistorico.getInt(0));
+                registro.setSistolica(cursorHistorico.getDouble(1));
+                registro.setDiastolica(cursorHistorico.getDouble(2));
+                registro.setFechaTension(cursorHistorico.getString(3));
+                registro.setValoracion(cursorHistorico.getString(4));
                 listaRegistrosHist.add(registro);
             }while (cursorHistorico.moveToNext());
         }
@@ -111,6 +129,65 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         return listaRegistrosHist;
     }
 
+    /**
+     * editarTension: modifica la informacion de un registro de la tabla Tension con los valores
+     * de los parametros
+     * @param idTension
+     * @param sistolica
+     * @param diastolica
+     * @param valoracion
+     * @return true si la transaccion se lleva a cabo, false si ocurre un error
+     */
+    @Override
+    public boolean editarTension(int idTension, double sistolica, double diastolica,String valoracion) {
+
+        boolean correcto = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+
+        try (SQLiteDatabase db = dbHelper.getWritableDatabase()) {
+            db.execSQL("UPDATE " + TABLE_TENSION + " SET sistolica = " + sistolica + "," +
+                    "diastolica = " + diastolica + "," + "valoracion = '" + valoracion + "'" +
+                    "WHERE idTension = '" + idTension + "' ");
+            correcto = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            correcto = false;
+        }
+
+
+        return correcto;
+    }
+
+    /**
+     * eliminarTension: elimina un registro de la tabla Tension cuyo id se corresponda con el valor
+     * del parametro idTension
+     * @param idTension
+     * @return true si la transaccion se lleva a cabo, false si ocurre un error
+     */
+    @Override
+    public boolean eliminarTension(int idTension) {
+
+        boolean correcto = false;
+
+        DbHelper dbHelper = new DbHelper(context);
+
+        try (SQLiteDatabase db = dbHelper.getWritableDatabase()) {
+            db.execSQL("DELETE FROM " + TABLE_TENSION + " WHERE idTension = " + idTension);
+            correcto = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            correcto = false;
+        }
+
+        return correcto;
+    }
+
+    /**
+     * ultimaTension: recupera el ultimo registro introducido en la tabla Tension
+     * @return un objeto Tension que contiene la informacion recuperada
+     */
+    @Override
     public Tension ultimaTension() {
 
         DbHelper dbHelper = new DbHelper(context);
@@ -135,4 +212,38 @@ public class ConsultasTensionImpl extends DbHelper implements ConsultasTension {
         return tension;
 
     }
+
+    /**
+     * verTension: recupera un registro de la tabla Tension cuyo id se corresponda con el valor
+     * del parametro id
+     * @param id
+     * @return un objeto Tension que contiene la informacion recuperada
+     */
+    @Override
+    public Tension verTension(int id){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Tension tension = null;
+        Cursor cursorTension = null;
+
+        cursorTension = db.rawQuery("SELECT idTension, sistolica, diastolica, fechaTension, " +
+                "valoracion FROM " +
+                TABLE_TENSION + " WHERE idTension = " + id + " LIMIT 1",null);
+
+        if(cursorTension.moveToFirst()){
+            tension = new Tension();
+            tension.setIdTension(cursorTension.getInt(0));
+            tension.setSistolica(cursorTension.getDouble(1));
+            tension.setDiastolica(cursorTension.getDouble(2));
+            tension.setFechaTension(cursorTension.getString(3));
+            tension.setValoracion(cursorTension.getString(4));
+        }
+        cursorTension.close();
+        db.close();
+
+        return tension;
+    }
+
 }

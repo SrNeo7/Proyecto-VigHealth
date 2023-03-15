@@ -100,6 +100,7 @@ public class GraficaPesoActivity extends DrawerBaseActivity {
                     periodoRepresentado.setText(periodoGrafico);
                     fechaHasta = fechaHasta + " 23:59";
 
+                    //Cargamos los valores para el gráfico y configuramos aspectos visuales del gráfico
                     ConsultasPesoImpl consultasPeso = new ConsultasPesoImpl(GraficaPesoActivity.this);
                     datosPeso = new ArrayList<>(consultasPeso.mostrarPorFecha(fechaDesde,fechaHasta));
                     ArrayList<String>labelsEjeX = new ArrayList<>(ejeX(datosPeso));
@@ -145,6 +146,12 @@ public class GraficaPesoActivity extends DrawerBaseActivity {
         });
     }
 
+    /**
+     * verificaFecha: comprobamos que el usuario haya introducido una fecha correcta
+     * @param inicial
+     * @param fin
+     * @return
+     */
     private boolean verificaFecha(String inicial, String fin){
 
         boolean verificado;
@@ -167,6 +174,10 @@ public class GraficaPesoActivity extends DrawerBaseActivity {
         return verificado;
     }
 
+    /**
+     * seleccionarFecho: se encarga de mostrar y gestionar el DatePicker
+     * @param fecha
+     */
     private void seleccionarFecha(EditText fecha){
 
         final Calendar c = Calendar.getInstance();
@@ -215,6 +226,11 @@ public class GraficaPesoActivity extends DrawerBaseActivity {
         return datosX;
     }
 
+    /**
+     * obtenerDatosPeso: obtiene los valores de peso para las entradas del grafico
+     * @param datos
+     * @return
+     */
     private ArrayList<Entry>obtenerDatosPeso(ArrayList<Peso>datos) {
 
         ArrayList<Entry> datosPeso = new ArrayList<>();
@@ -227,6 +243,12 @@ public class GraficaPesoActivity extends DrawerBaseActivity {
         return datosPeso;
     }
 
+    /**
+     * fechaAmericana: Funcion para formatear la fecha recogida en formato europeo a
+     * formato internacional soportado por SQLite
+     * @param fecha
+     * @return String con la fecha formateada soportada por SQLite
+     */
     private String fechaAmericana(String fecha){
 
         String fechaformateada;
