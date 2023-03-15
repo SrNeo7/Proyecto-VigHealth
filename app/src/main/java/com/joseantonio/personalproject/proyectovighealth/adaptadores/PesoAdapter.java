@@ -14,6 +14,7 @@ import com.joseantonio.personalproject.proyectovighealth.EditarPesoActivity;
 import com.joseantonio.personalproject.proyectovighealth.EditarTensionActivity;
 import com.joseantonio.personalproject.proyectovighealth.R;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Peso;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class PesoAdapter extends RecyclerView.Adapter<PesoAdapter.PesoViewHolder
         String peso = Double.toString(listaPeso.get(position).getPeso())+"Kg";
         String diferencia = "(" + Double.toString(listaPeso.get(position).getDiferenciaPeso()) + "Kg" + ")";
         String imc = Double.toString(listaPeso.get(position).getImc());
-        String fechaFormateadaEU = fechaEuropea(listaPeso.get(position).getFechaPeso());
+        String fechaFormateadaEU = Utilidades.fechaEuropea(listaPeso.get(position).getFechaPeso());
 
         holder.viewPeso.setText(peso);
         holder.viewFecha.setText(fechaFormateadaEU);
@@ -82,25 +83,4 @@ public class PesoAdapter extends RecyclerView.Adapter<PesoAdapter.PesoViewHolder
 
         }
     }
-
-    /**
-     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
-     * @param fecha
-     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
-     */
-    private String fechaEuropea (String fecha){
-
-        String fechaFormateada;
-        String dia, mes, anno ,hora;
-
-        anno = fecha.substring(0,4);
-        mes = fecha.substring(5,7);
-        dia = fecha.substring(8,10);
-        hora= fecha.substring(11,16);
-
-        fechaFormateada = dia + "/" + mes + "/" + anno + " " + hora;
-
-        return fechaFormateada;
-    }
-
 }

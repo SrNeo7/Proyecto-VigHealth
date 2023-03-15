@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasPesoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityPesoSeguimientoBinding;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -54,7 +55,7 @@ public class PesoSeguimientoActivity extends DrawerBaseActivity {
             @Override
             public void onClick(View view) {
                 peso = Float.parseFloat(pesoEt.getText().toString());
-                fecha = obtenerFechaHoy();
+                fecha = Utilidades.obtenerFechaActual();
 
                 ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(PesoSeguimientoActivity.this);
                 double pesoAnterior = consultasUsuario.obtenerPesoUsuario();
@@ -114,12 +115,4 @@ public class PesoSeguimientoActivity extends DrawerBaseActivity {
         pesoEt.setText("");
     }
 
-    public String obtenerFechaHoy(){
-
-        String fechaActual;
-
-        fechaActual = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime());
-
-        return fechaActual;
-    }
 }

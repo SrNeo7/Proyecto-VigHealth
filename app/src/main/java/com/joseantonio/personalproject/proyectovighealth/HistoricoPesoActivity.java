@@ -19,6 +19,7 @@ import com.joseantonio.personalproject.proyectovighealth.adaptadores.TensionAdap
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasPesoImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasTensionImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityHistoricoPesoBinding;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -90,9 +91,9 @@ public class HistoricoPesoActivity extends DrawerBaseActivity {
                 fechaFinalString = fechaFinal.getText().toString();
 
                 //Recogemos la fecha de los editText y la convertimos al formato fecha de SQLite
-                fechaDesde = fechaAmericana(fechaInicialString);
-                fechaHasta = fechaAmericana(fechaFinalString);
-                boolean comprobacionFecha = verificaFecha(fechaDesde,fechaHasta);
+                fechaDesde = Utilidades.fechaAmericana(fechaInicialString);
+                fechaHasta = Utilidades.fechaAmericana(fechaFinalString);
+                boolean comprobacionFecha = Utilidades.verificaFecha(fechaDesde,fechaHasta);
 
                 if(fechaDesde!="" && fechaHasta!=""&& comprobacionFecha) {
 
@@ -115,34 +116,6 @@ public class HistoricoPesoActivity extends DrawerBaseActivity {
     }
 
     /**
-     * verificaFecha: comprobamos que el usuario haya introducido una fecha correcta
-     * @param inicial
-     * @param fin
-     * @return
-     */
-    private boolean verificaFecha(String inicial, String fin){
-
-        boolean verificado;
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaInicialDate = null;
-        Date fechaFinalDate = null;
-
-        try{
-
-            fechaInicialDate = date.parse(inicial);
-            fechaFinalDate = date.parse(fin);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        assert fechaInicialDate != null;
-        verificado = !fechaInicialDate.after(fechaFinalDate);
-
-        return verificado;
-    }
-
-    /**
      * seleccionarFecho: se encarga de mostrar y gestionar el DatePicker
      * @param fecha
      */
@@ -156,7 +129,7 @@ public class HistoricoPesoActivity extends DrawerBaseActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(HistoricoPesoActivity.this ,new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                final String selectedDate = dosDigitos(day) + "/" + dosDigitos(month+1) +
+                final String selectedDate = Utilidades.dosDigitos(day) + "/" + Utilidades.dosDigitos(month+1) +
                         "/" + year;
                 fecha.setText(selectedDate);
             }
@@ -165,38 +138,5 @@ public class HistoricoPesoActivity extends DrawerBaseActivity {
         datePickerDialog.updateDate(anno,mes,dia);
         datePickerDialog.show();
 
-    }
-
-    /**
-     * dosDigitos: Funcion para corregir la fecha recogida de los datepicker para que el dia y
-     * el mes tengan dos digitos
-     * @param n
-     * @return String con el dia o el mes corregid0.
-     */
-    private String dosDigitos (int n){
-        return (n<=9) ? ("0"+n) : String.valueOf(n);
-    }
-
-    /**
-     * fechaAmericana: Funcion para formatear la fecha recogida en formato europeo a
-     * formato internacional soportado por SQLite
-     * @param fecha
-     * @return String con la fecha formateada soportada por SQLite
-     */
-    private String fechaAmericana(String fecha){
-
-        String fechaformateada;
-
-        String dia,mes,anno;
-
-        dia = fecha.substring(0,2);
-
-        mes= fecha.substring(3,5);
-
-        anno = fecha.substring(6,10);
-
-        fechaformateada = anno + "-" + mes + "-" + dia;
-
-        return fechaformateada;
     }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasActividadImpl;
 import com.joseantonio.personalproject.proyectovighealth.databinding.ActivityDetallesActividadBinding;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Actividad;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.io.File;
 
@@ -62,7 +63,7 @@ public class DetallesActividadActivity extends DrawerBaseActivity {
         if(actividad != null){
             fechaActividad = actividad.getFechaActividad();
             tipoActividad = actividad.getTipo();
-            fechaFormateada = fechaEuropea(fechaActividad);
+            fechaFormateada = Utilidades.fechaEuropea(fechaActividad);
             nombreEjercicio = sinonimoTipoActividad(tipoActividad);
             tvFechaActividad.setText(nombreEjercicio + fechaFormateada);
             tvDetalleDistancia.setText(String.valueOf(actividad.getDistancia()));
@@ -80,26 +81,6 @@ public class DetallesActividadActivity extends DrawerBaseActivity {
 
 
 
-    }
-
-    /**
-     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
-     * @param fecha
-     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
-     */
-    private String fechaEuropea (String fecha){
-
-        String fechaFormateada;
-        String dia, mes, anno ,hora;
-
-        anno = fecha.substring(0,4);
-        mes = fecha.substring(5,7);
-        dia = fecha.substring(8,10);
-        hora= fecha.substring(11,16);
-
-        fechaFormateada = dia + "/" + mes + "/" + anno + " " + hora;
-
-        return fechaFormateada;
     }
 
     /**

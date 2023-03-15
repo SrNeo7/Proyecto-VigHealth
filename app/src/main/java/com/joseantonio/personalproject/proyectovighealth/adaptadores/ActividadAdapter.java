@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.joseantonio.personalproject.proyectovighealth.DetallesActividadActivity;
 import com.joseantonio.personalproject.proyectovighealth.R;
 import com.joseantonio.personalproject.proyectovighealth.objetos.Actividad;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,7 @@ public class ActividadAdapter extends RecyclerView.Adapter<ActividadAdapter.Acti
     public void onBindViewHolder(@NonNull ActividadAdapter.ActividadViewHolder holder, int position) {
         String tipoActividad = listaActividades.get(position).getTipo();
         String distanciaActividad =String.valueOf(listaActividades.get(position).getDistancia()) + " KM";
-        String fechaActividad = fechaEuropea(listaActividades.get(position).getFechaActividad());
+        String fechaActividad = Utilidades.fechaEuropea(listaActividades.get(position).getFechaActividad());
 
         holder.viewTipoActividad.setText(tipoActividad);
         holder.viewDistanciaActividad.setText(distanciaActividad);
@@ -73,25 +74,4 @@ public class ActividadAdapter extends RecyclerView.Adapter<ActividadAdapter.Acti
             });
         }
     }
-
-    /**
-     * fechaEuropea: Funcion para convertir la fecha recuperada en formato SQLite a formato europeo
-     * @param fecha
-     * @return fechaFormateada: String que contiene la fecha convertida a formato europeo.
-     */
-    private String fechaEuropea (String fecha){
-
-        String fechaFormateada;
-        String dia, mes, anno ,hora;
-
-        anno = fecha.substring(0,4);
-        mes = fecha.substring(5,7);
-        dia = fecha.substring(8,10);
-        hora= fecha.substring(11,16);
-
-        fechaFormateada = dia + "/" + mes + "/" + anno + " " + hora;
-
-        return fechaFormateada;
-    }
-
 }

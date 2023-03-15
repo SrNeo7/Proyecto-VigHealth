@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasActividadImpl;
 import com.joseantonio.personalproject.proyectovighealth.consultasDb.ConsultasUsuarioImpl;
+import com.joseantonio.personalproject.proyectovighealth.utilidades.Utilidades;
 
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -145,7 +146,7 @@ implements OnMapReadyCallback {
                 ConsultasUsuarioImpl consultasUsuario = new ConsultasUsuarioImpl(NuevaActividadActivity.this);
                 idUsuario = consultasUsuario.obtenerIdUsuario();
                 ConsultasActividadImpl consultasActividad = new ConsultasActividadImpl(NuevaActividadActivity.this);
-                fechaActividad = obtenerFechaActual();
+                fechaActividad = Utilidades.obtenerFechaActual();
                 duracion = obtenerDuracion(pausa);
                 double distanciaTotal = Double.parseDouble(distanciaValue.replace(",","."));
                 capturarMapa(fechaActividad);
@@ -231,7 +232,7 @@ implements OnMapReadyCallback {
                         int minutos = (int) ritmo;
                         double segundos = ritmo - minutos;
                         int segundosEnteros = formateoSegundos(segundos);
-                        String segundosDefinitivos = dosDigitos(segundosEnteros);
+                        String segundosDefinitivos = Utilidades.dosDigitos(segundosEnteros);
                         distanciaValue = String.format("%.2f", distanciaKM);
                         tvDistancia.setText(distanciaValue + " KM");
                         ritmoValue = minutos + "'" + segundosDefinitivos + "\"";
@@ -356,30 +357,6 @@ implements OnMapReadyCallback {
         return segundosFormateados;
     }
 
-    /**
-     * dosDigitos: Funcion para corregir la fecha recogida de los datepicker para que el dia y
-     * el mes tengan dos digitos
-     * @param n
-     * @return String con el dia o el mes corregid0.
-     */
-    private String dosDigitos (int n){
-
-        return (n<=9) ? ("0"+n) : String.valueOf(n);
-    }
-
-    /**
-     * obtenerFechaActual: Funcion para obtener la fecha del momento en el que se introduce
-     * el nuevo registro.
-     * @return Se devuelve una cadena con la fecha en un formato fecha compatible con SQLite
-     */
-    public String obtenerFechaActual(){
-
-        String fechaActual;
-
-        fechaActual = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime());
-
-        return fechaActual;
-    }
 
     /**
      * obtenerDuracion: formatea la duracion del ejercicio de milisegundos al formato horas, minutos,segundos
