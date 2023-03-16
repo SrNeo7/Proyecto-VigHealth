@@ -42,19 +42,6 @@
             android:hint="@string/hint_borrar_datos"
             android:focusable="true" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvClkCerrarSesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25sp"
-            android:layout_marginBottom="20sp"
-            android:clickable="true"
-            android:hint="@string/hint_cerrar_sesion"
-            android:minHeight="48dp"
-            android:text="@string/tv_cerrar_sesion"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:focusable="true" />
 
 
 

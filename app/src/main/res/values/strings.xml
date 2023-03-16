@@ -25,7 +25,7 @@
     <string name="et_nombre_del_medicamento">Nombre del medicamento</string>
     <string name="et_dosis">Dosis</string>
     <string name="sp_medida">Medida</string>
-    <string name="et_periodicidad">¿Cada cuantas horas?(número)</string>
+    <string name="et_periodicidad">¿Cada cuantas horas?</string>
     <string name="et_comentarios">Comentarios…</string>
     <string name="btn_med_aceptar">Aceptar</string>
     <string name="btn_med_cancelar">Cancelar</string>
@@ -43,8 +43,8 @@
     <string name="tv_grafica_peso">Gráfica:Peso</string>
     <string name="at_lista_actividad">Mis Actividades</string>
     <string name="at_alergias">Alergias</string>
-    <string name="at_editar_tension">Editar registro tensión</string>
-    <string name="at_editar_peso">Editar registro peso</string>
+    <string name="at_editar_tension">Editar registro de tensión</string>
+    <string name="at_editar_peso">Editar registro de peso</string>
     <string name="at_configuracion">Ajustes y configuración</string>
     <string name="at_nuevo_medicamento">Nuevo medicamento</string>
     <string-array name="genero">
@@ -63,7 +63,7 @@
         <item>mg</item>
         <item>ml</item>
         <item>Cucharada</item>
-        <item>Inyeccion</item>
+        <item>Inyección</item>
         <item>Gotas</item>
         <item>Untura(pomada)</item>
     </string-array>
@@ -105,9 +105,9 @@
     <string name="hint_borrar_datos">Pulsar para borrar todos los datos de la aplicación</string>
     <string name="tv_cerrar_sesion">Cerrar sesión</string>
     <string name="hint_cerrar_sesion">Pulsar para cerrar tu sesión</string>
-    <string name="tv_alergeno">Alergeno</string>
+    <string name="tv_alergeno">Alérgeno</string>
     <string name="btn_consultar_alergia">Consultar</string>
-    <string name="tv_pronostico">Pronostico</string>
+    <string name="tv_pronostico">Pronóstico</string>
     <string name="tv_etiqueta_distancia">Distancia</string>
     <string name="tv_ritmo_inicial">-:--</string>
     <string name="tv_etiqueta_ritmo">Ritmo(min/km)</string>

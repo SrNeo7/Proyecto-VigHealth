@@ -1,5 +1,6 @@
 package com.joseantonio.personalproject.proyectovighealth;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,9 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
     TextView pesoTv, difPesoTv,tensionTv,valTenTv,nombreMedTv,periodicidadMedTv,
             estadoHidTv,frecuenciaHidTv,tipoActividadTv,distanciaTv,nombreAlergiaTv,valAlergiaTv;
+
+
+    final String SIN_DATOS = "Sin datos";
 
 
     @Override
@@ -133,6 +137,18 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        datosPanelTension();
+        datosPanelPeso();
+        datosPanelMedicamento();
+        datosPanelHidratacion();
+        datosPanelActividad();
+        datosPanelAlergia();
+
+    }
 
     //Funciones para obtener los datos que se muestran en los paneles del dashboard
 
@@ -146,6 +162,8 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
         pesoTv.setText(String.valueOf(statusPeso.getPeso()) + " Kg.");
         difPesoTv.setText(String.valueOf(statusPeso.getDiferenciaPeso()) + " Kg.");
+        }else{
+            pesoTv.setText(SIN_DATOS);
         }
 
     }
@@ -162,6 +180,8 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
         tensionTv.setText(ultimaMedicion);
         valTenTv.setText(statusTension.getValoracion());
+        }else{
+            tensionTv.setText(SIN_DATOS);
         }
     }
 
@@ -178,6 +198,8 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
             nombreMedTv.setText(statusMedicamento.getNombreMedicamento());
             periodicidadMedTv.setText(periodicidad);
+        }else {
+            nombreMedTv.setText(SIN_DATOS);
         }
     }
 
@@ -220,6 +242,8 @@ public class PrincipalActivity extends DrawerBaseActivity {
 
             tipoActividadTv.setText(tipoActividad);
             distanciaTv.setText(distanciaStr);
+        }else{
+            tipoActividadTv.setText(SIN_DATOS);
         }
     }
 
@@ -231,6 +255,8 @@ public class PrincipalActivity extends DrawerBaseActivity {
         if(statusAlergia!= null){
             nombreAlergiaTv.setText(statusAlergia.getNombreAlergia());
             valAlergiaTv.setText(statusAlergia.getValoracion());
+        }else{
+            nombreAlergiaTv.setText(SIN_DATOS);
         }
     }
 
