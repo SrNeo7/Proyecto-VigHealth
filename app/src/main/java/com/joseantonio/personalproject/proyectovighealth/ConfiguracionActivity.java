@@ -20,7 +20,7 @@ public class ConfiguracionActivity extends DrawerBaseActivity {
 
     ActivityConfiguracionBinding configuracionBinding;
 
-    MaterialTextView tvDatosPersonales, tvBorrarDatos, tvCerrarSesion;
+    MaterialTextView tvDatosPersonales, tvBorrarDatos;
 
     String activityTitle;
 
@@ -35,7 +35,6 @@ public class ConfiguracionActivity extends DrawerBaseActivity {
 
         tvDatosPersonales = findViewById(R.id.tvClkDatos);
         tvBorrarDatos = findViewById(R.id.tvClkBorrarDatos);
-        tvCerrarSesion = findViewById(R.id.tvClkCerrarSesion);
 
 
         tvDatosPersonales.setOnClickListener(new View.OnClickListener() {
@@ -72,35 +71,6 @@ public class ConfiguracionActivity extends DrawerBaseActivity {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
-            }
-        });
-
-        tvCerrarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ConfiguracionActivity.this);
-                builder.setMessage("Va a cerrar su sesión actual. Sus datos no seran borrados. ¿Desea continuar?");
-                builder.setTitle("Cerrar sesión de usuario");
-
-                builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        FirebaseAuth.getInstance().signOut();
-                        finishAffinity();
-                        System.exit(0);
-                    }
-                });
-
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-
             }
         });
 
