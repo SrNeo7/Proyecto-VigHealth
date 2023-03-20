@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
@@ -67,6 +68,8 @@ public class NotificacionesMedWorker extends Worker {
             notificationChannel.setShowBadge(true);
             notificationChannel.enableVibration(true);
             notificationChannel.enableLights(true);
+            notificationChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.setLightColor(Color.BLUE);
             notificationChannel.setVibrationPattern(new long[]{1000,1000,1000,1000,1000});
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel);
@@ -86,7 +89,7 @@ public class NotificacionesMedWorker extends Worker {
                 .setSmallIcon(R.drawable.pill)
                 .setContentText(descripcion)
                 .setContentInfo("nuevo")
-                .setDefaults(Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setVibrate(new long[]{1000,1000,1000,1000,1000});
 
 

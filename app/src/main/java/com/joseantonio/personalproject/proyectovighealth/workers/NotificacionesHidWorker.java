@@ -60,6 +60,8 @@ public class NotificacionesHidWorker extends Worker {
             notificationChannel.setShowBadge(true);
             notificationChannel.enableVibration(true);
             notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.BLUE);
+            notificationChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
             notificationChannel.setVibrationPattern(new long[]{1000,1000,1000,1000,1000});
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel);
@@ -79,7 +81,7 @@ public class NotificacionesHidWorker extends Worker {
                 .setSmallIcon(R.drawable.cup_water)
                 .setContentText(descripcion)
                 .setContentInfo("nuevo")
-                .setDefaults(Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setVibrate(new long[]{1000,1000,1000,1000,1000});
 
 

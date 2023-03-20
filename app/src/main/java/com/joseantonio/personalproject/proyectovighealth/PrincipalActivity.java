@@ -164,6 +164,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
         difPesoTv.setText(String.valueOf(statusPeso.getDiferenciaPeso()) + " Kg.");
         }else{
             pesoTv.setText(SIN_DATOS);
+            difPesoTv.setText("");
         }
 
     }
@@ -182,6 +183,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
         valTenTv.setText(statusTension.getValoracion());
         }else{
             tensionTv.setText(SIN_DATOS);
+            valTenTv.setText("");
         }
     }
 
@@ -200,6 +202,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
             periodicidadMedTv.setText(periodicidad);
         }else {
             nombreMedTv.setText(SIN_DATOS);
+            periodicidadMedTv.setText("");
         }
     }
 
@@ -244,6 +247,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
             distanciaTv.setText(distanciaStr);
         }else{
             tipoActividadTv.setText(SIN_DATOS);
+            distanciaTv.setText("");
         }
     }
 
@@ -257,6 +261,7 @@ public class PrincipalActivity extends DrawerBaseActivity {
             valAlergiaTv.setText(statusAlergia.getValoracion());
         }else{
             nombreAlergiaTv.setText(SIN_DATOS);
+            valAlergiaTv.setText("");
         }
     }
 
